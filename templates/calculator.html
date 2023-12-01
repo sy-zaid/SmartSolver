@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body %}
+<div class="container scrollspy-example-2" data-bs-spy="scroll" data-bs-target="#navbar-example3"
+     data-bs-smooth-scroll="true"
+     tabindex="0">
+    <br>
+    <h1 align="center">Calculator</h1>
+    <p class="lead" align="center">
+        This section provides a simple calculator.
+    </p>
+    <br>
+    <div>
+        <form action="calculator" method="POST">
+            {% csrf_token %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-6 col-lg-4 mx-auto g-0">
+
+                        <div class="result">
+                            <span id="ques">{{values}}</span>
+                            <input class="form-control" type="text" name="values" id="result" placeholder="0" value={{result}}></input>
+                        </div>
+                        <div class="calculator">
+                            <div class="row p-1 g-0">
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block num_btn"
+                                            onclick="insertTextInInputValue(7);">7
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue(8);">
+                                        8
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue(9);">
+                                        9
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue('x');">&#215;
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row p-1 g-0">
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue(4);">
+                                        4
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue(5);">
+                                        5
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue(6);">
+                                        6
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue('&divide');">&#247;
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row p-1 g-0">
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue(1);">
+                                        1
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue(2);">
+                                        2
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue(3);">
+                                        3
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue('+');">+
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row p-1 g-0">
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue('. ');"> .
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue('0');">0
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="reset" class="btn btn-lg btn-block btn-danger"
+                                            onclick="clearInput(event)">
+                                        AC
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+                                            onclick="insertTextInInputValue('-');">-
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row p-1 g-0">
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-lg btn-primary btn-block">=</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+  // var theTotal = 0;
+  // $('#1').click(function(){
+  // $('#result').val(1);
+  // });
+  function insertTextInInputValue(buttonValueIs){
+            if (buttonValueIs == "AC")
+            {
+              $('#ques').text('Ans : 0');
+              $('#result').val(0);
+            }
+            else {
+              var inputElementIs = document.getElementById("result");
+              inputElementIs.value =  inputElementIs.value + buttonValueIs;
+              $('#result').val(inputElementIs.value);
+            }
+        }
+  function clearInput(event){
+            event.preventDefault();
+            var inputField = document.getElementById("result");
+            inputField.value = "";
+            }
+
+// $('#tussenstand').val("Total: "+theTotal);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+{% endblock body %}
+</html>
