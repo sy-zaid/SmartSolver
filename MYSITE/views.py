@@ -7,7 +7,7 @@ from .utils.functions import counttheletters
 def index(request):
     return render(request, 'index.html')
 
-
+# Extra-tool
 def calculator(request):
     return render(request,'calculator.html')
 
@@ -16,6 +16,7 @@ def about(request):
     return render(request, 'about.html')
 
 
+# Mathematics
 def algebra(request):
     poly_input_1 = (request.POST.get('Polynomial1', 'default'))
     operator_poly = (request.POST.get('Operator_Poly'))
@@ -40,9 +41,14 @@ def algebra(request):
     return render(request, "algebra.html", params)
 
 
+# Physics
 def physics(request):
     return render(request, "physics.html")
 
-
+# Programming
 def binary(request):
     return render(request, "binary.html")
+
+# Algorithms
+def osAlgorithms(request):
+    return render(request,'osalgorithms.html')

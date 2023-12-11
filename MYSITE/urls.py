@@ -21,9 +21,22 @@ urlpatterns = [
     path('admin', admin.site.urls),
     path('', views.index, name='Index'),
     path('about', views.about, name='About'),
+
+    #Extra-tool
+    path('calculator',views.calculator,name = 'Calculator'),
+
+    # Mathematics
     path('algebra', views.algebra, name='Algebra'),
+    path('pre-algebra', views.algebra, name='pre-algebra'),
+
+    # Physics
     path('physics', views.physics, name='Physics'),
+
+    #Programming
     path('binary', views.binary, name='Binary'),
-    path('calculator',views.calculator,name = 'Calculator')
+
+    #Algorithms
+    path('operating-system-algorithms',views.osAlgorithms,name="osAlgorithms"),
+    
     # path('countletters', views.countletters, name='Countletters'),
 ]

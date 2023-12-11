@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algorithm Simulation</title>
+    <link rel="stylesheet" href="/static/Stylesheets/osalgorithms.css">
+</head>
+<body>
+    <h1>Algorithm Simulation</h1>
+    <form id="algorithm-form">
+        <label for="algorithm-name">Algorithm Type/Name:</label>
+        <input type="text" id="algorithm-name" name="algorithm-name" required><br>
+        <label for="arrival-time">Arrival Time:</label>
+        <input type="number" id="arrival-time" name="arrival-time" required><br>
+        <label for="burst-time">Burst Time:</label>
+        <input type="number" id="burst-time" name="burst-time" required><br>
+        <input type="submit" value="Simulate">
+    </form>
+
+    <div id="output-section">
+        <h2>OUTPUT:</h2>
+    </div>
+
+    <script>
+        document.getElementById('algorithm-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const algorithmName = document.getElementById('algorithm-name').value;
+            const arrivalTime = document.getElementById('arrival-time').value;
+            const burstTime = document.getElementById('burst-time').value;
+            const simulationResult = `Simulating ${algorithmName} with Arrival Time: ${arrivalTime}, Burst Time: ${burstTime}`;
+            document.getElementById('output-section').innerHTML = `<p>${simulationResult}</p>`;
+        });
+    </script>
+</body>
+</html>
