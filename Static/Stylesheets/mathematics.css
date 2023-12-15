@@ -1,6 +1,10 @@
+@font-face {
+    font-family: DM-Sans-Bold;
+    src: url("../Fonts/DMSans-VariableFont_opsz\,wght.ttf");
+  }
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'DM-Sans-Bold';
 }
 
 #menu {

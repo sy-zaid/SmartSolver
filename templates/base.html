@@ -34,7 +34,9 @@
           alt="menu"
         />
       </a>
-      <div class="div-logo"><img id="logo" src="../static/Images/logo-smart-solver.png" alt=""></div>
+      <div class="div-logo">
+        <img id="logo" src="../static/Images/logo-smart-solver.png" alt="" />
+      </div>
       <div class="menu-items">
         <a href="#">Mathematics</a>
         <a href="#">Physics</a>
@@ -43,20 +45,22 @@
       </div>
       <div class="search-icon">
         <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button id="div-search-icon" type="submit">
+            <img
+              id="search-icon"
+              src="../static/Images/search-icon.png"
+              alt=""
             />
-            <button id="div-search-icon" type="submit">
-              <img id="search-icon" src="../static/Images/search-icon.png" alt="">
           </button>
-          </form>
+        </form>
       </div>
     </nav>
-
-    
 
     <div
       class="offcanvas offcanvas-start"
@@ -107,21 +111,5 @@
     </div>
 
     {% block body %} {% endblock body%}
-    <div class="sticky-bottom" align="right">
-      <button
-        class="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasWithBothOptions"
-        aria-controls="offcanvasWithBothOptions"
-        style="
-          border: none;
-          padding: 20px;
-          display: inline-block;
-          background: transparent;
-        "
-      >
-        <img src="/static/Images/more.png" />
-      </button>
-    </div>
   </body>
 </html>

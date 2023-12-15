@@ -84,35 +84,5 @@ body {
 
 /* ------------------------- END - Navbar-styling -------------------------*/
 
-/* ------------------------- START - Carousel ------------------------- */
-.carousel-item {
-  width: 100%;
-  height: 110vh;
-  /* background-image: url('../Images/cover-image-1.png'); */
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-
-#div-carousel-heading {
-  /* background-color: red; */
-  position: absolute;
-  text-align: left; 
-  left: 50%;
-  transform: translate(-85%,110%);
-}
-
-#div-carousel-heading > h1{
-    font-family: DM-Sans-Bold;
-    font-size: 70px;
-    color: black;
-}
-
-#div-carousel-heading > h2{
-    font-size: 35px;
-}
-
-#div-carousel-heading > h3{
-    font-size: 20px;
-}
 
 
