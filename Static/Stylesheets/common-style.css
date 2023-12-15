@@ -4,4 +4,22 @@ body{
     padding: 0;
 }
 
+@font-face {
+    font-family: DM-Sans-Bold;
+    src: url('../Fonts/DMSans-VariableFont_opsz\,wght.ttf');
+}
+
+#side-panel{
+    align-items: left;
+    font-family: DM-Sans-Bold;
+}
+
+#common-heading-1{
+    font-family: DM-Sans-Bold;
+    font-size: 30;
+}
+
+
+
+
 
