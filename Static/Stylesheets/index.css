@@ -118,7 +118,7 @@
   background-image: url("../Images/section-physics-bg.png");
   overflow: hidden;
   border-radius: 40px;
-  border: 2px solid #0b67f1;
+  border: 2px solid #f00212;
   padding: 20px 40px;
   align-items: center;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.24);
@@ -140,7 +140,7 @@
   background-image: url("../Images/section-programming-bg.png");
   overflow: hidden;
   border-radius: 40px;
-  border: 2px solid #0b67f1;
+  border: 2px solid #011627;
   padding: 20px 40px;
   color: white;
   align-items: center;
@@ -164,7 +164,7 @@
   background-image: url("../Images/section-algorithms-bg.png");
   overflow: hidden;
   border-radius: 40px;
-  border: 2px solid #0b67f1;
+  border: 2px solid #b00293;
   padding: 20px 40px;
   align-items: center;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.24);

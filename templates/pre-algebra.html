@@ -1,41 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pre-Algebra Calculator</title>
-    <link rel="stylesheet" href="../Static/Stylesheets/pre-algebra.css">
-</head>
-<body>
+{% extends 'base.html' %} {% block body %}
+<link rel="stylesheet" href="../static/Stylesheets/mathematics.css" />
+<title>Pre-Algebra CLCC</title>
 
-    <div id="menu">
-        <p>Mean</p>
-        <p>Median</p>
-        <p>Mode</p>
-        <p>GCF</p>
-        <p>LCM</p>
+<div id="PA-heading">
+  <h1 id="heading-1-black">Pre-Algebra Calculator</h1>
+  <h2 id="heading-2-black">Mean, Median, Mode</h2>
+</div>
+
+<!-- MAKING A WHOLE DIV FOR SIDE MENU + CALCULATIONS MENU -->
+<div id="PA-whole">
+  <div id="PA-whole-div-1">
+    <div id="side-menu">
+      <h4 id="heading-2-black">Related Topics</h4>
+      <ul id="side-menu-list">
+        <li>Mean</li>
+        <li>Median</li>
+        <li>Mode</li>
+        <li>LCM</li>
+        <li>GCF</li>
+      </ul>
     </div>
+  </div>
 
-    <div id="content">
-        <h1>Pre-Algebra Calculator</h1>
-        <h2>Mean, Median, Mode</h2>
-
-        <!-- Input section -->
-        <div class="input-section">
-            <label for="input">Enter Input:</label>
-            <input type="text" id="input" placeholder="Enter your input">
-        </div>
-
-        <!-- Output section -->
-        <div class="output-section">
-            <label for="output">Output:</label>
-            <div id="output" class="output-box"></div>
-        </div>
-
-        <!-- Buttons -->
-        <button id="solveButton">Solve</button>
-        <button id="clearButton">Clear</button>
+  <div id="PA-whole-div-2">
+    <!-- Input section -->
+    <div id="div-input-section">
+      <!-- <label id="heading-3-black" for="input" style="margin-right:20px ;">Enter Input:</label> -->
+      <input
+        class="input-box"
+        type="text"
+        id="input-mmm"
+        placeholder="Enter your input (e.g. 1,2,3...)"
+      />
     </div>
+    <!-- Buttons -->
+    <div id="div-buttons">
+      <button id="clearButton">
+        <img
+          src="../static/Images/delete-icon.png"
+          alt=""
+          style="height: 32px; width: 32px"
+        />
+      </button>
+      <button id="solveButton">Solve</button>
+    </div>
+    <!-- <div id="divider-1"></div> -->
 
-</body>
-</html>
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">Mean</label>
+        <p id="res-mean">{mean}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Median</label>
+        <p id="res-median">{median}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Mode</label>
+        <p id="res-mode">{mode}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

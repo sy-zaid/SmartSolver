@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Solver - Sorting Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    select,
+    button {
+      margin: 10px 0;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sorting Page</h1>
+    <label for="numbers">Enter numbers separated by commas:</label>
+    <input type="text" id="numbers" placeholder="e.g., 5, 2, 8, 1">
+    <label for="sortingAlgorithm">Choose a sorting algorithm:</label>
+    <select id="sortingAlgorithm">
+      <option value="bubbleSort">Bubble Sort</option>
+      <option value="selectionSort">Selection Sort</option>
+      <!-- Add more sorting algorithms as needed -->
+    </select>
+    <label for="order">Choose sorting order:</label>
+    <select id="order">
+      <option value="ascending">Ascending</option>
+      <option value="descending">Descending</option>
+    </select>
+    <button onclick="sortNumbers()">Sort</button>
+    <div id="result"></div>
+  </div>
+  <script>
+    function sortNumbers() {
+      const numbersInput = document.getElementById('numbers').value;
+      const sortingAlgorithm = document.getElementById('sortingAlgorithm').value;
+      const sortOrder = document.getElementById('order').value;
+
+      let numbersArray = numbersInput.split(',').map(num => parseInt(num.trim()));
+
+      if (sortingAlgorithm === 'bubbleSort') {
+        numbersArray = bubbleSort(numbersArray, sortOrder);
+      } else if (sortingAlgorithm === 'selectionSort') {
+        numbersArray = selectionSort(numbersArray, sortOrder);
+      }
+
+      displayResult(numbersArray);
+    }
+
+    function bubbleSort(arr, order) {
+      const len = arr.length;
+      let swapped;
+      do {
+        swapped = false;
+        for (let i = 0; i < len - 1; i++) {
+          if ((order === 'ascending' && arr[i] > arr[i + 1]) || (order === 'descending' && arr[i] < arr[i + 1])) {
+            [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+            swapped = true;
+          }
+        }
+      } while (swapped);
+      return arr;
+    }
+
+    function selectionSort(arr, order) {
+      const len = arr.length;
+      for (let i = 0; i < len - 1; i++) {
+        let minIdx = i;
+        for (let j = i + 1; j < len; j++) {
+          if ((order === 'ascending' && arr[j] < arr[minIdx]) || (order === 'descending' && arr[j] > arr[minIdx])) {
+            minIdx = j;
+          }
+        }
+        if (minIdx !== i) {
+          [arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
+        }
+      }
+      return arr;
+    }
+
+    function displayResult(sortedArray) {
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `<p>Sorted Numbers: ${sortedArray.join(', ')}</p>`;
+    }
+  </script>
+</body>
+</html>

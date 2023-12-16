@@ -16,7 +16,10 @@ def about(request):
     return render(request, 'about.html')
 
 
-# Mathematics
+# ------------------------- Mathematics ------------------------- #
+def preAlgebra(request):
+    return render(request,'pre-algebra.html')
+
 def algebra(request):
     poly_input_1 = (request.POST.get('Polynomial1', 'default'))
     operator_poly = (request.POST.get('Operator_Poly'))
@@ -41,14 +44,20 @@ def algebra(request):
     return render(request, "algebra.html", params)
 
 
-# Physics
-def physics(request):
-    return render(request, "physics.html")
+# ------------------------- Physics ------------------------- #
+def physicalCalculation(request):
+    return render(request, "physical-calculation.html")
 
-# Programming
+def physicalValueConverter(request):
+    return render(request,'physical-value-converter.html')
+
+# ------------------------- Programming ------------------------- #
 def binary(request):
     return render(request, "binary.html")
 
-# Algorithms
+def sorting(request):
+    return render(request,'sorting.html')
+
+# ------------------------- Algorithms ------------------------- #
 def osAlgorithms(request):
-    return render(request,'osalgorithms.html')
+    return render(request,'os-algorithms.html')

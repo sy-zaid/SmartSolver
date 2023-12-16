@@ -27,13 +27,15 @@ urlpatterns = [
 
     # Mathematics
     path('algebra', views.algebra, name='Algebra'),
-    path('pre-algebra', views.algebra, name='pre-algebra'),
+    path('pre-algebra', views.preAlgebra, name='Pre-Algebra'),
 
     # Physics
-    path('physics', views.physics, name='Physics'),
+    path('physical-calculation', views.physicalCalculation, name='Physics'),
+    path('physical-value-converter',views.physicalValueConverter, name='Physical-value-converter'),
 
     #Programming
     path('binary', views.binary, name='Binary'),
+    path('sorting',views.sorting,name='Sorting'),
 
     #Algorithms
     path('operating-system-algorithms',views.osAlgorithms,name="osAlgorithms"),
