@@ -66,43 +66,48 @@
   display: flex;
   justify-content: space-between;
 }
+
 #section-1 {
   width: 20vw;
   height: 20vh;
-  /* background-color: #0b67f1; */
   margin: 0px 20px;
-  border: 2px solid #0b67f1;
   border-radius: 20px;
   text-align: center;
-  padding: 3.5rem 2rem 0rem 2rem;
+  padding: 3.5rem 1rem 0rem 1rem;
+  align-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
+  text-decoration: none;
 }
 #section-2 {
   width: 20vw;
   height: 20vh;
-  /* background-color: aqua; */
   margin: 0px 20px;
-  border: 2px solid #0b67f1;
   border-radius: 20px;
   text-align: center;
-  padding: 3.5rem 2rem 0rem 2rem;
+  padding: 3.5rem 1rem 0rem 1rem;
   align-items: center;
   backdrop-filter: blur(10px);
+  text-decoration: none;
 }
 #section-3 {
   width: 20vw;
   height: 20vh;
-  /* background-color: magenta; */
   margin: 0px 20px;
-  border: 2px solid #0b67f1;
   border-radius: 20px;
   text-align: center;
-  padding: 3.5rem 2rem 0rem 2rem;
+  padding: 3.5rem 1rem 0rem 1rem;
   align-items: center;
   backdrop-filter: blur(10px);
+  text-decoration: none;
 }
 
+#div-subjects-mathematics > #section-1,
+#div-subjects-mathematics > #section-2,
+#div-subjects-mathematics > #section-3 {
+  color: black;
+  border: 2px solid #0b67f1;
+}
 /* PHYSICS */
 #div-section-physics {
   position: relative;
@@ -118,6 +123,12 @@
   align-items: center;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.24);
 }
+#div-subjects-physics > #section-1,
+#div-subjects-physics > #section-2,
+#div-subjects-physics > #section-3 {
+  color: black;
+  border: 2px solid #f00212;
+}
 
 /* PROGRAMMING */
 #div-section-programming {
@@ -131,11 +142,17 @@
   border-radius: 40px;
   border: 2px solid #0b67f1;
   padding: 20px 40px;
+  color: white;
   align-items: center;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.24);
-  color: white;
 }
 
+#div-subjects-programming > #section-1,
+#div-subjects-programming > #section-2,
+#div-subjects-programming > #section-3 {
+  color: white;
+  border: 2px solid white;
+}
 
 /* ALGORITHMS */
 #div-section-algorithms {
@@ -144,7 +161,7 @@
   height: 40vh;
   z-index: 1;
   /* background-color: red; */
-  background-image: url("../Images/section-maths-bg-2.png");
+  background-image: url("../Images/section-algorithms-bg.png");
   overflow: hidden;
   border-radius: 40px;
   border: 2px solid #0b67f1;
@@ -153,4 +170,9 @@
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.24);
 }
 
-
+#div-subjects-algorithms > #section-1,
+#div-subjects-algorithms > #section-2,
+#div-subjects-algorithms > #section-3 {
+  color: black;
+  border: 2px solid #b00293;
+}
