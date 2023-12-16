@@ -54,7 +54,7 @@
   overflow: hidden;
   border-radius: 40px;
   border: 2px solid #0b67f1;
-  padding: 20px;
+  padding: 20px 40px;
   align-items: center;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.24);
 }
@@ -74,7 +74,7 @@
   border: 2px solid #0b67f1;
   border-radius: 20px;
   text-align: center;
-  padding: 5rem 2rem 0rem 2rem;
+  padding: 3.5rem 2rem 0rem 2rem;
   align-items: center;
   backdrop-filter: blur(10px);
 }
@@ -86,7 +86,7 @@
   border: 2px solid #0b67f1;
   border-radius: 20px;
   text-align: center;
-  padding: 20px;
+  padding: 3.5rem 2rem 0rem 2rem;
   align-items: center;
   backdrop-filter: blur(10px);
 }
@@ -98,7 +98,7 @@
   border: 2px solid #0b67f1;
   border-radius: 20px;
   text-align: center;
-  padding: 20px;
+  padding: 3.5rem 2rem 0rem 2rem;
   align-items: center;
   backdrop-filter: blur(10px);
 }
@@ -106,47 +106,51 @@
 /* PHYSICS */
 #div-section-physics {
   position: relative;
-  width: 80vw;
-  height: 50vh;
+  width: 70vw;
+  height: 40vh;
   z-index: 1;
   /* background-color: red; */
   background-image: url("../Images/section-physics-bg.png");
-  /* background-clip: ; */
   overflow: hidden;
   border-radius: 40px;
   border: 2px solid #0b67f1;
-  padding: 20px;
+  padding: 20px 40px;
   align-items: center;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.24);
 }
 
-/* PHYSICS */
+/* PROGRAMMING */
 #div-section-programming {
   position: relative;
-  width: 80vw;
-  height: 50vh;
+  width: 70vw;
+  height: 40vh;
   z-index: 1;
   /* background-color: red; */
-  background-image: url("../Images/section-physics-bg.png");
-  /* background-clip: ; */
+  background-image: url("../Images/section-programming-bg.png");
   overflow: hidden;
   border-radius: 40px;
   border: 2px solid #0b67f1;
-  padding: 20px;
+  padding: 20px 40px;
   align-items: center;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.24);
+  color: white;
 }
 
-/* PHYSICS */
+
+/* ALGORITHMS */
 #div-section-algorithms {
   position: relative;
-  width: 80vw;
-  height: 50vh;
+  width: 70vw;
+  height: 40vh;
   z-index: 1;
   /* background-color: red; */
-  background-image: url("../Images/section-physics-bg.png");
-  /* background-clip: ; */
+  background-image: url("../Images/section-maths-bg-2.png");
   overflow: hidden;
   border-radius: 40px;
   border: 2px solid #0b67f1;
-  padding: 20px;
+  padding: 20px 40px;
   align-items: center;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.24);
 }
+
+
