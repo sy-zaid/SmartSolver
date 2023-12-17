@@ -1,5 +1,8 @@
 {% extends 'base.html' %} {% block body %}
 <link rel="stylesheet" href="../static/Stylesheets/mathematics.css" />
+<script src="../static/Scripts/mathematics.js" defer></script>
+
+
 <title>Pre-Algebra CLCC</title>
 
 <div id="PA-heading">
@@ -35,7 +38,7 @@
     </div>
     <!-- Buttons -->
     <div id="div-buttons">
-      <button id="clearButton">
+      <button id="clearButton" onclick="clearInput('input-mmm')">
         <img
           src="../static/Images/delete-icon.png"
           alt=""
@@ -62,5 +65,14 @@
     </div>
   </div>
 </div>
+<!-- <script>
+  function clearInput(event) {
+  event.preventDefault();
+  var inputField = document.activeElement;
+  if (inputField.tagName == "INPUT") {
+    inputField.value = "";
+  }
+}
 
+</script> -->
 {% endblock body %}

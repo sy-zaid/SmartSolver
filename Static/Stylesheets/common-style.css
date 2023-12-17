@@ -163,6 +163,7 @@ body {
   /* text-align: center; */
   border-radius: 22px;
   border: 1px solid #f00212;
+  z-index: 11;
 }
 
 .input-box {
