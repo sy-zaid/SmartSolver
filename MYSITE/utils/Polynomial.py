@@ -341,7 +341,7 @@ def make_polynomial(expression):
             terms.pop(0)
             terms[0][0] = '-' + terms[0][0]
 
-        # print(terms,operators)
+        print(terms,operators)
         res_poly = polynomial(int(dict2[terms[0][1]]), int(terms[0][0]))
 
         for i in range(len_terms - 1):
@@ -357,7 +357,7 @@ def make_polynomial(expression):
                 terms[-1] = [terms[-1][0], '⁰']
 
             res_poly.__addnode__(int(dict2[terms[i][1]]), int(terms[i][0]))
-
+        print(res_poly)
         return res_poly
 
     except Exception:

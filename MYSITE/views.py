@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
+from .utils.mathematics import calculate_mean,calculate_median,calculate_mode
 
 
 def index(request):
@@ -18,7 +19,22 @@ def about(request):
 
 # ------------------------- Mathematics ------------------------- #
 def preAlgebra(request):
-    return render(request,'pre-algebra.html')
+    #Using name from html to give it to data_mmm var.
+    data_mmm = (request.POST.get('input-mmm','default'))
+    if data_mmm == 'default':    
+        return render(request,'pre-algebra.html')
+    else:
+        conv_data_mmm = list(map(int, data_mmm.split(',')))
+        print(conv_data_mmm)
+
+        res_mean = calculate_mean(conv_data_mmm)
+        res_median = calculate_median(conv_data_mmm)
+        res_mode = calculate_mode(conv_data_mmm)
+
+        # print(res_mean,res_median,res_mode)
+
+        results = {'mean':res_mean,'median':res_median,'mode':res_mode}
+        return render(request,'pre-algebra.html',results)
 
 def algebra(request):
     poly_input_1 = (request.POST.get('Polynomial1', 'default'))

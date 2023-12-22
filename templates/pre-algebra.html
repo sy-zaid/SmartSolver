@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="../static/Stylesheets/mathematics.css" />
 <script src="../static/Scripts/mathematics.js" defer></script>
 
-
 <title>Pre-Algebra CLCC</title>
 
 <div id="PA-heading">
@@ -27,52 +26,46 @@
 
   <div id="PA-whole-div-2">
     <!-- Input section -->
-    <div id="div-input-section">
-      <!-- <label id="heading-3-black" for="input" style="margin-right:20px ;">Enter Input:</label> -->
-      <input
-        class="input-box"
-        type="text"
-        id="input-mmm"
-        placeholder="Enter your input (e.g. 1,2,3...)"
-      />
-    </div>
-    <!-- Buttons -->
-    <div id="div-buttons">
-      <button id="clearButton" onclick="clearInput('input-mmm')">
-        <img
-          src="../static/Images/delete-icon.png"
-          alt=""
-          style="height: 32px; width: 32px"
+    <form method="post" action="pre-algebra">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text" pattern="[0-9,]*" id="numericInput"
+          id="input-mmm"
+          name="input-mmm"
+          placeholder="Enter your input (e.g. 1,2,3...)"
         />
-      </button>
-      <button id="solveButton">Solve</button>
-    </div>
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton">Solve</button>
+      </div>
+    </form>
 
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
         <label for="output">Mean</label>
-        <p id="res-mean">{mean}</p>
+        <p id="res-mean">{{mean}}</p>
       </div>
       <div id="output-rows">
         <label for="output">Median</label>
-        <p id="res-median">{median}</p>
+        <p id="res-median">{{median}}</p>
       </div>
       <div id="output-rows">
         <label for="output">Mode</label>
-        <p id="res-mode">{mode}</p>
+        <p id="res-mode">{{mode}}</p>
       </div>
     </div>
   </div>
 </div>
-<!-- <script>
-  function clearInput(event) {
-  event.preventDefault();
-  var inputField = document.activeElement;
-  if (inputField.tagName == "INPUT") {
-    inputField.value = "";
-  }
-}
 
-</script> -->
 {% endblock body %}
