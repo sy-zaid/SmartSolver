@@ -2,7 +2,10 @@
   font-family: DM-Sans-Bold;
   src: url("../Fonts/DMSans-VariableFont_opsz\,wght.ttf");
 }
-
+/* ------------------------- TEMPORARY ------------------------- */
+.hidden {
+  display: none;
+}
 /* ------------------------- SCROLL BAR STYLING ------------------------- */
 ::-webkit-scrollbar {
   width: 10px;
