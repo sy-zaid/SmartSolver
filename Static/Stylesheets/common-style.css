@@ -2,10 +2,7 @@
   font-family: DM-Sans-Bold;
   src: url("../Fonts/DMSans-VariableFont_opsz\,wght.ttf");
 }
-/* ------------------------- TEMPORARY ------------------------- */
-.hidden {
-  display: none;
-}
+
 /* ------------------------- SCROLL BAR STYLING ------------------------- */
 ::-webkit-scrollbar {
   width: 10px;
@@ -145,13 +142,12 @@ body {
   line-height: 40px;
 }
 
-#side-menu-button{
+#side-menu-button {
   /* background-color: red; */
   border: none;
   text-decoration: underline;
   font-size: 18px;
   font-weight: 500;
-
 }
 
 /* ------------------------- FORMS - STYLING ------------------------- */
@@ -170,14 +166,17 @@ body {
   width: 7.75rem;
   height: 2.75rem;
   background-color: none;
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* text-align: center; */
   border-radius: 22px;
   border: 1px solid #f00212;
   z-index: 11;
 }
 
+#div-input-section {
+  /* background-color: red; */
+  padding: 40px 0px;
+  align-items: center;
+  text-align: center;
+}
 .input-box {
   width: 40rem;
   height: 3.5rem;
@@ -185,8 +184,37 @@ body {
   border: 1px solid #0b67f1;
   padding-left: 15px;
 }
+.input-box-2 {
+  width: 30rem;
+  height: 2.75rem;
+  border-radius: 22px;
+  border: 1px solid #0b67f1;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.dropdown {
+  width: 30rem;
+  height: 2.75rem;
+  border-radius: 22px;
+  border: 1px solid #0b67f1;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
 #output-rows {
   display: flex;
   justify-content: space-between;
+}
+
+#div-buttons {
+  /* background-color: blue; */
+  align-items: center;
+  align-content: baseline;
+  text-align: center;
+}
+
+/* ------------------------- DYNAMIC CONTENT CLASSES/IDS ------------------------- */
+.hidden {
+  display: none;
 }

@@ -1,36 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Algorithm Simulation</title>
-    <link rel="stylesheet" href="/static/Stylesheets/os-algorithms.css">
-    <link rel="stylesheet" href="/static/Stylesheets/common-style.css">
-</head>
-<body>
-    <h1 id="common-heading-1">Algorithm Simulation</h1>
+{% extends 'base.html' %} {% block body %}
+<link rel="stylesheet" href="../static/Stylesheets/algorithms.css" />
+<div id="OA-heading">
+  <h1 id="heading-1-black">OS Algorithms Simulation</h1>
+  <!-- <h2 id="heading-2-black">Mean, Median, Mode</h2> -->
+</div>
+
+<div id="OA-whole">
+  <!-- DIV FOR INPUTS -->
+  <div id="OA-whole-div-1">
     <form id="algorithm-form">
-        <label for="algorithm-name">Algorithm Type/Name:</label>
-        <input type="text" id="algorithm-name" name="algorithm-name" required><br>
-        <label for="arrival-time">Arrival Time:</label>
-        <input type="number" id="arrival-time" name="arrival-time" required><br>
-        <label for="burst-time">Burst Time:</label>
-        <input type="number" id="burst-time" name="burst-time" required><br>
-        <input type="submit" value="Simulate">
+      <div id="input-row">
+        <label id="heading-3-black">Algorithm Name</label><br />
+        <select class="dropdown">
+          <!-- Dropdown options -->
+          <option value="FCFS-pr">
+            First Come, First Serve (FCFS) - Primitive
+          </option>
+          <option value="FCFS-nonpr">
+            First Come, First Serve (FCFS) - Non-Primitive
+          </option>
+          <option value="FCFS-nonpr">
+            Shortest Job First (SJF) - Primitive
+          </option>
+          <option value="FCFS-nonpr">
+            Shortest Job First (SJF) - Non-Primitive
+          </option>
+          <option value="FCFS-nonpr">Priority Job First (Priority)</option>
+          <option value="FCFS-nonpr">Round Robin (RR)</option>
+        </select>
+      </div>
+      <div id="input-row">
+        <label id="heading-3-black" for="arrival-time">Arrival Time:</label
+        ><br />
+        <input
+          type="number"
+          class="input-box-2"
+          id="arrival-time"
+          name="arrival-time"
+          required
+        />
+      </div>
+
+      <div id="input-row">
+        <label id="heading-3-black" for="burst-time">Burst Time:</label><br />
+        <input
+          type="number"
+          class="input-box-2"
+          id="burst-time"
+          name="burst-time"
+          required
+        />
+      </div>
+      <div id="input-row-4th">
+        <label id="heading-3-black" for="burst-time">Changeable Heading</label
+        ><br />
+        <input
+          type="number"
+          class="input-box-2"
+          id="burst-time"
+          name="burst-time"
+        />
+      </div>
+
+      <!-- DIV FOR BUTTONS -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 30px; width: 30px"
+          />
+        </button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
+      </div>
     </form>
+  </div>
+</div>
 
-    <div id="output-section">
-        <h2>OUTPUT:</h2>
-    </div>
+<!-- <div id="output-section">
+  <h2>OUTPUT:</h2>
+</div> -->
 
-    <script>
-        document.getElementById('algorithm-form').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            const algorithmName = document.getElementById('algorithm-name').value;
-            const arrivalTime = document.getElementById('arrival-time').value;
-            const burstTime = document.getElementById('burst-time').value;
-            const simulationResult = `Simulating ${algorithmName} with Arrival Time: ${arrivalTime}, Burst Time: ${burstTime}`;
-            document.getElementById('output-section').innerHTML = `<p>${simulationResult}</p>`;
-        });
-    </script>
-</body>
-</html>
+{% endblock body %}

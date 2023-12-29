@@ -1,0 +1,45 @@
+@font-face {
+  font-family: DM-Sans-Bold;
+  src: url("../Fonts/DMSans-VariableFont_opsz\,wght.ttf");
+}
+
+body {
+  margin: 0;
+  font-family: "DM-Sans-Bold";
+}
+
+/* --------------------------------------------------------------------------- */
+/* ------------------------- STYLING FOR OS-ALGORITHMS ------------------------- */
+/* --------------------------------------------------------------------------- */
+#OA-heading {
+  align-items: center;
+  /* background-color: red; */
+  position: relative;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+#OA-whole {
+  /* background-color: purple; */
+  width: 100%;
+  height: auto;
+  text-align: center;
+  align-items: center;
+  padding: 40px 60px;
+  display: flex;
+  justify-content: center;
+}
+
+#OA-whole-div-1 {
+  /* text-align: center; */
+  /* background-color: aqua; */
+  position: relative;
+  /* display: flex;  */
+  /* justify-content:space-between; */
+  width: 70%;
+}
+
+#input-row {
+  background-color: aliceblue;
+  margin-bottom: 8px;
+}

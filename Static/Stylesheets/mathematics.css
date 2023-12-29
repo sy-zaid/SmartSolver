@@ -60,13 +60,7 @@ body {
   align-items: center;
   text-align: center;
 }
-#div-buttons {
-  /* background-color: blue; */
-  align-items: center;
-  /* background-color: red; */
-  align-content: baseline;
-  text-align: center;
-}
+
 
 #div-output-section {
   position: relative;
