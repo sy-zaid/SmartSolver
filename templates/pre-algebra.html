@@ -31,7 +31,9 @@
       <div id="div-input-section">
         <input
           class="input-box"
-          type="text" pattern="[0-9,]*" id="numericInput"
+          type="text"
+          pattern="[0-9,]*"
+          id="numericInput"
           id="input-mmm"
           name="input-mmm"
           placeholder="Enter your input (e.g. 1,2,3...)"
@@ -64,6 +66,14 @@
         <label for="output">Mode</label>
         <p id="res-mode">{{mode}}</p>
       </div>
+      <div id="output-rows">
+        <label for="output">GCF</label>
+        <p id="res-gcf">{{gcf}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">LCM</label>
+        <p id="res-lcm">{{lcm}}</p>
+      </div>
     </div>
   </div>
 
@@ -74,15 +84,17 @@
       <div id="div-input-section">
         <input
           class="input-box"
-          type="text" pattern="[0-9,]*" id="numericInput"
-          id="input-mmm"
-          name="input-mmm"
+          type="text"
+          pattern="[0-9,]*"
+          id="numericInput"
+          id="input-lgcfm"
+          name="input-lgcfm"
           placeholder="Enter your input (e.g. 1,2,3...)"
         />
       </div>
       <!-- Buttons -->
       <div id="div-buttons">
-        <button id="clearButton" onclick="clearInput('input-mmm')">
+        <button id="clearButton" onclick="clearInput('input-lgcfm')">
           <img
             src="../static/Images/delete-icon.png"
             alt=""
@@ -93,17 +105,17 @@
       </div>
     </form>
 
-    <!-- Output section -->
+    <!-- Output section
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Mean</label>
-        <p id="res-mean">{{mean}}</p>
+        <label for="output">Least Common Multiple</label>
+        <p id="res-mean">{{lcm}}</p>
       </div>
       <div id="output-rows">
-        <label for="output">Median</label>
-        <p id="res-median">{{median}}</p>
+        <label for="output">Greatest Common Factor</label>
+        <p id="res-median">{{gcf}}</p>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 

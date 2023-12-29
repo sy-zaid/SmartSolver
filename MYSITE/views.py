@@ -20,9 +20,19 @@ def about(request):
 # ------------------------- Mathematics ------------------------- #
 def preAlgebra(request):
     #Using name from html to give it to data_mmm var.
+    results = {}
     data_mmm = (request.POST.get('input-mmm','default'))
-    if data_mmm == 'default':    
+    data_lgcmf = (request.POST.get('input-lgcfm','default'))
+
+    if data_mmm == 'default' and data_lgcmf == 'default':
         return render(request,'pre-algebra.html')
+    
+    elif data_mmm == 'default' and data_lgcmf != 'default':
+        conv_data_mmm = list(map(int, data_lgcmf.split(',')))
+        print(conv_data_mmm)
+        
+        return render(request,'pre-algebra.html',)
+    
     else:
         conv_data_mmm = list(map(int, data_mmm.split(',')))
         print(conv_data_mmm)
