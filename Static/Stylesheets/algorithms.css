@@ -40,6 +40,10 @@ body {
 }
 
 #input-row {
-  background-color: aliceblue;
-  margin-bottom: 8px;
+  /* background-color: aliceblue; */
+  margin-bottom: 14px;
+}
+
+#input-row-4th{
+    margin-bottom: 34px;
 }

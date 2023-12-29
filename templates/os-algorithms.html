@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block body %}
 <link rel="stylesheet" href="../static/Stylesheets/algorithms.css" />
+<script src="../static/Scripts/algorithms.js"></script>
 <div id="OA-heading">
   <h1 id="heading-1-black">OS Algorithms Simulation</h1>
   <!-- <h2 id="heading-2-black">Mean, Median, Mode</h2> -->
@@ -11,22 +12,21 @@
     <form id="algorithm-form">
       <div id="input-row">
         <label id="heading-3-black">Algorithm Name</label><br />
-        <select class="dropdown">
+        <select id="algos-dropdown" class="dropdown" onchange="toggleBox()">
           <!-- Dropdown options -->
-          <option value="FCFS-pr">
-            First Come, First Serve (FCFS) - Primitive
+          <option value="FCFS">First Come, First Serve (FCFS)</option>
+
+          <option value="SJF">Shortest Job First (SJF) - Preemptive</option>
+          <option value="SJF-nonpr">
+            Shortest Job First (SJF) - Non-Preemptive
           </option>
-          <option value="FCFS-nonpr">
-            First Come, First Serve (FCFS) - Non-Primitive
+          <option value="RR">Round Robin (RR)</option>
+          <option value="Priority">
+            Priority Job First (Priority) - Preemptive
           </option>
-          <option value="FCFS-nonpr">
-            Shortest Job First (SJF) - Primitive
+          <option value="Priority-nonpr">
+            Priority Job First (Priority) - Non-Preemptive
           </option>
-          <option value="FCFS-nonpr">
-            Shortest Job First (SJF) - Non-Primitive
-          </option>
-          <option value="FCFS-nonpr">Priority Job First (Priority)</option>
-          <option value="FCFS-nonpr">Round Robin (RR)</option>
         </select>
       </div>
       <div id="input-row">
@@ -57,8 +57,8 @@
         <input
           type="number"
           class="input-box-2"
-          id="burst-time"
-          name="burst-time"
+          id="dynamic-input-box"
+          name="dynamic-input-box"
         />
       </div>
 
