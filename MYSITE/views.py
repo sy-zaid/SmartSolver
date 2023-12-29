@@ -22,31 +22,28 @@ def preAlgebra(request):
     #Using name from html to give it to data_mmm var.
     results = {}
     data_mmm = (request.POST.get('input-mmm','default'))
-    data_lgcmf = (request.POST.get('input-lgcfm','default'))
+    data_lgcmf = (request.POST.get('input-lgcmf','default'))
 
     if data_mmm == 'default' and data_lgcmf == 'default':
         return render(request,'pre-algebra.html')
     
     elif data_mmm == 'default' and data_lgcmf != 'default':
         conv_data_mmm = list(map(int, data_lgcmf.split(',')))
-        print(conv_data_mmm)
-        
-        return render(request,'pre-algebra.html',)
+        res_lcm = calculate_lcm(conv_data_mmm)
+        res_gcf = calculate_gcf(conv_data_mmm)
+        results = {'gcf':res_gcf,'lcm':res_lcm}
+        # return render(request,'pre-algebra.html',results)
     
     else:
         conv_data_mmm = list(map(int, data_mmm.split(',')))
-        print(conv_data_mmm)
+        # print(conv_data_mmm)
     
         res_mean = calculate_mean(conv_data_mmm)
         res_median = calculate_median(conv_data_mmm)
         res_mode = calculate_mode(conv_data_mmm)
-        res_lcm = calculate_lcm(conv_data_mmm)
-        res_gcf = calculate_gcf(conv_data_mmm)
+        results = {'mean':res_mean,'median':res_median,'mode':res_mode}
 
-        # print(res_mean,res_median,res_mode)
-
-        results = {'mean':res_mean,'median':res_median,'mode':res_mode,'gcf':res_gcf,'lcm':res_lcm}
-        return render(request,'pre-algebra.html',results)
+    return render(request,'pre-algebra.html',results)
 
 def algebra(request):
     poly_input_1 = (request.POST.get('Polynomial1', 'default'))

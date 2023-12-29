@@ -8,33 +8,30 @@ function showSection(sectionId) {
   // Hide all sections
   document.getElementById("PA-whole-div-2").classList.add("hidden");
   document.getElementById("PA-whole-div-3").classList.add("hidden");
-  
-
-  // Show the selected section
   document.getElementById(sectionId).classList.remove("hidden");
-  document.getElementById(sectionId).classList.remove("hidden")
+  localStorage.setItem("sectionId", `${sectionId}`);
 }
 
-function toggleSection(sectionId) {
-  var gcfLcmSection = document.getElementById("PA-whole-div-3");
-  var meanMedianModeSection = document.getElementById("PA-whole-div-2");
 
-  if (
-    gcfLcmSection.style.display === "none" ||
-    gcfLcmSection.style.display === ""
-  ) {
-    // If GCF/LCM section is hidden or not set, show it and hide Mean/Median/Mode section
-    gcfLcmSection.style.display = "block";
-    meanMedianModeSection.style.display = "none";
-  } else {
-    // If GCF/LCM section is visible, hide it and show Mean/Median/Mode section
-    gcfLcmSection.style.display = "none";
-    meanMedianModeSection.style.display = "block";
+document.addEventListener("DOMContentLoaded", function () {
+  // Retrieve the last shown section from Local Storage
+  var lastShownSection = localStorage.getItem("sectionId");
+
+  // Show the last shown section (or a default if none is stored)
+  showSection(lastShownSection || "PA-whole-div-2");
+});
+function inputStatus() {
+  var lastelem = localStorage.getItem("sectionId");
+  console.log(lastelem);
+  if (lastelem == "PA-whole-div-3") {
+    // Show sec 3
+    document.getElementById("PA-whole-div-3").classList.remove("hidden");
+    document.getElementById("PA-whole-div-3").classList.remove("hidden");
+    document.getElementById("PA-whole-div-2").classList.add("hidden");
+  } else if (lastelem == "PA-whole-div-2") {
+    // Show sec 2
+    document.getElementById("PA-whole-div-2").classList.remove("hidden");
+    document.getElementById("PA-whole-div-2").classList.remove("hidden");
+    document.getElementById("PA-whole-div-3").classList.add("hidden");
   }
-}
-
-// Add this function to submit the form for the active section
-function solveSection(sectionId) {
-  showSection(sectionId);  // Make sure the section is visible
-  document.getElementById("math-form").submit();  // Submit the form
 }
