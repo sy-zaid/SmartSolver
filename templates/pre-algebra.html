@@ -15,11 +15,31 @@
     <div id="side-menu">
       <h4 id="heading-2-black">Related Topics</h4>
       <ul id="side-menu-list">
-        <li><button onclick="showSection('PA-whole-div-2')">Mean</button></li>
-        <li>Median</li>
-        <li>Mode</li>
-        <li><button onclick="showSection('PA-whole-div-3')">LCM</button></li>
-        <li>GCF</li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PA-whole-div-2')">
+            Mean
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PA-whole-div-2')">
+            Median
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PA-whole-div-2')">
+            Mode
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PA-whole-div-3')">
+            LCM
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PA-whole-div-3')">
+            GCF
+          </button>
+        </li>
       </ul>
     </div>
   </div>
@@ -35,7 +55,8 @@
           pattern="[0-9,]*"
           id="input-mmm"
           name="input-mmm"
-          placeholder="Enter your input (e.g. 1,2,3...)"
+          placeholder="Enter your input for Mean, Median, Mode (e.g. 1,2,3...)"
+          required
         />
       </div>
       <!-- Buttons -->
@@ -47,7 +68,7 @@
             style="height: 32px; width: 32px"
           />
         </button>
-        <button id="solveButton" onclick="inputStatus()">Solve M</button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
     </form>
 
@@ -80,7 +101,8 @@
           defa
           id="input-lgcmf"
           name="input-lgcmf"
-          placeholder="Enter LCM, GCF"
+          placeholder="Enter your input for GCF & LCM (e.g. 1,2,3...)"
+          required
         />
       </div>
       <!-- Buttons -->
@@ -92,7 +114,7 @@
             style="height: 32px; width: 32px"
           />
         </button>
-        <button id="solveButton" onclick="inputStatus()">Solve LG</button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
     </form>
 

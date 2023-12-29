@@ -19,7 +19,6 @@ def about(request):
 
 # ------------------------- Mathematics ------------------------- #
 def preAlgebra(request):
-    #Using name from html to give it to data_mmm var.
     results = {}
     data_mmm = (request.POST.get('input-mmm','default'))
     data_lgcmf = (request.POST.get('input-lgcmf','default'))
@@ -29,6 +28,7 @@ def preAlgebra(request):
     
     elif data_mmm == 'default' and data_lgcmf != 'default':
         conv_data_mmm = list(map(int, data_lgcmf.split(',')))
+
         res_lcm = calculate_lcm(conv_data_mmm)
         res_gcf = calculate_gcf(conv_data_mmm)
         results = {'gcf':res_gcf,'lcm':res_lcm}
@@ -36,7 +36,6 @@ def preAlgebra(request):
     
     else:
         conv_data_mmm = list(map(int, data_mmm.split(',')))
-        # print(conv_data_mmm)
     
         res_mean = calculate_mean(conv_data_mmm)
         res_median = calculate_median(conv_data_mmm)
