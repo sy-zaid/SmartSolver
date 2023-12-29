@@ -6,19 +6,9 @@ function clearInput(inputbox_id) {
 
 function showSection(sectionId) {
   // Hide all sections
-
-  var divmmm = document.getElementById("PA-whole-div-2")
-  // var divlgcmf = document.getElementById("PA-whole-div-3").classList.add("hidden");
-  var divlgcmf = document.getElementById("PA-whole-div-3")
-
-  if (divmmm.style.display == "none"){
-    document.getElementById('res-mean').style.display = "none";
-    document.getElementById('res-median').style.display = "none";
-    document.getElementById('res-mode').style.display = "none";
-  }
-
+  document.getElementById("PA-whole-div-2").classList.add("hidden");
+  document.getElementById("PA-whole-div-3").classList.add("hidden");
   
-
 
   // Show the selected section
   document.getElementById(sectionId).classList.remove("hidden");
@@ -41,4 +31,10 @@ function toggleSection(sectionId) {
     gcfLcmSection.style.display = "none";
     meanMedianModeSection.style.display = "block";
   }
+}
+
+// Add this function to submit the form for the active section
+function solveSection(sectionId) {
+  showSection(sectionId);  // Make sure the section is visible
+  document.getElementById("math-form").submit();  // Submit the form
 }

@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
-from .utils.mathematics import calculate_mean,calculate_median,calculate_mode
+from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
 
 
 def index(request):
@@ -36,14 +36,16 @@ def preAlgebra(request):
     else:
         conv_data_mmm = list(map(int, data_mmm.split(',')))
         print(conv_data_mmm)
-
+    
         res_mean = calculate_mean(conv_data_mmm)
         res_median = calculate_median(conv_data_mmm)
         res_mode = calculate_mode(conv_data_mmm)
+        res_lcm = calculate_lcm(conv_data_mmm)
+        res_gcf = calculate_gcf(conv_data_mmm)
 
         # print(res_mean,res_median,res_mode)
 
-        results = {'mean':res_mean,'median':res_median,'mode':res_mode}
+        results = {'mean':res_mean,'median':res_median,'mode':res_mode,'gcf':res_gcf,'lcm':res_lcm}
         return render(request,'pre-algebra.html',results)
 
 def algebra(request):

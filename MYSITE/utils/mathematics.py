@@ -68,3 +68,50 @@ def calculate_mode(numbers):
 # print(f"Mean: {mean_result}")
 # print(f"Median: {median_result}")
 # print(f"Mode: {mode_result}")
+
+
+def calculate_lcm(numbers):
+    """
+    Calculate the LCM (Least Common Multiple) of a list of numbers.
+
+    Parameters:
+    numbers (list): List of numbers.
+
+    Returns:
+    int: LCM of the numbers.
+    """
+    if not numbers:
+        return None
+
+    def find_lcm(x, y):
+        from math import gcd
+        return x * y // gcd(x, y)
+
+    lcm_result = 1
+    for num in numbers:
+        lcm_result = find_lcm(lcm_result, num)
+
+    return lcm_result
+
+def calculate_gcf(numbers):
+    """
+    Calculate the GCF (Greatest Common Factor) of a list of numbers.
+
+    Parameters:
+    numbers (list): List of numbers.
+
+    Returns:
+    int: GCF of the numbers.
+    """
+    if not numbers:
+        return None
+
+    def find_gcf(x, y):
+        from math import gcd
+        return gcd(x, y)
+
+    gcf_result = numbers[0]
+    for num in numbers[1:]:
+        gcf_result = find_gcf(gcf_result, num)
+
+    return gcf_result
