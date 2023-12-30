@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
-
+from .utils.algorithms import FCFS
 
 def index(request):
     return render(request, 'index.html')
@@ -84,4 +84,25 @@ def sorting(request):
 
 # ------------------------- Algorithms ------------------------- #
 def osAlgorithms(request):
-    return render(request,'os-algorithms.html')
+    results = {}
+    algorithm_name = (request.POST.get('algos-dropdown','default'))
+    arrival_times = (request.POST.get('arrival-time','default'))
+    burst_times = (request.POST.get('burst-time','default'))
+    priorities = (request.POST.get('priority','default'))
+    
+    quantum_time = (request.POST.get('quantum-time','default'))
+    
+    # if request.method == "POST":
+    if algorithm_name == "FCFS":
+        arrival_times = list(map(int, arrival_times.split(',')))
+        burst_times = list(map(int, burst_times.split(',')))
+        execution_state = FCFS(arrival_times,burst_times)
+        
+        results = {'execution_state':execution_state}
+        return render(request,"os-algorithms.html",results)
+            
+    
+    else:
+        # print(algorithm_name,arrival_times,burst_times,priorities,quantum_time)
+    
+        return render(request,'os-algorithms.html')

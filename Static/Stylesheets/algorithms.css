@@ -22,21 +22,16 @@ body {
 #OA-whole {
   /* background-color: purple; */
   width: 100%;
-  height: auto;
+  height: 100%;
   text-align: center;
   align-items: center;
   padding: 40px 60px;
-  display: flex;
   justify-content: center;
 }
 
 #OA-whole-div-1 {
-  /* text-align: center; */
   /* background-color: aqua; */
-  position: relative;
-  /* display: flex;  */
-  /* justify-content:space-between; */
-  width: 70%;
+  width: 100%;
 }
 
 #input-row {
@@ -44,6 +39,19 @@ body {
   margin-bottom: 14px;
 }
 
-#input-row-4th{
-    margin-bottom: 34px;
+#input-row-4th {
+  margin-bottom: 34px;
+}
+
+#div-output-section {
+  position: absolute;
+  width: 80%;
+  height: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  /* background-color: red; */
+  margin: 20px 20px 20px 0px;
+  padding: 10px 100px;
+  font-weight: 500;
+  border-top: 2px solid #0b67f1;
 }

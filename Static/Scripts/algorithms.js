@@ -8,6 +8,19 @@ function toggleBox() {
     - Round-Robin - changes
     - Priority Preemptive - changes
     - Priority Non-Preemptive - changes
+
+
+    ----- IDS used and changed -----
+    - input-row-4th --- for the row containing heading and input box.
+    - algos-dropdown --- for taking the algo name and toggling the 4th input box accordingly.
+    - label-dynamic-ib - for the label over 4th input box.
+    - var lastdynid --- defined outside the function, 
+    used for storing the input box id and calling it again by another dropdown item.
+
+    ----- IDS Stored in VAR lastdynid -----
+    - quantum-time --- for the quantum-time.
+    - priority --- for the priority.
+
    */
 
   var section_dynamic_input = document.getElementById("input-row-4th");
@@ -28,7 +41,10 @@ function toggleBox() {
     dynamic_input_box.name = "quantum-time";
     dynamic_input_box.placeholder = "e.g. 2 secs";
     lastdynid = "quantum-time";
-  } else if (dropdownitem.value == "Priority" || dropdownitem.value == "Priority-nonpr" ) {
+  } else if (
+    dropdownitem.value == "Priority" ||
+    dropdownitem.value == "Priority-nonpr"
+  ) {
     section_dynamic_input.classList.remove("hidden");
     var label = document.getElementsByName("label-dynamic-ib");
     label[0].textContent = "Enter Priority";

@@ -9,10 +9,17 @@
 <div id="OA-whole">
   <!-- DIV FOR INPUTS -->
   <div id="OA-whole-div-1">
-    <form id="algorithm-form">
+    <form id="algorithm-form" method="POST">
+      {% csrf_token %}
       <div id="input-row">
         <label id="heading-3-black">Algorithm Name</label><br />
-        <select id="algos-dropdown" class="dropdown" onchange="toggleBox()">
+        <select
+          id="algos-dropdown"
+          data-bs-toggle="dropdown"
+          name="algos-dropdown"
+          class="dropdown"
+          onchange="toggleBox()"
+        >
           <!-- Dropdown options -->
           <option value="FCFS">First Come, First Serve (FCFS)</option>
 
@@ -33,7 +40,6 @@
         <label id="heading-3-black" for="arrival-time">Arrival Time:</label
         ><br />
         <input
-          type="number"
           class="input-box-2"
           id="arrival-time"
           name="arrival-time"
@@ -43,20 +49,13 @@
 
       <div id="input-row">
         <label id="heading-3-black" for="burst-time">Burst Time:</label><br />
-        <input
-          type="number"
-          class="input-box-2"
-          id="burst-time"
-          name="burst-time"
-          required
-        />
+        <input class="input-box-2" id="burst-time" name="burst-time" required />
       </div>
       <div id="input-row-4th" class="hidden">
         <label id="heading-3-black" name="label-dynamic-ib" for="burst-time"
           >Changeable Heading</label
         ><br />
         <input
-          type="number"
           class="input-box-2"
           id="dynamic-input-box"
           name="dynamic-input-box"
@@ -76,10 +75,14 @@
       </div>
     </form>
   </div>
-</div>
 
-<!-- <div id="output-section">
-  <h2>OUTPUT:</h2>
-</div> -->
+  <!-- Output section -->
+  <div id="div-output-section">
+    <div id="output-rows">
+      <label for="output">Execution State</label>
+      <p id="res-mean">{{execution_state}}</p>
+    </div>
+  </div>
+</div>
 
 {% endblock body %}
