@@ -9,7 +9,32 @@ class process:
         priority (int): The priority of the process.
     
     Methods:
-        
+    
+    Output Requirements:
+    - Execution Sequence
+    - Finish Time (for each process)
+    ---  Formula: Finish Time (FT)=Arrival Time (AT)+Turnaround Time (TAT)
+    
+    - Turn Around Time (for each process)
+    --- Formula: Turnaround Time (TAT)=Completion Time−Arrival Time (AT)
+    
+    - Waiting Time (for each process)
+    --- Formula: Waiting Time (WT)=Turnaround Time (TAT)−Burst Time
+    
+    - Average Turn Around Time
+    --- Formula: Average Turnaround Time (AvgTAT)= 
+                                                    Number of Processes/
+                                            Sum of Turnaround Times of all processes
+​
+
+    - Average Waiting Time 
+    --- Formula: Average Waiting Time (AvgWT)= 
+                                                Number of Processes/
+                                            Sum of Waiting Times of all processes
+​
+ 
+
+
     
     """
     def __init__(self,process_name,arrival_time,burst_time,priority=0):
@@ -22,7 +47,6 @@ class process:
 
 
 def FCFS(arrival_times,burst_times):
-
     num_processes = len(arrival_times)
     process_list = []
     execution_state = []
@@ -65,8 +89,6 @@ def FCFS(arrival_times,burst_times):
         
         curBT += 1
         print(curBT)
-
-            
     
 
     for p in job_que:
