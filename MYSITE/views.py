@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
-from .utils.algorithms import FCFS
+from .utils.algorithms import FCFS,mapInputToIntList
 
 def index(request):
     return render(request, 'index.html')
@@ -84,6 +84,16 @@ def sorting(request):
 
 # ------------------------- Algorithms ------------------------- #
 def osAlgorithms(request):
+    """
+    Types of Algorithms used:
+    - FCFS 
+    - SJF Preemptive
+    - SJF Non-Preemptive
+    - Round-Robin 
+    - Priority Preemptive 
+    - Priority Non-Preemptive 
+    """
+    # if request.method == "POST":
     results = {}
     algorithm_name = (request.POST.get('algos-dropdown','default'))
     arrival_times = (request.POST.get('arrival-time','default'))
@@ -92,17 +102,36 @@ def osAlgorithms(request):
     
     quantum_time = (request.POST.get('quantum-time','default'))
     
-    # if request.method == "POST":
-    if algorithm_name == "FCFS":
+    # print(algorithm_name,arrival_times,burst_times, priorities,quantum_time)
+    # Example outputs of the above strings (FCFS is selected in dropdown): 
+    # FCFS 0,1,2,3 9,2,1,7 default default
+    # FCFS 0,1,2,3 9,2,1,7 default default
+    if request.method == "POST":
         arrival_times = list(map(int, arrival_times.split(',')))
         burst_times = list(map(int, burst_times.split(',')))
+        
+        # print(algorithm_name,arrival_times,burst_times, priorities,quantum_time)
+   
+    if algorithm_name == "FCFS":
+        
         execution_state = FCFS(arrival_times,burst_times)
         
         results = {'execution_state':execution_state}
         return render(request,"os-algorithms.html",results)
+    elif algorithm_name == "SJF":
+        pass
+    
+    elif algorithm_name == "SJF-nonpr":
+        pass
+    
+    elif algorithm_name == "RR":
+        quantum_time = int(quantum_time)
             
+    elif algorithm_name == "Priority-nonpr":
+        priorities = list(map(int,priorities.split(',')))
+        
+    elif algorithm_name == "Priority":
+        priorities = list(map(int,priorities.split(',')))
     
-    else:
-        # print(algorithm_name,arrival_times,burst_times,priorities,quantum_time)
-    
+    else:    
         return render(request,'os-algorithms.html')

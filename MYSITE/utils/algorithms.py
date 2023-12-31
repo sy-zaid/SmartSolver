@@ -11,12 +11,13 @@ class process:
     Methods:
     
     Output Requirements:
-    - Execution Sequence
-    - Finish Time (for each process)
-    ---  Formula: Finish Time (FT)=Arrival Time (AT)+Turnaround Time (TAT)
     
+    - Execution Sequence
     - Turn Around Time (for each process)
     --- Formula: Turnaround Time (TAT)=Completion Time−Arrival Time (AT)
+    
+    - Finish Time (for each process)
+    ---  Formula: Finish Time (FT)=Arrival Time (AT)+Turnaround Time (TAT)
     
     - Waiting Time (for each process)
     --- Formula: Waiting Time (WT)=Turnaround Time (TAT)−Burst Time
@@ -31,10 +32,6 @@ class process:
     --- Formula: Average Waiting Time (AvgWT)= 
                                                 Number of Processes/
                                             Sum of Waiting Times of all processes
-​
- 
-
-
     
     """
     def __init__(self,process_name,arrival_time,burst_time,priority=0):
@@ -44,31 +41,47 @@ class process:
         self.priority = priority
     
 
+def mapInputToIntList(lst):
+    res = list(map(int,lst.split(",")))
+    return res
 
+def calcFinishTime(arrival_times,burst_times,priorities = "default",quantum_time = "default"):
+    pass
 
 def FCFS(arrival_times,burst_times):
     num_processes = len(arrival_times)
     process_list = []
     execution_state = []
+    completion_time = []
 
-    for i in range(num_processes):
+    for i in range(num_processes):  
         process_name = f"Process-{i}"
         process_arrival_time = arrival_times[i]
         process_burst_time = burst_times[i]
         process_list.append(process(process_name,process_arrival_time,process_burst_time))
 
-    process_list = sorted(process_list,key=lambda x: x.arrival_time)
+    # Sorting the processes based on arrivale times.
+    sorted_process_list = sorted(process_list,key=lambda x: x.arrival_time)
+    
+    #Calculating completion time for each process.
+    # print(sorted_process_list)
+    
     job_que = []
     process_que = []
-    curAT = 0
+    # curAT = 0
     
     current_process = None
 
     total_time = 0
-    for ats in process_list:
-        total_time+= ats.burst_time
+    temp = 0
+    for pcs in sorted_process_list:
+        total_time+= pcs.burst_time
+        temp += pcs.burst_time
+        completion_time.append(temp)
+    
+    print(completion_time)
 
-    current_process = process_list.pop(0)
+    current_process = sorted_process_list.pop(0)
     curBT = 0
     prevBT = 0
 
@@ -76,7 +89,7 @@ def FCFS(arrival_times,burst_times):
         if curBT-prevBT == current_process.burst_time:
             prevBT = curBT
             process_que.pop()
-            current_process = process_list.pop(0)
+            current_process = sorted_process_list.pop(0)
         
         print('current_process:',current_process.process_name)
         
@@ -97,7 +110,17 @@ def FCFS(arrival_times,burst_times):
     
     return execution_state
 
-# FCFS([1,2,3],[1,2,3])
+
+
+# Input examples from the Front-end.
+arrival_times = [12, 1, 1]
+burst_times = [1,1,2]       
+
+
+priorities = [1, 2, 3] # High to Low
+# OR
+quantum_time = 2
+print(FCFS(arrival_times,burst_times))
 
     
      
