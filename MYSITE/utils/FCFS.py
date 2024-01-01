@@ -1,6 +1,40 @@
+# from utils.Process_classes import process_list
 from Process_classes import process_list
 
 def FCFS(inp_arrival_times, inp_burst_times):
+
+    """
+    Function for the FCFS algorithm.
+    
+    VARIABLES:
+    - inp_arrival_time: A list of all the arrival times given by the user.
+    - inp_burst_time: A list of all the burst times given by the user.
+    
+    OUTPUT REQUIREMENTS:
+    
+    - Gantt Chart (Nested List).
+
+    - Execution Sequence (List).
+    
+    - Completion/ Finish Time - for each process (List)
+    --- Formula: Completion Time (CT) = calculated by the FCFS function itself and outputs as a list.
+
+    - Turn Around Time (for each process)
+    --- Formula: Turnaround Time (TAT) = Completion Time - Arrival Time (AT)
+    
+    - Waiting Time (for each process)
+    --- Formula: Waiting Time (WT) = Turnaround Time (TAT) - Burst Time
+    
+    - Average Turn Around Time
+    --- Formula: Average Turnaround Time (AvgTAT) = 
+                    Number of Processes / Sum of Turnaround Times of all processes
+
+    - Average Waiting Time 
+    --- Formula: Average Waiting Time (AvgWT) = 
+                    Number of Processes / Sum of Waiting Times of all processes
+    """
+
+    result_dict = {}
     inp_process_list = process_list(inp_arrival_times, inp_burst_times)
 
     inp_process_list.createprocessList()
@@ -23,7 +57,9 @@ def FCFS(inp_arrival_times, inp_burst_times):
     idleTime, total_idle_time = 0, 0
 
     gantt_chart = []  # [[Process_name,Start_Time, Completion_Time]]
-    completion_time = []
+    execution_state = []
+    completion_times = []
+
     for process_num in range(0,inp_process_list.length()):
         curProcess = inp_process_list.__getprocess__(process_num)
         processAT = curProcess.arrival_time
@@ -44,14 +80,23 @@ def FCFS(inp_arrival_times, inp_burst_times):
 
         time_pointer = processAT + curProcess.burst_time # 3,
         
-        completion_time.append
+        completion_times.append(time_pointer)
+        print("Completion Time",completion_times)
         gantt_chart.append([processAT, curProcess.process_name,time_pointer])
         curBT = curProcess.burst_time + prevBT
         prevBT += curBT
         
+    execution_state = [entry[1] for entry in gantt_chart]
+    turnaroundtimes = inp_process_list.calcTurnAroundTime(completion_times)
+    print(turnaroundtimes)
+    print("AVGTT",inp_process_list.calcAvgTurnAroundTime(turnaroundtimes))
+    print(inp_process_list.calcWaitingTime(turnaroundtimes))
+    print(inp_process_list.calcAvgWaitingTime(inp_process_list.calcWaitingTime(turnaroundtimes)))
 
-    print("Gantt Chart:", gantt_chart)
-    print("Execution Sequence:", [entry[1] for entry in gantt_chart])
+    result_dict = {'gantt-chart':gantt_chart,'execution-state':execution_state}
+    return result_dict
+    # print("Gantt Chart:", gantt_chart)
+    # print("Execution Sequence:", )
 
 
 # arrival_times = [0,10,2,2]

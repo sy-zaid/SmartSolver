@@ -3,7 +3,10 @@ from django.shortcuts import render
 from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
-from .utils.algorithms import FCFS,mapInputToIntList
+from .utils.algorithms import prepareResultFCFS,mapInputToIntList
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
 
 def index(request):
     return render(request, 'index.html')
@@ -114,9 +117,39 @@ def osAlgorithms(request):
    
     if algorithm_name == "FCFS":
         
-        execution_state = FCFS(arrival_times,burst_times)
-        
-        results = {'execution_state':execution_state}
+        execution_state = prepareResultFCFS(arrival_times,burst_times)
+
+        processes = [
+        {"name": "Process-1", "start_time": 0, "end_time": 3},
+        {"name": "Process-2", "start_time": 4, "end_time": 7},
+        # Add other processes as needed
+        ]
+
+        fig = make_subplots(
+            rows=1, cols=1,
+            subplot_titles=["Gantt Chart"],
+            shared_xaxes=True,
+            vertical_spacing=0.1,
+        )
+
+        for process in processes:
+            fig.add_trace(go.Bar(
+                x=[(process["start_time"], process["end_time"])],
+                y=[process["name"]],
+                orientation='h',
+                name=process["name"],
+            ))
+
+        fig.update_layout(
+            title_text='Gantt Chart',
+            showlegend=False,
+            xaxis_title='Time',
+            yaxis_title='Processes',
+        )
+
+        chart_div = fig.to_html(full_html=False)
+        results = {'execution_state':execution_state,'chartdiv':chart_div}
+
         return render(request,"os-algorithms.html",results)
     elif algorithm_name == "SJF":
         pass

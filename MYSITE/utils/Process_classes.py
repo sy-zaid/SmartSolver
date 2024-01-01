@@ -68,6 +68,22 @@ class process_list(list):
         self.num_processes -= 1
         return process
     
+    def calcTurnAroundTime(self,completion_times):
+        turnaroundtimes = [x - y for x, y in zip(completion_times,self.lst_arrival_times)]
+        return turnaroundtimes
+
+    def calcWaitingTime(self,turnaroundtimes):
+        waitingtimes = [x - y for x, y in zip(turnaroundtimes,self.lst_burst_times)]
+        return waitingtimes
+
+    def calcAvgTurnAroundTime(self,turnaroundtimes):
+        sumTT = sum(turnaroundtimes)
+        return sumTT / self.num_processes
+    
+    def calcAvgWaitingTime(self,waitingtimes):
+        sumWT = sum(waitingtimes)
+        return sumWT / self.num_processes
+
     
     
     
@@ -91,17 +107,17 @@ class ProcessListIterator:
 
 
 # Input examples from the Front-end.
-arrival_times = [3,1,2]
-burst_times = [1,2,4]  
+# arrival_times = [3,1,2]
+# burst_times = [1,2,4]  
 
-# input1 = process_list(arrival_times,burst_times)
-# input1.createprocessList()
-# input1.sortListByArrivalTime()
-# print(input1.__getlist__())
-# input1.sortListByBurstTime()
-# print(input1.__getlist__())
+# # input1 = process_list(arrival_times,burst_times)
+# # input1.createprocessList()
+# # input1.sortListByArrivalTime()
+# # print(input1.__getlist__())
+# # input1.sortListByBurstTime()
+# # print(input1.__getlist__())
 
 
-priorities = [1, 2, 3] # High to Low
-# OR
-quantum_time = 2
+# priorities = [1, 2, 3] # High to Low
+# # OR
+# quantum_time = 2

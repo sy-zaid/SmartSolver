@@ -78,9 +78,14 @@
 
   <!-- Output section -->
   <div id="div-output-section">
+    <div id="gantt-chart">
+      <!-- <label for="output">Gantt Chart</label> -->
+      {% autoescape off %} {{ chartdiv }} {% endautoescape %}
+    </div>
     <div id="output-rows">
       <label for="output">Execution State</label>
       <p id="res-mean">{{execution_state}}</p>
+      <br />
     </div>
   </div>
 </div>

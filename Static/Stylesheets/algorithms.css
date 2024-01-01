@@ -55,3 +55,11 @@ body {
   font-weight: 500;
   border-top: 2px solid #0b67f1;
 }
+
+#gantt-chart {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  margin: 100px 0px 100px 0px;
+  border-bottom: 2px solid #0b67f157;
+}
