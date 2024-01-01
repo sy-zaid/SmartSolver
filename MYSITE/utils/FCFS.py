@@ -1,5 +1,5 @@
 # from utils.Process_classes import process_list
-from .Process_classes import process_list
+from Process_classes import process_list
 
 def FCFS(inp_arrival_times, inp_burst_times):
 
@@ -39,6 +39,9 @@ def FCFS(inp_arrival_times, inp_burst_times):
 
     inp_process_list.createprocessList()
     # print("Unsorted Process List:", inp_process_list.__getlist__(), '\n\n')
+
+    # Var for storing the process list with name,arrival,burst times.
+    pplist = inp_process_list.__getlist__()
 
     # Sorting the input process list.
     inp_process_list.sortListByArrivalTime()
@@ -84,7 +87,7 @@ def FCFS(inp_arrival_times, inp_burst_times):
     
     # print("Completion Time",completion_times)
         
-    execution_state = [entry[1] for entry in gantt_chart]
+    execution_state = [entry[1] for entry in gantt_chart if entry[1] != "Idle"]
 
     turnaroundtimes = inp_process_list.calcTurnAroundTime(completion_times)
     # print(turnaroundtimes)
@@ -96,12 +99,12 @@ def FCFS(inp_arrival_times, inp_burst_times):
     # print(inp_process_list.calcWaitingTime(turnaroundtimes))
     
     avg_waitingtime = inp_process_list.calcAvgWaitingTime(waitingtimes)
-    
+    # print(inp_process_list.__getlist__())
 
     result_dict = {'gantt-chart':gantt_chart,'execution-state':execution_state,
                    'completion-times':completion_times,'turnaround-times':turnaroundtimes,
                    'waiting-times':waitingtimes,'avg_turnaround-time':avg_turnaroundtime,
-                   'avg_waiting-time':avg_waitingtime,
+                   'avg_waiting-time':avg_waitingtime,'process_list': pplist
                    }
     
     return result_dict
@@ -112,6 +115,6 @@ def FCFS(inp_arrival_times, inp_burst_times):
 # input1 = FCFS(arrival_times, burst_times)
 
 
-# arrival_times = [1,4,5,6]
-# burst_times = [2,3,2,1]
-# print(FCFS(arrival_times, burst_times))
+arrival_times = [6,5,4,1]
+burst_times = [2,3,2,1]
+print(FCFS(arrival_times, burst_times))

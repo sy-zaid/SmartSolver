@@ -113,7 +113,7 @@ def osAlgorithms(request):
         arrival_times = list(map(int, arrival_times.split(',')))
         burst_times = list(map(int, burst_times.split(',')))
         
-        print(algorithm_name,arrival_times,burst_times, priorities,quantum_time)
+        # print(algorithm_name,arrival_times,burst_times, priorities,quantum_time)
    
     if algorithm_name == "FCFS":
         
@@ -136,7 +136,7 @@ def osAlgorithms(request):
         # Create a subplot with shared x-axis
         fig = make_subplots(
             rows=1, cols=1,
-            subplot_titles=["Gantt Chart"],
+            subplot_titles=[""],
             shared_xaxes=True,
             vertical_spacing=0.1,
         )
@@ -150,7 +150,7 @@ def osAlgorithms(request):
 
         # Update layout of the chart
         fig.update_layout(
-            title_text='Gantt Chart',
+            title_text='',
             xaxis_title='Time',
             yaxis_title='Processes',
         )

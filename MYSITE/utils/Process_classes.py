@@ -28,7 +28,7 @@ class process_list(list):
     def __getlist__(self):
         res = []
         for i in range(self.num_processes):
-            res.append(self.process_list[i].process_name)
+            res.append([self.process_list[i].process_name,self.process_list[i].arrival_time,self.process_list[i].burst_time])
             
         return res
     
