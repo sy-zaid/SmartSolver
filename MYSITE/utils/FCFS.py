@@ -1,5 +1,5 @@
 # from utils.Process_classes import process_list
-from Process_classes import process_list
+from .Process_classes import process_list
 
 def FCFS(inp_arrival_times, inp_burst_times):
 
@@ -115,6 +115,6 @@ def FCFS(inp_arrival_times, inp_burst_times):
 # input1 = FCFS(arrival_times, burst_times)
 
 
-arrival_times = [6,5,4,1]
-burst_times = [2,3,2,1]
-print(FCFS(arrival_times, burst_times))
+# arrival_times = [6,5,4,1]
+# burst_times = [2,3,2,1]
+# print(FCFS(arrival_times, burst_times))

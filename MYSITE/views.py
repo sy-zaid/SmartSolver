@@ -4,8 +4,7 @@ from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
 from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
+
 
 
 def index(request):
@@ -117,49 +116,7 @@ def osAlgorithms(request):
    
     if algorithm_name == "FCFS":
         
-        complete_result_dict = prepareResultFCFS(arrival_times,burst_times)
-        # print(complete_result_dict)
-
-        # Execution State
-        execution_state = complete_result_dict["execution-state"]
-
-        # Gantt Chart
-        gantt_chart_list = complete_result_dict['gantt-chart']
-        gantt_chart_dict = convertListtoDict(gantt_chart_list)
-        print(gantt_chart_dict)
-
-        # Separate lists for start and end times
-        start_times = [process["start_time"] for process in gantt_chart_dict]
-        end_times = [process["end_time"] for process in gantt_chart_dict]
-        process_names = [process["name"] for process in gantt_chart_dict]
-
-        # Create a subplot with shared x-axis
-        fig = make_subplots(
-            rows=1, cols=1,
-            subplot_titles=[""],
-            shared_xaxes=True,
-            vertical_spacing=0.1,
-        )
-
-        # Add horizontal bars to the chart
-        fig.add_trace(go.Bar(
-            x=[start_times, end_times],
-            y=process_names,
-            orientation='h',
-        ))
-
-        # Update layout of the chart
-        fig.update_layout(
-            title_text='',
-            xaxis_title='Time',
-            yaxis_title='Processes',
-        )
-
-        # Convert the figure to HTML
-        chart_div = fig.to_html(full_html=False)
-
-        results = {'execution_state':execution_state,'chartdiv':chart_div}
-
+        results = prepareResultFCFS(arrival_times,burst_times)
         return render(request,"os-algorithms.html",results)
     
     # ------------------------- IF THE ALGO IS SJF ------------------------- #
