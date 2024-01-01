@@ -1,5 +1,5 @@
 # from utils.Process_classes import process_list
-from Process_classes import process_list
+from .Process_classes import process_list
 
 def FCFS(inp_arrival_times, inp_burst_times):
 
@@ -68,7 +68,7 @@ def FCFS(inp_arrival_times, inp_burst_times):
             idleTime = processAT - time_pointer
             time_pointer += total_idle_time
             total_idle_time += idleTime
-            gantt_chart.append([processAT-idleTime, 'Idle',idleTime, processAT])
+            gantt_chart.append([processAT-idleTime, 'Idle', processAT])
         
         if processAT < time_pointer:
             processAT = time_pointer
@@ -114,4 +114,4 @@ def FCFS(inp_arrival_times, inp_burst_times):
 
 # arrival_times = [1,4,5,6]
 # burst_times = [2,3,2,1]
-# input1 = FCFS(arrival_times, burst_times)
+# print(FCFS(arrival_times, burst_times))
