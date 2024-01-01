@@ -12,24 +12,24 @@ def FCFS(inp_arrival_times, inp_burst_times):
     
     OUTPUT REQUIREMENTS:
     
-    - Gantt Chart (Nested List).
+    1- Gantt Chart (Nested List).
 
-    - Execution Sequence (List).
+    2- Execution Sequence (List).
     
-    - Completion/ Finish Time - for each process (List)
+    3- Completion/ Finish Time - for each process (List)
     --- Formula: Completion Time (CT) = calculated by the FCFS function itself and outputs as a list.
 
-    - Turn Around Time (for each process)
+    4- Turn Around Time (for each process)
     --- Formula: Turnaround Time (TAT) = Completion Time - Arrival Time (AT)
     
-    - Waiting Time (for each process)
+    5- Waiting Time (for each process)
     --- Formula: Waiting Time (WT) = Turnaround Time (TAT) - Burst Time
     
-    - Average Turn Around Time
+    6- Average Turn Around Time
     --- Formula: Average Turnaround Time (AvgTAT) = 
                     Number of Processes / Sum of Turnaround Times of all processes
 
-    - Average Waiting Time 
+    7- Average Waiting Time 
     --- Formula: Average Waiting Time (AvgWT) = 
                     Number of Processes / Sum of Waiting Times of all processes
     """
@@ -63,40 +63,48 @@ def FCFS(inp_arrival_times, inp_burst_times):
     for process_num in range(0,inp_process_list.length()):
         curProcess = inp_process_list.__getprocess__(process_num)
         processAT = curProcess.arrival_time
-        
-
-        print("Current Process", curProcess.process_name)
-        print("ProcessAT, curBT, prevBT", processAT, curBT, prevBT,time_pointer)
-        print("Timepointer:",time_pointer)
 
         if processAT > time_pointer:
             idleTime = processAT - time_pointer
             time_pointer += total_idle_time
             total_idle_time += idleTime
-            gantt_chart.append([processAT-idleTime, 'Idle',idleTime, processAT,total_idle_time])
+            gantt_chart.append([processAT-idleTime, 'Idle',idleTime, processAT])
         
         if processAT < time_pointer:
             processAT = time_pointer
 
-        time_pointer = processAT + curProcess.burst_time # 3,
+        time_pointer = processAT + curProcess.burst_time
         
         completion_times.append(time_pointer)
-        print("Completion Time",completion_times)
+        
         gantt_chart.append([processAT, curProcess.process_name,time_pointer])
         curBT = curProcess.burst_time + prevBT
         prevBT += curBT
         
+    
+    # print("Completion Time",completion_times)
+        
     execution_state = [entry[1] for entry in gantt_chart]
-    turnaroundtimes = inp_process_list.calcTurnAroundTime(completion_times)
-    print(turnaroundtimes)
-    print("AVGTT",inp_process_list.calcAvgTurnAroundTime(turnaroundtimes))
-    print(inp_process_list.calcWaitingTime(turnaroundtimes))
-    print(inp_process_list.calcAvgWaitingTime(inp_process_list.calcWaitingTime(turnaroundtimes)))
 
-    result_dict = {'gantt-chart':gantt_chart,'execution-state':execution_state}
+    turnaroundtimes = inp_process_list.calcTurnAroundTime(completion_times)
+    # print(turnaroundtimes)
+    
+    avg_turnaroundtime = inp_process_list.calcAvgTurnAroundTime(turnaroundtimes)
+    # print("AVGTT",inp_process_list.calcAvgTurnAroundTime(turnaroundtimes))
+    
+    waitingtimes = inp_process_list.calcWaitingTime(turnaroundtimes)
+    # print(inp_process_list.calcWaitingTime(turnaroundtimes))
+    
+    avg_waitingtime = inp_process_list.calcAvgWaitingTime(waitingtimes)
+    
+
+    result_dict = {'gantt-chart':gantt_chart,'execution-state':execution_state,
+                   'completion-times':completion_times,'turnaround-times':turnaroundtimes,
+                   'waiting-times':waitingtimes,'avg_turnaround-time':avg_turnaroundtime,
+                   'avg_waiting-time':avg_waitingtime,
+                   }
+    
     return result_dict
-    # print("Gantt Chart:", gantt_chart)
-    # print("Execution Sequence:", )
 
 
 # arrival_times = [0,10,2,2]
@@ -104,6 +112,6 @@ def FCFS(inp_arrival_times, inp_burst_times):
 # input1 = FCFS(arrival_times, burst_times)
 
 
-arrival_times = [1,4,5,6]
-burst_times = [2,3,2,1]
-input1 = FCFS(arrival_times, burst_times)
+# arrival_times = [1,4,5,6]
+# burst_times = [2,3,2,1]
+# input1 = FCFS(arrival_times, burst_times)

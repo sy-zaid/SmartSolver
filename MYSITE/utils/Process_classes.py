@@ -84,8 +84,7 @@ class process_list(list):
         sumWT = sum(waitingtimes)
         return sumWT / self.num_processes
 
-    
-    
+
     
 class ProcessListIterator:
     def __init__(self, process_list):
