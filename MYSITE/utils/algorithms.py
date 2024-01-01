@@ -18,11 +18,11 @@ def prepareResultFCFS(arrival_times,burst_times):
     execution_state = complete_result_dict["execution-state"]
     
     # Turn around & Average Turnaround Times.
-    # turnaroundtimes, avg_turnaroundtime = complete_result_dict["turnaround-times"],
-    # complete_result_dict["avg_turnaround-time"]
+    turnaroundtimes, avg_turnaroundtime = complete_result_dict["turnaround-times"],complete_result_dict["avg_turnaround-time"]
 
     # Waiting time & Average Waiting Times.
-    waitingtimes,avg_waitingtime = complete_result_dict["waiting-times"],complete_result_dict["avg_waiting-time"]
+    waitingtimes, avg_waitingtime = complete_result_dict["waiting-times"],complete_result_dict["avg_waiting-time"]
+
 
 
     # Gantt Chart
@@ -35,7 +35,7 @@ def prepareResultFCFS(arrival_times,burst_times):
     end_times = [process["end_time"] for process in gantt_chart_dict]
     process_names = [process["name"] for process in gantt_chart_dict]
 
-    # Create a subplot with shared x-axis
+    # Created a subplot with shared x-axis
     fig = make_subplots(
         rows=1, cols=1,
         subplot_titles=[""],
@@ -43,22 +43,24 @@ def prepareResultFCFS(arrival_times,burst_times):
         vertical_spacing=0.1,
     )
 
-    # Add horizontal bars to the chart
+    # Added horizontal bars to the chart
     fig.add_trace(go.Bar(
         x=[start_times, end_times],
         y=process_names,
         orientation='h',
     ))
 
-    # Update layout of the chart
+    # Updated layout of the chart
     fig.update_layout(
         title_text='',
         xaxis_title='Time',
         yaxis_title='Processes',
     )
 
-    # Convert the figure to HTML
+    # Converted the figure to HTML
     chart_div = fig.to_html(full_html=False)
+
+    # Created a results dictionary.
     results = {"chartdiv":chart_div,'execution_state':execution_state}
     return results
 
