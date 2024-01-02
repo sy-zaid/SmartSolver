@@ -51,7 +51,7 @@ body {
   transform: translateX(-50%);
   /* background-color: red; */
   margin: 20px 20px 20px 0px;
-  padding: 80px 10px 50px 10px;
+  padding: 40px 10px 50px 10px;
   font-weight: 500;
   border-top: 2px solid #0b67f1;
 }
@@ -64,3 +64,4 @@ body {
   border-bottom: 2px solid #0b67f157;
   text-align: center;
 }
+

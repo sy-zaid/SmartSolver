@@ -105,17 +105,26 @@
         </tbody>
       </table>
     </div>
+    <div id="divcalculations">
+      <b id="labels2">Average Turnaround Time: {{ avg_turnaroundtime }}</b
+      ><br />
+      <b id="labels2">Average Waiting Time: {{ avg_waitingtime }}</b>
+      <br />
+      <label id="labels2" for="output"
+        ><b>Execution State:</b> {{execution_state}}</label
+      >
+
+      <br />
+    </div>
     <div id="divganttchart">
       <h3 id="labels">Gantt Chart</h3>
       <div id="gantt-chart">
         {% autoescape off %} {{ chartdiv }} {% endautoescape %}
       </div>
     </div>
-    <div id="output-rows">
-      <label id="labels" for="output">Execution State</label>
-      <p id="res-mean">{{execution_state}}</p>
-      <br />
-    </div>
+    <!-- <div id="">
+      
+    </div> -->
   </div>
 
   <script>
