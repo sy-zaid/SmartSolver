@@ -1,4 +1,7 @@
 from typing import List, Dict, Union
+def get_times(process_list,factor):
+        arrival_times = [process[factor] for process in process_list]
+        return arrival_times
 
 def rr(arrival_time: List[int], burst_time: List[int], time_quantum: int) -> Dict[str, Union[List[List[Union[str, int]]], List[str]]]:
     processes_info = [
@@ -79,12 +82,20 @@ def rr(arrival_time: List[int], burst_time: List[int], time_quantum: int) -> Dic
     gantt_chart_info.sort(key=lambda x: (x[0], x[1]))
     execution_state.append("Finish")
     
-    def get_arrival_times(process_list):
-        arrival_times = [process['arrival_time'] for process in process_list]
-        return arrival_times
+    completion_times = get_times(solved_processes_info,'completion_time')
+    # print("\n",completion_times)
+
+    turnaroundtimes = get_times(solved_processes_info,'turnaround_time')
+    # print('\n',turnaroundtimes)
+
+    waitingtimes = get_times(solved_processes_info,'waiting_time')
+    # print('\n',waitingtimes)
 
     
-    result_dict = {'gantt-chart': gantt_chart_info, 'execution-state': execution_state, 'solved_processes_info': solved_processes_info, 'process_list': pplist}
+    result_dict = {'gantt-chart': gantt_chart_info, 'execution-state': execution_state,
+                    'solved_processes_info': solved_processes_info, 'process_list': pplist,
+                    'completion-times':completion_times,'turnaround-times':turnaroundtimes,
+                    'waiting-times':waitingtimes}
     return result_dict
 
 # Example usage:
@@ -94,3 +105,4 @@ time_quantum = 3
 
 result = rr(arrival_time, burst_time, time_quantum)
 print(result)
+
