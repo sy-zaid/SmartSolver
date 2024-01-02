@@ -87,6 +87,30 @@
       <p id="res-mean">{{execution_state}}</p>
       <br />
     </div>
+    <table>
+      <thead>
+          <tr>
+              <th>Process Name</th>
+              <th>Arrival Time</th>
+              <th>Burst Time</th>
+              <th>Completion Time</th>
+              <th>Turnaround Time</th>
+              <th>Waiting Time</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for process in process_list %}
+              <tr>
+                  <td>{{ process.0 }}</td>
+                  <td>{{ process.1 }}</td>
+                  <td>{{ process.2 }}</td>
+                  <td>{{ process.completion_time }}</td>
+                  <td>{{ process.turnaround_time }}</td>
+                  <td>{{ process.waiting_time }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
   </div>
 </div>
 

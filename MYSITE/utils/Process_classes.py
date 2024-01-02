@@ -53,10 +53,14 @@ class process_list(list):
             print(self.process_list[i])
             total_time += int(self.process_list[i].burst_time)
         return total_time
+    
+    def __getarrivaltimes__(self):
+        return self.lst_arrival_times
         
         
     def sortListByArrivalTime(self): 
-        self.process_list.sort(key=lambda x: x.arrival_time) 
+        self.process_list.sort(key=lambda x: x.arrival_time)
+        self.lst_arrival_times.sort()
         return self.process_list
     
     def sortListByBurstTime(self):
@@ -73,6 +77,7 @@ class process_list(list):
         return turnaroundtimes
 
     def calcWaitingTime(self,turnaroundtimes):
+        print(self.lst_burst_times)
         waitingtimes = [x - y for x, y in zip(turnaroundtimes,self.lst_burst_times)]
         return waitingtimes
 

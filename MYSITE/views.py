@@ -115,7 +115,6 @@ def osAlgorithms(request):
         # print(algorithm_name,arrival_times,burst_times, priorities,quantum_time)
    
     if algorithm_name == "FCFS":
-        
         results = prepareResultFCFS(arrival_times,burst_times)
         return render(request,"os-algorithms.html",results)
     

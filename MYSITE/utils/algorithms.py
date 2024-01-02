@@ -10,6 +10,14 @@ def calcFinishTime(arrival_times,burst_times,priorities = "default",quantum_time
     pass
 
 def prepareResultFCFS(arrival_times,burst_times):
+    """
+    var complete_result_dict = {'gantt-chart':gantt_chart,'execution-state':execution_state,
+                   'completion-times':completion_times,'turnaround-times':turnaroundtimes,
+                   'waiting-times':waitingtimes,'avg_turnaround-time':avg_turnaroundtime,
+                   'avg_waiting-time':avg_waitingtime,'process_list': pplist
+                   }
+    """
+
     results = {}
     complete_result_dict = FCFS(arrival_times,burst_times)
         # print(complete_result_dict)
@@ -19,11 +27,13 @@ def prepareResultFCFS(arrival_times,burst_times):
     
     # Turn around & Average Turnaround Times.
     turnaroundtimes, avg_turnaroundtime = complete_result_dict["turnaround-times"],complete_result_dict["avg_turnaround-time"]
-
+    # print("\nTurnAround Times:",turnaroundtimes)
     # Waiting time & Average Waiting Times.
     waitingtimes, avg_waitingtime = complete_result_dict["waiting-times"],complete_result_dict["avg_waiting-time"]
-
-
+    # print("\nWaiting Times:",waitingtimes)
+    process_list = complete_result_dict["process_list"]
+    completiontimes = complete_result_dict["completion-times"]
+    # print("\nProcess List:",process_list)
 
     # Gantt Chart
     gantt_chart_list = complete_result_dict['gantt-chart']
@@ -61,7 +71,10 @@ def prepareResultFCFS(arrival_times,burst_times):
     chart_div = fig.to_html(full_html=False)
 
     # Created a results dictionary.
-    results = {"chartdiv":chart_div,'execution_state':execution_state}
+    results = {"chartdiv":chart_div,'execution_state':execution_state,'completion-times':completiontimes,
+               'turnaround-times':turnaroundtimes,'waiting-times':waitingtimes,
+               'avg_turnaround-time':avg_turnaroundtime,'avg_waiting-time':avg_waitingtime,
+               'process_list': process_list}
     return results
 
 

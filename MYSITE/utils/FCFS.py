@@ -1,4 +1,4 @@
-# from utils.Process_classes import process_list
+# from Process_classes import process_list
 from .Process_classes import process_list
 
 def FCFS(inp_arrival_times, inp_burst_times):
@@ -40,12 +40,12 @@ def FCFS(inp_arrival_times, inp_burst_times):
     inp_process_list.createprocessList()
     # print("Unsorted Process List:", inp_process_list.__getlist__(), '\n\n')
 
-    # Var for storing the process list with name,arrival,burst times.
-    pplist = inp_process_list.__getlist__()
-
     # Sorting the input process list.
     inp_process_list.sortListByArrivalTime()
     # print("Sorted Process List:", inp_process_list.__getlist__(), '\n\n')
+
+    # Var for storing the process list with name,arrival,burst times.
+    pplist = inp_process_list.__getlist__()
 
     # Current Burst Time, Previous Burst Time
     curBT, prevBT = 0, 0
@@ -79,6 +79,7 @@ def FCFS(inp_arrival_times, inp_burst_times):
         time_pointer = processAT + curProcess.burst_time
         
         completion_times.append(time_pointer)
+        # print("Completion Time",completion_times)
         
         gantt_chart.append([processAT, curProcess.process_name,time_pointer])
         curBT = curProcess.burst_time + prevBT
@@ -89,6 +90,7 @@ def FCFS(inp_arrival_times, inp_burst_times):
         
     execution_state = [entry[1] for entry in gantt_chart if entry[1] != "Idle"]
 
+    # print(inp_process_list.__getarrivaltimes__())
     turnaroundtimes = inp_process_list.calcTurnAroundTime(completion_times)
     # print(turnaroundtimes)
     
