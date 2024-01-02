@@ -65,6 +65,7 @@ class process_list(list):
     
     def sortListByBurstTime(self):
         self.process_list.sort(key=lambda x: x.burst_time)
+        self.lst_burst_times.sort()
         return self.process_list
     
     def pop(self):

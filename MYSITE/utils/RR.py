@@ -106,12 +106,11 @@ def RR(arrival_time: List[int], burst_time: List[int], time_quantum: int) -> Dic
                    'avg_waiting-time':avg_waitingtime}
     return result_dict
 
-# Example usage:
-arrival_time = [0, 2, 4]
-burst_time = [5, 3, 8]
-time_quantum = 3
+# arrival_time = [0, 2, 4]
+# burst_time = [5, 3, 8]
+# time_quantum = 3
 
-result = RR(arrival_time, burst_time, time_quantum)
-print(result)
+# result = RR(arrival_time, burst_time, time_quantum)
+# print(result)
 
 
