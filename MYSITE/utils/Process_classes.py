@@ -83,11 +83,11 @@ class process_list(list):
 
     def calcAvgTurnAroundTime(self,turnaroundtimes):
         sumTT = sum(turnaroundtimes)
-        return sumTT / self.num_processes
+        return round(sumTT / self.num_processes,2)
     
     def calcAvgWaitingTime(self,waitingtimes):
         sumWT = sum(waitingtimes)
-        return sumWT / self.num_processes
+        return round(sumWT / self.num_processes,2)
 
 # ----- FOR RR ----- #
     # def createprocessDict(self):
