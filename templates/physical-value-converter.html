@@ -1,0 +1,135 @@
+{% extends 'base.html' %} {% block body %}
+<link rel="stylesheet" href="../static/Stylesheets/unit_conversion.css" />
+<script src="../static/Scripts/unit_conversion.js" defer></script>
+
+<title>Unit Conversion</title>
+
+<div id="UC-heading">
+  <h1 id="heading-1-black">Value Converter</h1>
+  <h2 id="heading-2-black">Length, Mass, Time , Temperature , Power</h2>
+</div>
+
+<!-- MAKING A WHOLE DIV FOR SIDE MENU + CALCULATIONS MENU -->
+<div id="UC-whole">
+  <div id="UC-whole-div-1">
+    <div id="side-menu">
+      <h4 id="heading-2-black">Related Topics</h4>
+      <ul id="side-menu-list">
+        <li><button onclick="showSection('div-out-mmm')">Length</button></li>
+        <li>Mass</li>
+        <li>Time</li>
+        <li>Temperature</li>
+        <li>Power</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="UC-whole-div-2">
+    <!-- Input section -->
+    <form method="post" action="unit_conversion">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="numericInput"
+          id="input-mmm"
+          name="input-mmm"
+          placeholder="Enter your input (e.g. 1,2,3...)"
+        />
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">Length</label>
+        <p id="res-Length">{{Length}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Mass</label>
+        <p id="res-Mass">{{Mass}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Time</label>
+        <p id="res-Time">{{Time}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Temperature</label>
+        <p id="res-Temperature">{{Temperature}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Power</label>
+        <p id="res-Power">{{Power}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="UC-whole-div-3" class="hidden">
+    <!-- Input section -->
+    <form method="post" action="unit_conversion">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="numericInput"
+          id="input-mmm"
+          name="input-mmm"
+          placeholder="Enter your input (e.g. 1,2,3...)"
+        />
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">Length</label>
+        <p id="res-Length">{{Length}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Mass</label>
+        <p id="res-Mass">{{Mass}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Time</label>
+        <p id="res-Time">{{Time}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Temperature</label>
+        <p id="res-Temperature">{{Temperature}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Power</label>
+        <p id="res-Power">{{Power}}</p>
+      </div>
+    </div>
+    -->
+  </div>
+</div>
+
+{% endblock body %}

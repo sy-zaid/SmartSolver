@@ -1,13 +1,276 @@
-{% extends 'base.html' %}
-{% block body %}
+{% extends 'base.html' %} {% block body %}
+<link rel="stylesheet" href="../static/Stylesheets/physics.css" />
+<script src="../static/Scripts/physics.js" defer></script>
 
-<div class="container">
-    <br>
-    <h1 align="center">Physics</h1>
-    <p class="lead" align="center">
-        This section provides physical quantities.
-    </p>
-    <br>
+<title>Physics Calculations</title>
+
+<div id="PC-heading">
+  <h1 id="heading-1-black">Physical Formulae</h1>
+  <h2 id="heading-2-black">Acceleration, Frequency, Velocity & more...</h2>
+</div>
+
+<!-- MAKING A WHOLE DIV FOR SIDE MENU + CALCULATIONS MENU -->
+<div id="PC-whole">
+  <!-- DIV FOR SIDE MENU -->
+  <div id="PC-whole-div-1">
+    <div id="side-menu">
+      <h4 id="heading-2-black">Related Topics</h4>
+      <ul id="side-menu-list">
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-2')">
+            Velocity
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-3')">
+            Acceleration
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-4')">
+            Frequency
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-5')">
+            Pressure
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-6')">
+            Force
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DIV FOR VELOCITY -->
+  <div id="PC-whole-div-2">
+    <!-- Input section -->
+    <form method="post" action="pre-algebra">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-mmm"
+          name="input-mmm"
+          placeholder="Enter your input for Mean, Median, Mode (e.g. 1,2,3...)"
+          required
+        />
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">Mean</label>
+        <p id="res-mean">{{mean}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Median</label>
+        <p id="res-median">{{median}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Mode</label>
+        <p id="res-mode">{{mode}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIV FOR ACCELERATION -->
+  <div id="PC-whole-div-3">
+    <!-- Input section -->
+    <form method="post" action="pre-algebra">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          defa
+          id="input-lgcmf"
+          name="input-lgcmf"
+          placeholder="Enter your input for GCF & LCM (e.g. 1,2,3...)"
+          required
+        />
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-lgcmf')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">LCM</label>
+        <p id="res-mean">{{lcm}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">GCF</label>
+        <p id="res-median">{{gcf}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIV FOR FREQUENCY -->
+  <div id="PC-whole-div-4">
+    <!-- Input section -->
+    <form method="post" action="pre-algebra">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-mmm"
+          name="input-mmm"
+          placeholder="Enter your input for Frequency (e.g. 1,2,3...)"
+          required
+        />
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">Mean</label>
+        <p id="res-mean">{{mean}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Median</label>
+        <p id="res-median">{{median}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Mode</label>
+        <p id="res-mode">{{mode}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIV FOR PRESSURE -->
+  <div id="PC-whole-div-5">
+    <!-- Input section -->
+    <form method="post" action="pre-algebra">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-mmm"
+          name="input-mmm"
+          placeholder="Enter your input for Mean, Median, Mode (e.g. 1,2,3...)"
+          required
+        />
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">Mean</label>
+        <p id="res-mean">{{mean}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Median</label>
+        <p id="res-median">{{median}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Mode</label>
+        <p id="res-mode">{{mode}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIV FOR FORCE -->
+  <div id="PC-whole-div-6">
+    <!-- Input section -->
+    <form method="post" action="pre-algebra">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-mmm"
+          name="input-mmm"
+          placeholder="Enter your input for force (e.g. 1,2,3...)"
+          required
+        />
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">Mean</label>
+        <p id="res-mean">{{mean}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Median</label>
+        <p id="res-median">{{median}}</p>
+      </div>
+      <div id="output-rows">
+        <label for="output">Mode</label>
+        <p id="res-mode">{{mode}}</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock body %}

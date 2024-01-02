@@ -20,7 +20,6 @@ function toggleBox() {
     ----- IDS Stored in VAR lastdynid -----
     - quantum-time --- for the quantum-time.
     - priority --- for the priority.
-
    */
 
   var section_dynamic_input = document.getElementById("input-row-4th");

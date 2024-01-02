@@ -1,0 +1,133 @@
+@font-face {
+  font-family: DM-Sans-Bold;
+  src: url("../Fonts/DMSans-VariableFont_opsz\,wght.ttf");
+}
+
+body {
+  margin: 0;
+  font-family: "DM-Sans-Bold";
+  background: url("../Images/section-maths-bg-2.png") no-repeat center center
+    fixed;
+  background-size: cover;
+}
+
+/* --------------------------------------------------------------------------- */
+/* ------------------------- STYLING FOR PHYSICAL CALCULATIONS ------------------------- */
+/* --------------------------------------------------------------------------- */
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.input-box {
+  width: 20rem;
+  height: 3.5rem;
+  border-radius: 22px;
+  border: 1px solid #0b67f1;
+  padding-left: 15px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+select {
+  width: 8rem;
+  height: 3.5rem;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+/* .container {
+  margin-top: -50px;
+} */
+
+.unit-label {
+  color: #011627;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0 5px;
+}
+
+.output-line {
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+#calculated-velocity {
+  color: #0b67f1;
+}
+
+#PC-heading {
+  align-items: center;
+  /* background-color: red; */
+  position: relative;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+#PC-whole {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+#PC-whole-div-1 {
+  /* background-color: red; */
+  width: 20vw;
+  height: 50vh;
+}
+#PC-whole-div-2 {
+  position: relative;
+  width: 80vw;
+  height: 50vh;
+  /* background-color: aqua; */
+  padding: 40px 0px 0px 40px;
+  margin: 0px 80px 0px 20px;
+  text-align: center;
+  align-items: center;
+}
+#PC-whole-div-3 {
+  /* position: relative; */
+  width: 80vw;
+  height: 50vh;
+  /* background-color: aqua; */
+  padding: 40px 0px 0px 40px;
+  margin: 0px 80px 0px 20px;
+  text-align: center;
+  align-items: center;
+}
+
+#PC-whole-div-4,
+#PC-whole-div-5,
+#PC-whole-div-6 {
+  /* position: relative; */
+  width: 80vw;
+  height: 50vh;
+  /* background-color: aqua; */
+  padding: 40px 0px 0px 40px;
+  margin: 0px 80px 0px 20px;
+  text-align: center;
+  align-items: center;
+}
+
+#div-input-section {
+  /* background-color: red; */
+  padding: 40px 0px;
+  align-items: center;
+  text-align: center;
+}
+
+#div-output-section {
+  position: relative;
+  width: 80%;
+  height: 15vh;
+  /* background-color: red; */
+  margin: 20px 20px 0px 105px;
+  padding: 10px 100px;
+  font-weight: 500;
+  border-top: 2px solid #0b67f1;
+}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% block body %}
+<title>Physics Calculation</title>
+<script rel="stylesheet" src="../static/Stylesheets//physics.css"></script>
+<body>
+  <div class="container">
+    <h1 id="heading-1-black">Physics</h1>
+
+    <form method="post" action="physics">
+      <div class="input-container">
+        <div>
+          <label for="input-distance" style="font-weight: bold"
+            >Enter Distance (S):</label
+          >
+          <input
+            class="input-box"
+            type="text"
+            pattern="[0-9.]*"
+            id="input-distance"
+            name="input-distance"
+            placeholder="Enter distance"
+          />
+        </div>
+        <div>
+          <select id="distance-unit" name="distance-unit" class="unit-label">
+            <option value="m">meters (m)</option>
+            <option value="km">kilometers (km)</option>
+            <option value="mm">millimeters (mm)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div>
+          <label for="input-time" style="font-weight: bold"
+            >Enter Time (T):</label
+          >
+          <input
+            class="input-box"
+            type="text"
+            pattern="[0-9.]*"
+            id="input-time"
+            name="input-time"
+            placeholder="Enter time"
+          />
+        </div>
+        <div>
+          <select id="time-unit" name="time-unit" class="unit-label">
+            <option value="s">seconds (s)</option>
+            <option value="min">minutes (min)</option>
+            <option value="ms">milliseconds (ms)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="output-line">
+        Calculated Velocity (v): <span id="calculated-velocity"></span>
+      </div>
+
+      <div>
+        <button id="clearButton">Clear</button>
+        <button id="solveButton">Solve</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+{% endblock body %}
