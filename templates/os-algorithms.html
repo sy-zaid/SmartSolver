@@ -78,50 +78,58 @@
 
   <!-- Output section -->
   <div id="div-output-section">
-    <div id="gantt-chart">
-      {% autoescape off %} {{ chartdiv }} {% endautoescape %}
+    <label id="labels" for="tableoutput">Table for Processes</label>
+    <div id="divtable">
+      <table id="tableoutput">
+        <thead>
+          <tr>
+            <th>Process Name</th>
+            <th>Arrival Time</th>
+            <th>Burst Time</th>
+            <th>Completion Time</th>
+            <th>Turnaround Time</th>
+            <th>Waiting Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for process in process_list %}
+          <tr>
+            <td>{{ process.0 }}</td>
+            <td>{{ process.1 }}</td>
+            <td>{{ process.2 }}</td>
+            <td id="ct">{{ completiontimes }}</td>
+            <td id="tt">{{ turnaroundtimes }}</td>
+            <td id="wt">{{ waitingtimes }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div id="divganttchart">
+      <h3 id="labels">Gantt Chart</h3>
+      <div id="gantt-chart">
+        {% autoescape off %} {{ chartdiv }} {% endautoescape %}
+      </div>
     </div>
     <div id="output-rows">
-      <label for="output">Execution State</label>
+      <label id="labels" for="output">Execution State</label>
       <p id="res-mean">{{execution_state}}</p>
       <br />
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Process Name</th>
-          <th>Arrival Time</th>
-          <th>Burst Time</th>
-          <th>Completion Time</th>
-          <th>Turnaround Time</th>
-          <th>Waiting Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for process in process_list %}
-        <tr>
-          <td>{{ process.0 }}</td>
-          <td>{{ process.1 }}</td>
-          <td>{{ process.2 }}</td>
-          <td id="ct">{{ completiontimes }}</td>
-          <td id="tt">{{ turnaroundtimes }}</td>
-          <td id="wt">{{ waitingtimes }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
   </div>
+
   <script>
-    window.onload = listitems('{{ completiontimes|safe }}', 'ct'),listitems('{{ turnaroundtimes|safe }}', 'tt'),listitems('{{ waitingtimes|safe }}', 'wt');
-    
+    (window.onload = listitems("{{ completiontimes|safe }}", "ct")),
+      listitems("{{ turnaroundtimes|safe }}", "tt"),
+      listitems("{{ waitingtimes|safe }}", "wt");
 
     function listitems(times, id) {
-        var elements = document.querySelectorAll(`#${id}`);
-        var list = JSON.parse(times);
+      var elements = document.querySelectorAll(`#${id}`);
+      var list = JSON.parse(times);
 
-        elements.forEach(function (element, index) {
-            element.textContent = list[index];
-        });
+      elements.forEach(function (element, index) {
+        element.textContent = list[index];
+      });
     }
   </script>
 </div>
