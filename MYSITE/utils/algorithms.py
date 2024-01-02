@@ -71,9 +71,9 @@ def prepareResultFCFS(arrival_times,burst_times):
     chart_div = fig.to_html(full_html=False)
 
     # Created a results dictionary.
-    results = {"chartdiv":chart_div,'execution_state':execution_state,'completion-times':completiontimes,
-               'turnaround-times':turnaroundtimes,'waiting-times':waitingtimes,
-               'avg_turnaround-time':avg_turnaroundtime,'avg_waiting-time':avg_waitingtime,
+    results = {"chartdiv":chart_div,'execution_state':execution_state,'completiontimes':completiontimes,
+               'turnaroundtimes':turnaroundtimes,'waitingtimes':waitingtimes,
+               'avg_turnaroundtime':avg_turnaroundtime,'avg_waitingtime':avg_waitingtime,
                'process_list': process_list}
     return results
 
