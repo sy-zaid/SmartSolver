@@ -1,5 +1,4 @@
-# from Process_classes import process_list
-from .Process_classes import process_list
+from Process_classes import process_list
 
 def FCFS(inp_arrival_times, inp_burst_times):
 
@@ -67,7 +66,7 @@ def FCFS(inp_arrival_times, inp_burst_times):
         curProcess = inp_process_list.__getprocess__(process_num)
         processAT = curProcess.arrival_time
 
-        if processAT > time_pointer:
+        if processAT > time_pointer: # FOR IDLE TIME
             idleTime = processAT - time_pointer
             time_pointer += total_idle_time
             total_idle_time += idleTime
@@ -102,6 +101,7 @@ def FCFS(inp_arrival_times, inp_burst_times):
     
     avg_waitingtime = inp_process_list.calcAvgWaitingTime(waitingtimes)
     # print(inp_process_list.__getlist__())
+    print('GC',gantt_chart)
 
     result_dict = {'gantt-chart':gantt_chart,'execution-state':execution_state,
                    'completion-times':completion_times,'turnaround-times':turnaroundtimes,
@@ -112,9 +112,9 @@ def FCFS(inp_arrival_times, inp_burst_times):
     return result_dict
 
 
-# arrival_times = [0,10,2,2]
-# burst_times = [2,3,3,1]
-# input1 = FCFS(arrival_times, burst_times)
+arrival_times = [0,10,2,2]
+burst_times = [2,3,3,1]
+input1 = FCFS(arrival_times, burst_times)
 
 
 # arrival_times = [6,5,4,1]

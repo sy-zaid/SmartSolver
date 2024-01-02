@@ -1,9 +1,10 @@
 class process:
-    def __init__(self,process_name,arrival_time,burst_time,priority=0):
+    def __init__(self,process_name,arrival_time,burst_time,priority=0,remaining_time=0):
         self.process_name = process_name
         self.arrival_time = arrival_time
         self.burst_time = burst_time
         self.priority = priority
+        self.remaining_time = remaining_time
 
 class process_list(list):
     def __init__(self,lst_arrival_times, lst_burst_times, lst_prior = None, qt = 0):
@@ -24,7 +25,6 @@ class process_list(list):
         
         return process_list
             
-        
     def __getlist__(self):
         res = []
         for i in range(self.num_processes):
@@ -88,6 +88,10 @@ class process_list(list):
     def calcAvgWaitingTime(self,waitingtimes):
         sumWT = sum(waitingtimes)
         return sumWT / self.num_processes
+
+# ----- FOR RR ----- #
+    # def createprocessDict(self):
+    #     for i in range(len(self.lst_arrival_times)):
 
 
     
