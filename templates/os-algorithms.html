@@ -105,6 +105,13 @@
         </tbody>
       </table>
     </div>
+    <div id="divganttchart">
+      <h3 id="labels">Gantt Chart</h3>
+      <div id="gantt-chart">
+        {% autoescape off %} {{ chartdiv }} {% endautoescape %}
+      </div>
+    </div>
+
     <div id="divcalculations">
       <b id="labels2">Average Turnaround Time: {{ avg_turnaroundtime }}</b
       ><br />
@@ -113,24 +120,19 @@
       <label id="labels2" for="output"
         ><b>Execution State:</b> {{execution_state}}</label
       >
-
       <br />
     </div>
-    <div id="divganttchart">
-      <h3 id="labels">Gantt Chart</h3>
-      <div id="gantt-chart">
-        {% autoescape off %} {{ chartdiv }} {% endautoescape %}
-      </div>
+    <div> 
+        <br>
     </div>
-    <!-- <div id="">
-      
-    </div> -->
   </div>
 
   <script>
-    (window.onload = listitems("{{ completiontimes|safe }}", "ct")),
-      listitems("{{ turnaroundtimes|safe }}", "tt"),
+    window.onload = function () {
+      listitems("{{ completiontimes|safe }}", "ct");
+      listitems("{{ turnaroundtimes|safe }}", "tt");
       listitems("{{ waitingtimes|safe }}", "wt");
+    };
 
     function listitems(times, id) {
       var elements = document.querySelectorAll(`#${id}`);

@@ -1,6 +1,6 @@
 @font-face {
   font-family: DM-Sans-Bold;
-  src: url("../Fonts/DMSans-VariableFont_opsz\,wght.ttf");
+  src: url("../Fonts/DMSans-VariableFont_opsz,wght.ttf");
 }
 
 body {
@@ -8,19 +8,15 @@ body {
   font-family: "DM-Sans-Bold";
 }
 
-/* --------------------------------------------------------------------------- */
-/* ------------------------- STYLING FOR OS-ALGORITHMS ------------------------- */
-/* --------------------------------------------------------------------------- */
+/* STYLING FOR OS-ALGORITHMS */
 #OA-heading {
   align-items: center;
-  /* background-color: red; */
   position: relative;
   text-align: center;
   padding: 20px 0px;
 }
 
 #OA-whole {
-  /* background-color: purple; */
   width: 100%;
   height: 100%;
   text-align: center;
@@ -30,34 +26,67 @@ body {
 }
 
 #OA-whole-div-1 {
-  /* background-color: aqua; */
   width: 100%;
 }
 
 #input-row {
-  /* background-color: aliceblue; */
   margin-bottom: 14px;
 }
 
 #input-row-4th {
   margin-bottom: 34px;
 }
+/* ------------------------- OUTPUT SECTIONS ------------------------- */
+#labels {
+  font-size: 22px;
+}
 
-#div-output-section {
-  position: absolute;
-  width: 80%;
-  height: 15vh;
-  left: 50%;
-  transform: translateX(-50%);
+#labels2 {
+  font-size: 18px;
+}
+
+#divtable {
+  width: 100%;
   /* background-color: red; */
-  margin: 20px 20px 20px 0px;
-  padding: 40px 10px 50px 10px;
-  font-weight: 500;
-  border-top: 2px solid #0b67f1;
+  padding: 20px 20px 20px 20px;
+  border-bottom: 2px solid #0b67f165;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+#tableoutput {
+  width: 100%;
+  height: 200px;
+  /* border-collapse: collapse; */
+  border: 1px solid #0b67f1;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #0b67f1;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+#divganttchart {
+  padding-top: 60px;
+  /* background-color: red; */
+  vertical-align: baseline;
+  padding-bottom: 2rem;
 }
 
 #gantt-chart {
-  /* background-color: red; */
   width: 100%;
   height: 300px;
   overflow-x: auto;
@@ -65,3 +94,20 @@ body {
   text-align: center;
 }
 
+#divcalculations {
+  text-align: left;
+  padding: 20px;
+  border-bottom: 2px solid #0b67f165;
+  margin-bottom: 8rem;
+}
+#div-output-section {
+  position: absolute;
+  width: 80%;
+  height: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 20px 20px 20px 0px;
+  padding: 40px 10px 50px 10px;
+  font-weight: 500;
+  border-top: 2px solid #0b67f1;
+}
