@@ -133,11 +133,126 @@ def convertSIToMass(si_mass, target_unit):
     converted_mass = float(si_mass) * inverse_conversion_factors[target_unit]
     return converted_mass
 
+def convLengthToSI(length, unit):
+    length_conversion_factors = {
+        'meters': 1,
+        'kilometers': 0.001,
+        'centimeters': 100,
+        'millimeters': 1000,
+        'inches': 0.0254,  # Corrected factor for inches
+        'feet': 0.3048,
+    }
+    if unit not in length_conversion_factors:
+        print('Invalid length unit provided.')
+        return None
+    converted_length = float(length) * length_conversion_factors[unit]
+    return converted_length
+
+def convSIToLength(si_length, target_unit):
+    inverse_length_conversion_factors = {
+        'meters': 1,
+        'kilometers': 0.001,
+        'centimeters': 0.01,
+        'millimeters': 0.001,
+        'inches': 39.3701,  # Corrected factor for inches
+        'feet': 3.28084,
+    }
+    if target_unit not in inverse_length_conversion_factors:
+        print('Invalid target length unit provided.')
+        return None
+    converted_length = float(si_length) * inverse_length_conversion_factors[target_unit]
+    return converted_length
 
 # a = convertMassToSI(10,'grams')
 # b = convertSIToMass(a,'ounces')
 # print(b)
 
+def convTimeToSI(time, unit):
+    time_conversion_factors = {
+        'seconds': 1,
+        'minutes': 60,
+        'hours': 3600,
+        'days': 86400,  # 1 day is 86400 seconds
+        # Add more time units as needed
+    }
+    if unit not in time_conversion_factors:
+        print('Invalid time unit provided.')
+        return None
+    converted_time = float(time) * time_conversion_factors[unit]
+    return converted_time
+
+def convSIToTime(si_time, target_unit):
+    inverse_time_conversion_factors = {
+        'seconds': 1,
+        'minutes': 1 / 60,
+        'hours': 1 / 3600,
+        'days': 1 / 86400,  # 1 second is 1/86400 days
+        # Add more time units as needed
+    }
+    if target_unit not in inverse_time_conversion_factors:
+        print('Invalid target time unit provided.')
+        return None
+    converted_time = float(si_time) * inverse_time_conversion_factors[target_unit]
+    return converted_time
+
+def convTemperatureToSI(temperature, unit):
+    # Assuming common units like Celsius, Fahrenheit, and Kelvin
+    temperature_conversion_factors = {
+        'celsius': 1,
+        'fahrenheit': 5 / 9,  # Convert Fahrenheit to Celsius
+        'kelvin': 1,  # Kelvin is the same as Celsius
+        # Add more temperature units as needed
+    }
+    if unit not in temperature_conversion_factors:
+        print('Invalid temperature unit provided.')
+        return None
+    converted_temperature = float(temperature) * temperature_conversion_factors[unit]
+    return converted_temperature
+
+def convSIToTemperature(si_temperature, target_unit):
+    # Assuming common units like Celsius, Fahrenheit, and Kelvin
+    inverse_temperature_conversion_factors = {
+        'celsius': 1,
+        'fahrenheit': 9 / 5,  # Convert Celsius to Fahrenheit
+        'kelvin': 1,  # Kelvin is the same as Celsius
+        # Add more temperature units as needed
+    }
+    if target_unit not in inverse_temperature_conversion_factors:
+        print('Invalid target temperature unit provided.')
+        return None
+    converted_temperature = float(si_temperature) * inverse_temperature_conversion_factors[target_unit]
+    return converted_temperature
+
+def convPowerToSI(power, unit):
+    power_conversion_factors = {
+        'watts': 1,
+        'kilowatts': 1000,
+        'megawatts': 1e6,  # 1 megawatt is 1e6 watts
+        'horsepower': 745.7,  # 1 horsepower is approximately 745.7 watts
+        # Add more power units as needed
+    }
+    if unit not in power_conversion_factors:
+        print('Invalid power unit provided.')
+        return None
+    converted_power = float(power) * power_conversion_factors[unit]
+    return converted_power
+
+def convSIToPower(si_power, target_unit):
+    inverse_power_conversion_factors = {
+        'watts': 1,
+        'kilowatts': 0.001,
+        'megawatts': 1e-6,  # 1 watt is 1e-6 megawatts
+        'horsepower': 1 / 745.7,  # 1 watt is approximately 1/745.7 horsepower
+        # Add more power units as needed
+    }
+    if target_unit not in inverse_power_conversion_factors:
+        print('Invalid target power unit provided.')
+        return None
+
+
+# -----------------------------------------------------------------#
+# ------------------------- CALCULATIONS ------------------------- #
+# ----------------------------------------------------------------- #
 def calcVelocity(distance,time,dddistance,ddtime):
     siu_distance = float(convertDistanceToSI(distance,dddistance))
     siu_time = float(convertTimeToSI(time,ddtime))
@@ -176,4 +291,24 @@ def calcForce(acceleration,mass,ddacceleration,ddmass):
 def convMass(input_mass,dd_mass_from,dd_mass_to):
     temp = convertMassToSI(input_mass,dd_mass_from)
     res = convertSIToMass(temp,dd_mass_to)
+    return res
+
+def convLength(input_length,dd_length_from,dd_length_to):
+    temp = convLengthToSI(input_length,dd_length_from)
+    res = convSIToLength(temp,dd_length_to)
+    return res
+
+def convTime(input_time,dd_time_from,dd_time_to):
+    temp = convTimeToSI(input_time,dd_time_from)
+    res = convSIToTime(temp,dd_time_to)
+    return res
+
+def convTemperature(input_temperature,dd_temperature_from,dd_temperature_to):
+    temp = convTemperatureToSI(input_temperature,dd_temperature_from)
+    res = convSIToTemperature(temp,dd_temperature_to)
+    return res
+
+def convPower(input_power,dd_power_from,dd_power_to):
+    temp = convPowerToSI(input_power,dd_power_from)
+    res = convSIToPower(temp,dd_power_to)
     return res

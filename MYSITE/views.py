@@ -4,7 +4,7 @@ from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
 from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict,prepareResultRR
-from .utils.physics import calcVelocity,calcAcceleration,calcFrequency,calcForce,convMass
+from .utils.physics import calcVelocity,calcAcceleration,calcFrequency,calcForce,convMass,convLength,convTime,convTemperature,convPower
 
 
 def index(request):
@@ -231,12 +231,30 @@ def physicalCalculation(request):
 def physicalValueConverter(request):
     results = {}
     inp_mass = request.POST.get("input-mass",None)
-    
+    inp_length = request.POST.get("input-length",None)
+    inp_time = request.POST.get("input-time",None)
+    inp_temperature = request.POST.get("input-temperature",None)
+    inp_power = request.POST.get("input-power",None)
+
     if inp_mass:
         dd_mass_from = request.POST.get("dropdown-units-mass-from",'grams')
         dd_mass_to = request.POST.get("dropdown-units-mass-to",'grams')
         conv_mass = convMass(inp_mass,dd_mass_from,dd_mass_to)
         results = {'conv_mass':conv_mass,'dd_mass_to':dd_mass_to}
+        return render(request,'physical-value-converter.html',results)
+
+    elif inp_length:
+        dd_length_from = request.POST.get("dropdown-units-length-from",'grams')
+        dd_length_to = request.POST.get("dropdown-units-length-to",'grams')
+        conv_length = convLength(inp_length,dd_length_from,dd_length_to)
+        results = {'conv_length':conv_length,'dd_length_to':dd_length_to}
+        return render(request,'physical-value-converter.html',results)
+    
+    elif inp_length:
+        dd_time_from = request.POST.get("dropdown-units-time-from",'grams')
+        dd_time_to = request.POST.get("dropdown-units-time-to",'grams')
+        conv_time = convTime(inp_time,dd_time_from,dd_time_to)
+        results = {'conv_time':conv_time,'dd_time_to':dd_time_to}
         return render(request,'physical-value-converter.html',results)
 
 

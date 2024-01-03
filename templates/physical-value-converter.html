@@ -45,50 +45,45 @@
     </div>
   </div>
 
-  <!-- DIV FOR VELOCITY -->
+  <!-- DIV FOR LENGTH -->
   <div id="PC-whole-div-2">
     <!-- Input section -->
-    <form method="post" action="physical-calculation">
+    <form method="post" action="physical-value-converter">
       {% csrf_token %}
-      <input
-        class="input-box"
-        type="text"
-        pattern="[0-9,]*"
-        defa
-        id="input-distance"
-        name="input-distance"
-        placeholder="Enter your input for Distance"
-        required
-      />
-      <select name="dropdown-units-distance" id="dropdown-units-distance">
-        <!-- Dropdown options -->
-        <option value="meters">meters (m)</option>
-        <option value="kilometers">kilometers (km)</option>
-        <option value="feet">feet (ft)</option>
-      </select>
-      <br /><br />
-      <input
-        class="input-box"
-        type="text"
-        pattern="[0-9,]*"
-        defa
-        id="input-time"
-        name="input-time"
-        placeholder="Enter your input for Time"
-        required
-      />
-      <select name="dropdown-units-time" id="dropdown-units-time">
-        <!-- Dropdown options -->
-        <option value="seconds">seconds (s)</option>
-        <option value="hours">hours (h)</option>
-      </select>
-      <br /><br />
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-length"
+          name="input-length"
+          placeholder="Enter your input for Length"
+          required
+        />
+        <select
+          name="dropdown-units-length-from"
+          id="dropdown-units-length-from"
+        >
+          <option value="meters">Meters (m)</option>
+          <option value="kilometers">Kilometers (km)</option>
+          <option value="centimeters">Centimeters (cm)</option>
+          <option value="millimeters">Millimeters (mm)</option>
+          <option value="inches">Inches (in)</option>
+          <option value="feet">Feet (ft)</option>
+        </select>
+        <br /><br />
+        <select name="dropdown-units-length-to" id="dropdown-units-length-to">
+          <option value="meters">Meters (m)</option>
+          <option value="kilometers">Kilometers (km)</option>
+          <option value="centimeters">Centimeters (cm)</option>
+          <option value="millimeters">Millimeters (mm)</option>
+          <option value="inches">Inches (in)</option>
+          <option value="feet">Feet (ft)</option>
+        </select>
+      </div>
       <!-- Buttons -->
       <div id="div-buttons">
-        <button
-          id="clearButton"
-          onclick="clearInput('input-distance');clearInput('input-time')"
-        >
+        <button id="clearButton" onclick="clearInput('input-length')">
           <img
             src="../static/Images/delete-icon.png"
             alt=""
@@ -102,12 +97,12 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Velocity = {{velocity}}{{siu_velocity}}</label>
+        <label for="output">Result = {{conv_length}} {{dd_length_to}}</label>
       </div>
     </div>
   </div>
 
-  <!-- DIV FOR ACCELERATION -->
+  <!-- DIV FOR MASS -->
   <div id="PC-whole-div-3">
     <!-- Input section -->
     <form method="post" action="physical-value-converter">
@@ -155,7 +150,7 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Result = {{conv_mass}}{{dd_mass_to}}</label>
+        <label for="output">Result = {{conv_mass}} {{dd_mass_to}}</label>
       </div>
     </div>
   </div>
@@ -163,22 +158,32 @@
   <!-- DIV FOR FREQUENCY -->
   <div id="PC-whole-div-4">
     <!-- Input section -->
-    <form method="post" action="physical-calculation">
+    <form method="post" action="physical-value-converter">
       {% csrf_token %}
       <div id="div-input-section">
         <input
           class="input-box"
           type="text"
           pattern="[0-9,]*"
-          id="input-time-freq"
-          name="input-time-freq"
-          placeholder="Enter your input for Time (e.g. 1,2,3...)"
+          id="input-time"
+          name="input-time"
+          placeholder="Enter your input for Time"
           required
-        /><select name="dropdown-units-time" id="dropdown-units-time">
-          <!-- Dropdown options -->
-          <option value="seconds">seconds (s)</option>
-          <option value="minutes">minutes (h)</option>
-          <option value="hours">hours (h)</option>
+        />
+        <select name="dropdown-units-time-from" id="dropdown-units-time-from">
+          <option value="seconds">Seconds (s)</option>
+          <option value="minutes">Minutes (min)</option>
+          <option value="hours">Hours (hr)</option>
+          <option value="days">Days (days)</option>
+          <!-- Add more time units as needed -->
+        </select>
+        <br /><br />
+        <select name="dropdown-units-time-to" id="dropdown-units-time-to">
+          <option value="seconds">Seconds (s)</option>
+          <option value="minutes">Minutes (min)</option>
+          <option value="hours">Hours (hr)</option>
+          <option value="days">Days (days)</option>
+          <!-- Add more time units as needed -->
         </select>
       </div>
 
@@ -198,42 +203,44 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Frequency = {{frequency}} {{siu_freq}}</label>
+        <label for="output">Time = {{conv_time}} {{dd_time_to}}</label>
       </div>
     </div>
   </div>
 
-  <!-- DIV FOR PRESSURE -->
+  <!-- DIV FOR TEMPERATURE -->
   <div id="PC-whole-div-5">
     <!-- Input section -->
-    <form method="post" action="physical-calculation">
+    <form method="post" action="physical-value-converter">
       {% csrf_token %}
       <div id="div-input-section">
         <input
           class="input-box"
           type="text"
           pattern="[0-9,]*"
-          id="input-force"
-          name="input-force"
-          placeholder="Enter your input for Force (e.g. 1,2,3...)"
+          id="input-temperature"
+          name="input-temperature"
+          placeholder="Enter your input for Temperature"
           required
         />
-        <select name="dropdown-units-force" id="dropdown-units-force">
-          <!-- Dropdown options -->
-          <option value="newton">newton (N)</option>
+        <select
+          name="dropdown-units-temperature-from"
+          id="dropdown-units-temperature-from"
+        >
+          <option value="celsius">Celsius (°C)</option>
+          <option value="fahrenheit">Fahrenheit (°F)</option>
+          <option value="kelvin">Kelvin (K)</option>
+          <!-- Add more temperature units as needed -->
         </select>
         <br /><br />
-        <input
-          class="input-box"
-          type="text"
-          pattern="[0-9,]*"
-          id="input-area"
-          name="input-area"
-          placeholder="Enter your input for Area"
-          required
-        /><select name="dropdown-units-force" id="dropdown-units-force">
-          <!-- Dropdown options -->
-          <option value="square-meter">square meter (m²)</option>
+        <select
+          name="dropdown-units-temperature-to"
+          id="dropdown-units-temperature-to"
+        >
+          <option value="celsius">Celsius (°C)</option>
+          <option value="fahrenheit">Fahrenheit (°F)</option>
+          <option value="kelvin">Kelvin (K)</option>
+          <!-- Add more temperature units as needed -->
         </select>
       </div>
       <!-- Buttons -->
@@ -258,45 +265,35 @@
     </div>
   </div>
 
-  <!-- DIV FOR FORCE -->
+  <!-- DIV FOR POWER -->
   <div id="PC-whole-div-6">
     <!-- Input section -->
-    <form method="post" action="physical-calculation">
+    <form method="post" action="physical-value-converter">
       {% csrf_token %}
       <div id="div-input-section">
         <input
           class="input-box"
           type="text"
-          id="input-mass"
-          name="input-mass"
-          placeholder="Enter your input for mass (e.g. 1,2,3...)"
+          pattern="[0-9,]*"
+          id="input-power"
+          name="input-power"
+          placeholder="Enter your input for Power"
           required
         />
-        <select name="dropdown-units-mass" id="dropdown-units-mass">
-          <!-- Dropdown options -->
-          <option value="grams">grams (g)</option>
-          <option value="kilograms">kilograms (kg)</option>
-          <option value="miligrams">miligrams (mg)</option>
+        <select name="dropdown-units-power-from" id="dropdown-units-power-from">
+          <option value="watts">Watts (W)</option>
+          <option value="kilowatts">Kilowatts (kW)</option>
+          <option value="megawatts">Megawatts (MW)</option>
+          <option value="horsepower">Horsepower (hp)</option>
+          <!-- Add more power units as needed -->
         </select>
         <br /><br />
-        <input
-          class="input-box"
-          type="text"
-          pattern="[0-9,]*"
-          id="input-acceleration"
-          name="input-acceleration"
-          placeholder="Enter your input for Acceleration (e.g. 1,2,3...)"
-          required
-        />
-        <select
-          name="dropdown-units-acceleration"
-          id="dropdown-units-acceleration"
-        >
-          <!-- Dropdown options -->
-          <option value="meters-per-second-squared">
-            meters per second squared (m/s²)
-          </option>
-          <option value="meter-per-second">meters per second (m/s)</option>
+        <select name="dropdown-units-power-to" id="dropdown-units-power-to">
+          <option value="watts">Watts (W)</option>
+          <option value="kilowatts">Kilowatts (kW)</option>
+          <option value="megawatts">Megawatts (MW)</option>
+          <option value="horsepower">Horsepower (hp)</option>
+          <!-- Add more power units as needed -->
         </select>
       </div>
       <!-- Buttons -->
@@ -315,7 +312,6 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <!-- <label for="output">Force</label> -->
         <p id="res-mean">Force = {{force}} {{siu_force}}</p>
         <p></p>
       </div>
