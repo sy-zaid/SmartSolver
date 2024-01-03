@@ -4,7 +4,7 @@ from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
 from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict,prepareResultRR
-
+from .utils.physics import calcVelocity,calcAcceleration
 
 
 def index(request):
@@ -72,6 +72,132 @@ def algebra(request):
 
 # ------------------------- Physics ------------------------- #
 def physicalCalculation(request):
+    """
+    <!-- IDS USED IN THE PHYSICAL-CALCULATIONS TEMPLATE -->
+        <!--
+        Velocity Section (PC-whole-div-2):
+        Input:
+            - Distance: input-distance
+            Units (Dropdown): dropdown-units-distance
+                - Meters (m)
+                - Kilometers (km)
+                - Feet (ft)
+
+            - Time: input-time
+            Units (Dropdown): dropdown-units-time
+                - Seconds (s)
+                - Hours (h)
+
+        Buttons:
+            - Clear Button: clearButton
+            - Solve Button: solveButton
+
+        Output:
+            - Velocity: res-mean
+        -->
+        <!--
+        Acceleration Section (PC-whole-div-3):
+        Input:
+            - Initial Velocity: input-initial-velocity
+            - Final Velocity: input-final-velocity
+            Units (Dropdown): dropdown-units-final-vel
+                - Meters per second (m/s)
+                - Kilometers per hour (km/h)
+                - Feet per second (ft/s)
+            - Time: input-time-acc
+            Units (Dropdown): dropdown-units-time
+                - Seconds (s)
+                - Hours (h)
+        Buttons:
+            - Clear Button: clearButton
+            - Solve Button: solveButton
+        Output:
+            - Acceleration: res-mean
+        -->
+
+        <!--
+        Frequency Section (PC-whole-div-4):
+        Input:
+            - Time: input-time-acc
+            Units (Dropdown): dropdown-units-time
+                - Seconds (s)
+                - Hours (h)
+        Buttons:
+            - Clear Button: clearButton
+            - Solve Button: solveButton
+        Output:
+            - Frequency: res-mean
+        -->
+
+        <!--
+        Pressure Section (PC-whole-div-5):
+        Input:
+            - Force: input-force
+            Units (Dropdown): dropdown-units-force
+                - Newton (N)
+            - Area: input-area
+            Units (Dropdown): dropdown-units-force
+                - Square meter (m²)
+        Buttons:
+            - Clear Button: clearButton
+            - Solve Button: solveButton
+        Output:
+            - Pressure: res-mean
+        -->
+
+        <!--
+        Force Section (PC-whole-div-6):
+        Input:
+            - Mass: input-mass
+            Units (Dropdown): dropdown-units-mass
+                - Grams (g)
+                - Kilograms (kg)
+                - Milligrams (mg)
+            - Acceleration: input-acceleration
+            Units (Dropdown): dropdown-units-acceleration
+                - Meters per second squared (m/s²)
+                - Meters per second (m/s)
+        Buttons:
+            - Clear Button: clearButton
+            - Solve Button: solveButton
+        Output:
+            - Force: res-mean
+        -->
+
+    """
+    results = {}
+    # VELOCITY INPUTS
+    inp_distance = (request.POST.get('input-distance',None))
+    inp_time = (request.POST.get('input-time',None))
+    # ACCELERATION INPUTS
+    inp_initial_velocity = (request.POST.get('input-initial-velocity', None))
+    inp_final_velocity = (request.POST.get('input-final-velocity', None))
+    inp_time_acc = (request.POST.get('input-time-acc', None))
+    # FREQUENCY INPUTS
+    inp_time_freq = request.POST.get('input-time', None)
+    ddtime_freq = request.POST.get('dropdown-units-time', 'seconds')
+
+    # FOR VELOCITY
+    if inp_distance and inp_time:
+        dddistance = (request.POST.get('dropdown-units-distance','meters'))
+        ddtime = (request.POST.get('dropdown-units-time','seconds'))
+        lst_velocity = calcVelocity(inp_distance,inp_time,dddistance,ddtime)
+        velocity = lst_velocity
+        siu_velocity = 'm/s'
+        results = {'velocity':velocity,'siu_velocity':siu_velocity}
+        return render(request,'physical-calculation.html',results)
+    
+    # FOR ACCELERATION
+    if inp_initial_velocity and inp_final_velocity and inp_time_acc:
+        ddtime_acc = request.POST.get('dropdown-units-time', 'seconds')
+        ddvelocity = request.POST.get('dropdown-units-final-vel', 'meters-per-second-squared')
+        acceleration = calcAcceleration(inp_final_velocity,inp_initial_velocity,inp_time_acc,ddvelocity,ddtime_acc)
+        siu_acceleration = 'm/s²'
+        results = {'acceleration':acceleration,'siu_acceleration':siu_acceleration}
+        return render(request,'physical-calculation.html',results)
+
+
+    
     return render(request, "physical-calculation.html")
 
 def physicalValueConverter(request):

@@ -115,3 +115,5 @@ def calculate_gcf(numbers):
         gcf_result = find_gcf(gcf_result, num)
 
     return gcf_result
+
+

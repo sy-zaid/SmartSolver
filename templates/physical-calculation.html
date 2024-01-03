@@ -48,22 +48,47 @@
   <!-- DIV FOR VELOCITY -->
   <div id="PC-whole-div-2">
     <!-- Input section -->
-    <form method="post" action="pre-algebra">
+    <form method="post" action="physical-calculation">
       {% csrf_token %}
-      <div id="div-input-section">
-        <input
-          class="input-box"
-          type="text"
-          pattern="[0-9,]*"
-          id="input-mmm"
-          name="input-mmm"
-          placeholder="Enter your input for Mean, Median, Mode (e.g. 1,2,3...)"
-          required
-        />
-      </div>
+      <input
+        class="input-box"
+        type="text"
+        pattern="[0-9,]*"
+        defa
+        id="input-distance"
+        name="input-distance"
+        placeholder="Enter your input for Distance"
+        required
+      />
+      <select name="dropdown-units-distance" id="dropdown-units-distance">
+        <!-- Dropdown options -->
+        <option value="meters">meters (m)</option>
+        <option value="kilometers">kilometers (km)</option>
+        <option value="feet">feet (ft)</option>
+      </select>
+      <br /><br />
+      <input
+        class="input-box"
+        type="text"
+        pattern="[0-9,]*"
+        defa
+        id="input-time"
+        name="input-time"
+        placeholder="Enter your input for Time"
+        required
+      />
+      <select name="dropdown-units-time" id="dropdown-units-time">
+        <!-- Dropdown options -->
+        <option value="seconds">seconds (s)</option>
+        <option value="hours">hours (h)</option>
+      </select>
+      <br /><br />
       <!-- Buttons -->
       <div id="div-buttons">
-        <button id="clearButton" onclick="clearInput('input-mmm')">
+        <button
+          id="clearButton"
+          onclick="clearInput('input-distance');clearInput('input-time')"
+        >
           <img
             src="../static/Images/delete-icon.png"
             alt=""
@@ -77,16 +102,7 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Mean</label>
-        <p id="res-mean">{{mean}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Median</label>
-        <p id="res-median">{{median}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Mode</label>
-        <p id="res-mode">{{mode}}</p>
+        <label for="output">Velocity = {{velocity}}{{siu_velocity}}</label>
       </div>
     </div>
   </div>
@@ -94,7 +110,7 @@
   <!-- DIV FOR ACCELERATION -->
   <div id="PC-whole-div-3">
     <!-- Input section -->
-    <form method="post" action="pre-algebra">
+    <form method="post" action="physical-calculation">
       {% csrf_token %}
       <div id="div-input-section">
         <input
@@ -102,11 +118,43 @@
           type="text"
           pattern="[0-9,]*"
           defa
-          id="input-lgcmf"
-          name="input-lgcmf"
-          placeholder="Enter your input for GCF & LCM (e.g. 1,2,3...)"
+          id="input-final-velocity"
+          name="input-final-velocity"
+          placeholder="Enter your input for Initial Velocity"
           required
         />
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          defa
+          id="input-initial-velocity"
+          name="input-initial-velocity"
+          placeholder="Enter your input for Final Velocity"
+          required
+        />
+        <select name="dropdown-units-final-vel" id="dropdown-units-final-vel">
+          <option value="meter-per-second">Meters per second (m/s)</option>
+          <option value="kilometer-per-hour">Kilometers per hour (km/h)</option>
+          <option value="feet-per-second">Feet per second (ft/s)</option>
+        </select>
+        <br /><br />
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          defa
+          id="input-time-acc"
+          name="input-time-acc"
+          placeholder="Enter your input for Time"
+          required
+        />
+        <select name="dropdown-units-time" id="dropdown-units-time">
+          <!-- Dropdown options -->
+          <option value="seconds">seconds (s)</option>
+          <option value="hours">hours (h)</option>
+        </select>
+        <br /><br />
       </div>
       <!-- Buttons -->
       <div id="div-buttons">
@@ -124,12 +172,9 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">LCM</label>
-        <p id="res-mean">{{lcm}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">GCF</label>
-        <p id="res-median">{{gcf}}</p>
+        <label for="output"
+          >Acceleration = {{acceleration}}{{siu_acceleration}}</label
+        >
       </div>
     </div>
   </div>
@@ -137,19 +182,24 @@
   <!-- DIV FOR FREQUENCY -->
   <div id="PC-whole-div-4">
     <!-- Input section -->
-    <form method="post" action="pre-algebra">
+    <form method="post" action="physical-calculation">
       {% csrf_token %}
       <div id="div-input-section">
         <input
           class="input-box"
           type="text"
           pattern="[0-9,]*"
-          id="input-mmm"
-          name="input-mmm"
-          placeholder="Enter your input for Frequency (e.g. 1,2,3...)"
+          id="input-time"
+          name="input-time"
+          placeholder="Enter your input for Time (e.g. 1,2,3...)"
           required
-        />
+        /><select name="dropdown-units-time" id="dropdown-units-time">
+          <!-- Dropdown options -->
+          <option value="seconds">seconds (s)</option>
+          <option value="hours">hours (h)</option>
+        </select>
       </div>
+
       <!-- Buttons -->
       <div id="div-buttons">
         <button id="clearButton" onclick="clearInput('input-mmm')">
@@ -166,16 +216,8 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Mean</label>
+        <label for="output">Frequency = </label>
         <p id="res-mean">{{mean}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Median</label>
-        <p id="res-median">{{median}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Mode</label>
-        <p id="res-mode">{{mode}}</p>
       </div>
     </div>
   </div>
@@ -183,18 +225,35 @@
   <!-- DIV FOR PRESSURE -->
   <div id="PC-whole-div-5">
     <!-- Input section -->
-    <form method="post" action="pre-algebra">
+    <form method="post" action="physical-calculation">
       {% csrf_token %}
       <div id="div-input-section">
         <input
           class="input-box"
           type="text"
           pattern="[0-9,]*"
-          id="input-mmm"
-          name="input-mmm"
-          placeholder="Enter your input for Mean, Median, Mode (e.g. 1,2,3...)"
+          id="input-force"
+          name="input-force"
+          placeholder="Enter your input for Force (e.g. 1,2,3...)"
           required
         />
+        <select name="dropdown-units-force" id="dropdown-units-force">
+          <!-- Dropdown options -->
+          <option value="newton">newton (N)</option>
+        </select>
+        <br /><br />
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-area"
+          name="input-area"
+          placeholder="Enter your input for Area"
+          required
+        /><select name="dropdown-units-force" id="dropdown-units-force">
+          <!-- Dropdown options -->
+          <option value="square-meter">square meter (m²)</option>
+        </select>
       </div>
       <!-- Buttons -->
       <div id="div-buttons">
@@ -212,16 +271,8 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Mean</label>
+        <label for="output">Pressure</label>
         <p id="res-mean">{{mean}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Median</label>
-        <p id="res-median">{{median}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Mode</label>
-        <p id="res-mode">{{mode}}</p>
       </div>
     </div>
   </div>
@@ -229,18 +280,44 @@
   <!-- DIV FOR FORCE -->
   <div id="PC-whole-div-6">
     <!-- Input section -->
-    <form method="post" action="pre-algebra">
+    <form method="post" action="physical-calculation">
       {% csrf_token %}
       <div id="div-input-section">
         <input
           class="input-box"
           type="text"
           pattern="[0-9,]*"
-          id="input-mmm"
-          name="input-mmm"
-          placeholder="Enter your input for force (e.g. 1,2,3...)"
+          id="input-mass"
+          name="input-mass"
+          placeholder="Enter your input for mass (e.g. 1,2,3...)"
           required
         />
+        <select name="dropdown-units-mass" id="dropdown-units-mass">
+          <!-- Dropdown options -->
+          <option value="gram">grams (g)</option>
+          <option value="kilogram">kilograms (kg)</option>
+          <option value="miligram">miligrams (mg)</option>
+        </select>
+        <br /><br />
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-acceleration"
+          name="input-acceleration"
+          placeholder="Enter your input for Acceleration (e.g. 1,2,3...)"
+          required
+        />
+        <select
+          name="dropdown-units-acceleration"
+          id="dropdown-units-acceleration"
+        >
+          <!-- Dropdown options -->
+          <option value="meter-per-secondsq">
+            meters per second squared (m/s²)
+          </option>
+          <option value="meter-per-second">meters per second (m/s)</option>
+        </select>
       </div>
       <!-- Buttons -->
       <div id="div-buttons">
@@ -258,19 +335,101 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Mean</label>
+        <label for="output">Force</label>
         <p id="res-mean">{{mean}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Median</label>
-        <p id="res-median">{{median}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Mode</label>
-        <p id="res-mode">{{mode}}</p>
       </div>
     </div>
   </div>
 </div>
 
 {% endblock body %}
+<!-- IDS USED IN THE ABOVE TEMPLATE -->
+<!--
+  Velocity Section (PC-whole-div-2):
+  Input:
+    - Distance: input-distance
+      Units (Dropdown): dropdown-units-distance
+        - Meters (m)
+        - Kilometers (km)
+        - Feet (ft)
+
+    - Time: input-time
+      Units (Dropdown): dropdown-units-time
+        - Seconds (s)
+        - Hours (h)
+
+  Buttons:
+    - Clear Button: clearButton
+    - Solve Button: solveButton
+
+  Output:
+    - Velocity: res-mean
+-->
+<!--
+  Acceleration Section (PC-whole-div-3):
+  Input:
+    - Initial Velocity: input-initial-velocity
+    - Final Velocity: input-final-velocity
+      Units (Dropdown): dropdown-units-final-vel
+        - Meters per second (m/s)
+        - Kilometers per hour (km/h)
+        - Feet per second (ft/s)
+    - Time: input-time
+      Units (Dropdown): dropdown-units-time
+        - Seconds (s)
+        - Hours (h)
+  Buttons:
+    - Clear Button: clearButton
+    - Solve Button: solveButton
+  Output:
+    - Acceleration: res-mean
+-->
+
+<!--
+  Frequency Section (PC-whole-div-4):
+  Input:
+    - Time: input-time
+      Units (Dropdown): dropdown-units-time
+        - Seconds (s)
+        - Hours (h)
+  Buttons:
+    - Clear Button: clearButton
+    - Solve Button: solveButton
+  Output:
+    - Frequency: res-mean
+-->
+
+<!--
+  Pressure Section (PC-whole-div-5):
+  Input:
+    - Force: input-force
+      Units (Dropdown): dropdown-units-force
+        - Newton (N)
+    - Area: input-area
+      Units (Dropdown): dropdown-units-force
+        - Square meter (m²)
+  Buttons:
+    - Clear Button: clearButton
+    - Solve Button: solveButton
+  Output:
+    - Pressure: res-mean
+-->
+
+<!--
+  Force Section (PC-whole-div-6):
+  Input:
+    - Mass: input-mass
+      Units (Dropdown): dropdown-units-mass
+        - Grams (g)
+        - Kilograms (kg)
+        - Milligrams (mg)
+    - Acceleration: input-acceleration
+      Units (Dropdown): dropdown-units-acceleration
+        - Meters per second squared (m/s²)
+        - Meters per second (m/s)
+  Buttons:
+    - Clear Button: clearButton
+    - Solve Button: solveButton
+  Output:
+    - Force: res-mean
+-->
