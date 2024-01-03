@@ -103,19 +103,40 @@ def convertMassToSI(mass, unit):
     # Define conversion factors
     conversion_factors = {
         'kilograms': 1,
-        'grams': 0.001,  # 1 gram is 0.001 kilograms
-        'milligrams': 1e-6,  # 1 milligram is 1e-6 kilograms
+        'grams': 0.001,        # 1 gram is 0.001 kilograms
+        'milligrams': 1e-6,    # 1 milligram is 1e-6 kilograms
+        'pounds': 0.453592,     # 1 pound is approximately 0.453592 kilograms
+        'ounces': 0.0283495,    # 1 ounce is approximately 0.0283495 kilograms
     }
 
     if unit not in conversion_factors:
         print('Invalid unit provided.')
         return None
 
-    
     converted_mass = float(mass) * conversion_factors[unit]
     return converted_mass
-    
 
+def convertSIToMass(si_mass, target_unit):
+    # Define conversion factors for the inverse conversion
+    inverse_conversion_factors = {
+        'kilograms': 1,
+        'grams': 1000,        # 1 kilogram is 1000 grams
+        'milligrams': 1e6,    # 1 kilogram is 1e6 milligrams
+        'pounds': 2.20462,    # 1 pound is approximately 2.20462 kilograms
+        'ounces': 35.274,     # 1 ounce is approximately 35.274 grams
+    }
+
+    if target_unit not in inverse_conversion_factors:
+        print('Invalid target unit provided.')
+        return None
+
+    converted_mass = float(si_mass) * inverse_conversion_factors[target_unit]
+    return converted_mass
+
+
+# a = convertMassToSI(10,'grams')
+# b = convertSIToMass(a,'ounces')
+# print(b)
 
 def calcVelocity(distance,time,dddistance,ddtime):
     siu_distance = float(convertDistanceToSI(distance,dddistance))
@@ -149,3 +170,10 @@ def calcForce(acceleration,mass,ddacceleration,ddmass):
     return force
 
 
+
+
+# ------------------------- FOR CONVERTERS ------------------------- #
+def convMass(input_mass,dd_mass_from,dd_mass_to):
+    temp = convertMassToSI(input_mass,dd_mass_from)
+    res = convertSIToMass(temp,dd_mass_to)
+    return res

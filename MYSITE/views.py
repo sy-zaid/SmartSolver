@@ -4,7 +4,7 @@ from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
 from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict,prepareResultRR
-from .utils.physics import calcVelocity,calcAcceleration,calcFrequency,calcForce
+from .utils.physics import calcVelocity,calcAcceleration,calcFrequency,calcForce,convMass
 
 
 def index(request):
@@ -229,6 +229,17 @@ def physicalCalculation(request):
     return render(request, "physical-calculation.html")
 
 def physicalValueConverter(request):
+    results = {}
+    inp_mass = request.POST.get("input-mass",None)
+    
+    if inp_mass:
+        dd_mass_from = request.POST.get("dropdown-units-mass-from",'grams')
+        dd_mass_to = request.POST.get("dropdown-units-mass-to",'grams')
+        conv_mass = convMass(inp_mass,dd_mass_from,dd_mass_to)
+        results = {'conv_mass':conv_mass,'dd_mass_to':dd_mass_to}
+        return render(request,'physical-value-converter.html',results)
+
+
     return render(request,'physical-value-converter.html')
 
 # ------------------------- Programming ------------------------- #
@@ -290,5 +301,5 @@ def osAlgorithms(request):
     elif algorithm_name == "Priority":
         priorities = list(map(int,priorities.split(',')))
     
-    else:    
+    else:
         return render(request,'os-algorithms.html')

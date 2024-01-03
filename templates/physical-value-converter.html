@@ -1,96 +1,240 @@
 {% extends 'base.html' %} {% block body %}
-<link rel="stylesheet" href="../static/Stylesheets/unit_conversion.css" />
-<script src="../static/Scripts/unit_conversion.js" defer></script>
+<link rel="stylesheet" href="../static/Stylesheets/physics.css" />
+<script src="../static/Scripts/physics.js" defer></script>
 
-<title>Unit Conversion</title>
+<title>Physics Calculations</title>
 
-<div id="UC-heading">
-  <h1 id="heading-1-black">Value Converter</h1>
-  <h2 id="heading-2-black">Length, Mass, Time , Temperature , Power</h2>
+<div id="PC-heading">
+  <h1 id="heading-1-black">Physical Units Conversion</h1>
+  <h2 id="heading-2-black">Acceleration, Frequency, Velocity & more...</h2>
 </div>
 
 <!-- MAKING A WHOLE DIV FOR SIDE MENU + CALCULATIONS MENU -->
-<div id="UC-whole">
-  <div id="UC-whole-div-1">
+<div id="PC-whole">
+  <!-- DIV FOR SIDE MENU -->
+  <div id="PC-whole-div-1">
     <div id="side-menu">
       <h4 id="heading-2-black">Related Topics</h4>
       <ul id="side-menu-list">
-        <li><button onclick="showSection('div-out-mmm')">Length</button></li>
-        <li>Mass</li>
-        <li>Time</li>
-        <li>Temperature</li>
-        <li>Power</li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-2')">
+            Length
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-3')">
+            Mass
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-4')">
+            Time
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-5')">
+            Temperature
+          </button>
+        </li>
+        <li>
+          <button id="side-menu-button" onclick="showSection('PC-whole-div-6')">
+            Power
+          </button>
+        </li>
       </ul>
     </div>
   </div>
 
-  <div id="UC-whole-div-2">
+  <!-- DIV FOR VELOCITY -->
+  <div id="PC-whole-div-2">
     <!-- Input section -->
-    <form method="post" action="unit_conversion">
+    <form method="post" action="physical-calculation">
       {% csrf_token %}
-      <div id="div-input-section">
-        <input
-          class="input-box"
-          type="text"
-          pattern="[0-9,]*"
-          id="numericInput"
-          id="input-mmm"
-          name="input-mmm"
-          placeholder="Enter your input (e.g. 1,2,3...)"
-        />
-      </div>
+      <input
+        class="input-box"
+        type="text"
+        pattern="[0-9,]*"
+        defa
+        id="input-distance"
+        name="input-distance"
+        placeholder="Enter your input for Distance"
+        required
+      />
+      <select name="dropdown-units-distance" id="dropdown-units-distance">
+        <!-- Dropdown options -->
+        <option value="meters">meters (m)</option>
+        <option value="kilometers">kilometers (km)</option>
+        <option value="feet">feet (ft)</option>
+      </select>
+      <br /><br />
+      <input
+        class="input-box"
+        type="text"
+        pattern="[0-9,]*"
+        defa
+        id="input-time"
+        name="input-time"
+        placeholder="Enter your input for Time"
+        required
+      />
+      <select name="dropdown-units-time" id="dropdown-units-time">
+        <!-- Dropdown options -->
+        <option value="seconds">seconds (s)</option>
+        <option value="hours">hours (h)</option>
+      </select>
+      <br /><br />
       <!-- Buttons -->
       <div id="div-buttons">
-        <button id="clearButton" onclick="clearInput('input-mmm')">
+        <button
+          id="clearButton"
+          onclick="clearInput('input-distance');clearInput('input-time')"
+        >
           <img
             src="../static/Images/delete-icon.png"
             alt=""
             style="height: 32px; width: 32px"
           />
         </button>
-        <button id="solveButton">Solve</button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
     </form>
 
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Length</label>
-        <p id="res-Length">{{Length}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Mass</label>
-        <p id="res-Mass">{{Mass}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Time</label>
-        <p id="res-Time">{{Time}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Temperature</label>
-        <p id="res-Temperature">{{Temperature}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Power</label>
-        <p id="res-Power">{{Power}}</p>
+        <label for="output">Velocity = {{velocity}}{{siu_velocity}}</label>
       </div>
     </div>
   </div>
 
-  <div id="UC-whole-div-3" class="hidden">
+  <!-- DIV FOR ACCELERATION -->
+  <div id="PC-whole-div-3">
     <!-- Input section -->
-    <form method="post" action="unit_conversion">
+    <form method="post" action="physical-value-converter">
       {% csrf_token %}
       <div id="div-input-section">
         <input
           class="input-box"
           type="text"
           pattern="[0-9,]*"
-          id="numericInput"
-          id="input-mmm"
-          name="input-mmm"
-          placeholder="Enter your input (e.g. 1,2,3...)"
+          defa
+          id="input-mass"
+          name="input-mass"
+          placeholder="Enter your input for Mass"
+          required
         />
+        <select name="dropdown-units-mass-from" id="dropdown-units-mass-from">
+          <option value="kilograms">Kilograms (kg)</option>
+          <option value="grams">Grams (g)</option>
+          <option value="milligrams">Milligrams (mg)</option>
+          <option value="pounds">Pounds (lb)</option>
+          <option value="ounces">Ounces (oz)</option>
+        </select>
+        <br /><br />
+        <select name="dropdown-units-mass-to" id="dropdown-units-mass-to">
+          <option value="kilograms">Kilograms (kg)</option>
+          <option value="grams">Grams (g)</option>
+          <option value="milligrams">Milligrams (mg)</option>
+          <option value="pounds">Pounds (lb)</option>
+          <option value="ounces">Ounces (oz)</option>
+        </select>
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-lgcmf')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">Result = {{conv_mass}}{{dd_mass_to}}</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIV FOR FREQUENCY -->
+  <div id="PC-whole-div-4">
+    <!-- Input section -->
+    <form method="post" action="physical-calculation">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-time-freq"
+          name="input-time-freq"
+          placeholder="Enter your input for Time (e.g. 1,2,3...)"
+          required
+        /><select name="dropdown-units-time" id="dropdown-units-time">
+          <!-- Dropdown options -->
+          <option value="seconds">seconds (s)</option>
+          <option value="minutes">minutes (h)</option>
+          <option value="hours">hours (h)</option>
+        </select>
+      </div>
+
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <label for="output">Frequency = {{frequency}} {{siu_freq}}</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIV FOR PRESSURE -->
+  <div id="PC-whole-div-5">
+    <!-- Input section -->
+    <form method="post" action="physical-calculation">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-force"
+          name="input-force"
+          placeholder="Enter your input for Force (e.g. 1,2,3...)"
+          required
+        />
+        <select name="dropdown-units-force" id="dropdown-units-force">
+          <!-- Dropdown options -->
+          <option value="newton">newton (N)</option>
+        </select>
+        <br /><br />
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-area"
+          name="input-area"
+          placeholder="Enter your input for Area"
+          required
+        /><select name="dropdown-units-force" id="dropdown-units-force">
+          <!-- Dropdown options -->
+          <option value="square-meter">square meter (m²)</option>
+        </select>
       </div>
       <!-- Buttons -->
       <div id="div-buttons">
@@ -101,34 +245,81 @@
             style="height: 32px; width: 32px"
           />
         </button>
-        <button id="solveButton">Solve</button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
     </form>
 
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Length</label>
-        <p id="res-Length">{{Length}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Mass</label>
-        <p id="res-Mass">{{Mass}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Time</label>
-        <p id="res-Time">{{Time}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Temperature</label>
-        <p id="res-Temperature">{{Temperature}}</p>
-      </div>
-      <div id="output-rows">
-        <label for="output">Power</label>
-        <p id="res-Power">{{Power}}</p>
+        <label for="output">Pressure = {{pressure}} {{siu_pressure}}</label>
+        <!-- <p id="res-mean">Pressure = {{pressure}} {{siu_pressure}}</p> -->
       </div>
     </div>
-    -->
+  </div>
+
+  <!-- DIV FOR FORCE -->
+  <div id="PC-whole-div-6">
+    <!-- Input section -->
+    <form method="post" action="physical-calculation">
+      {% csrf_token %}
+      <div id="div-input-section">
+        <input
+          class="input-box"
+          type="text"
+          id="input-mass"
+          name="input-mass"
+          placeholder="Enter your input for mass (e.g. 1,2,3...)"
+          required
+        />
+        <select name="dropdown-units-mass" id="dropdown-units-mass">
+          <!-- Dropdown options -->
+          <option value="grams">grams (g)</option>
+          <option value="kilograms">kilograms (kg)</option>
+          <option value="miligrams">miligrams (mg)</option>
+        </select>
+        <br /><br />
+        <input
+          class="input-box"
+          type="text"
+          pattern="[0-9,]*"
+          id="input-acceleration"
+          name="input-acceleration"
+          placeholder="Enter your input for Acceleration (e.g. 1,2,3...)"
+          required
+        />
+        <select
+          name="dropdown-units-acceleration"
+          id="dropdown-units-acceleration"
+        >
+          <!-- Dropdown options -->
+          <option value="meters-per-second-squared">
+            meters per second squared (m/s²)
+          </option>
+          <option value="meter-per-second">meters per second (m/s)</option>
+        </select>
+      </div>
+      <!-- Buttons -->
+      <div id="div-buttons">
+        <button id="clearButton" onclick="clearInput('input-mmm')">
+          <img
+            src="../static/Images/delete-icon.png"
+            alt=""
+            style="height: 32px; width: 32px"
+          />
+        </button>
+        <button id="solveButton" onclick="showOnInput()">Solve</button>
+      </div>
+    </form>
+
+    <!-- Output section -->
+    <div id="div-output-section">
+      <div id="output-rows">
+        <!-- <label for="output">Force</label> -->
+        <p id="res-mean">Force = {{force}} {{siu_force}}</p>
+        <p></p>
+      </div>
+    </div>
   </div>
 </div>
 
