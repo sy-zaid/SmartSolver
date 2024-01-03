@@ -196,32 +196,28 @@ def convSIToTime(si_time, target_unit):
     return converted_time
 
 def convTemperatureToSI(temperature, unit):
-    # Assuming common units like Celsius, Fahrenheit, and Kelvin
-    temperature_conversion_factors = {
-        'celsius': 1,
-        'fahrenheit': 5 / 9,  # Convert Fahrenheit to Celsius
-        'kelvin': 1,  # Kelvin is the same as Celsius
-        # Add more temperature units as needed
-    }
-    if unit not in temperature_conversion_factors:
-        print('Invalid temperature unit provided.')
-        return None
-    converted_temperature = float(temperature) * temperature_conversion_factors[unit]
-    return converted_temperature
+    if unit == 'celsius':
+        converted_temperature = float(temperature) + 273.15
+    elif unit == 'fahrenheit':
+        converted_temperature = float(float(temperature) - 32) * 5/9 + 273.15
+    elif unit == 'kelvin':
+        converted_temperature = float(temperature)
 
-def convSIToTemperature(si_temperature, target_unit):
-    # Assuming common units like Celsius, Fahrenheit, and Kelvin
-    inverse_temperature_conversion_factors = {
-        'celsius': 1,
-        'fahrenheit': 9 / 5,  # Convert Celsius to Fahrenheit
-        'kelvin': 1,  # Kelvin is the same as Celsius
-        # Add more temperature units as needed
-    }
-    if target_unit not in inverse_temperature_conversion_factors:
-        print('Invalid target temperature unit provided.')
-        return None
-    converted_temperature = float(si_temperature) * inverse_temperature_conversion_factors[target_unit]
-    return converted_temperature
+    return round(converted_temperature,4)
+
+def convSIToTemperature(temperature, target_unit):
+    if target_unit == 'celsius':
+        converted_temperature = float(temperature) - 273.15
+    elif target_unit == 'fahrenheit':
+        converted_temperature = float(float((temperature) - 273.15) * 9/5 + 32)
+    elif target_unit == 'kelvin':
+        converted_temperature = float(temperature)
+    else:
+        raise ValueError("Invalid desired temperature unit. Supported units are Celsius, Fahrenheit, and Kelvin.")
+
+    return round(converted_temperature,4)
+
+
 
 def convPowerToSI(power, unit):
     power_conversion_factors = {

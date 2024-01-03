@@ -250,7 +250,21 @@ def physicalValueConverter(request):
         results = {'conv_length':conv_length,'dd_length_to':dd_length_to}
         return render(request,'physical-value-converter.html',results)
     
-    elif inp_length:
+    elif inp_time:
+        dd_time_from = request.POST.get("dropdown-units-time-from",'grams')
+        dd_time_to = request.POST.get("dropdown-units-time-to",'grams')
+        conv_time = convTime(inp_time,dd_time_from,dd_time_to)
+        results = {'conv_time':conv_time,'dd_time_to':dd_time_to}
+        return render(request,'physical-value-converter.html',results)
+    
+    elif inp_temperature:
+        dd_temperature_from = request.POST.get("dropdown-units-temperature-from",'grams')
+        dd_temperature_to = request.POST.get("dropdown-units-temperature-to",'grams')
+        conv_temperature = convTemperature(inp_temperature,dd_temperature_from,dd_temperature_to)
+        results = {'conv_temperature':conv_temperature,'dd_temperature_to':dd_temperature_to}
+        return render(request,'physical-value-converter.html',results)
+    
+    elif inp_time:
         dd_time_from = request.POST.get("dropdown-units-time-from",'grams')
         dd_time_to = request.POST.get("dropdown-units-time-to",'grams')
         conv_time = convTime(inp_time,dd_time_from,dd_time_to)
