@@ -82,6 +82,42 @@ def convertVelocityToSI(velocity, unit):
 # velocity_in_meters_per_second = convertVelocityToSI(50, 'kilometers-per-hour')
 # print(f'Converted velocity: {velocity_in_meters_per_second} m/s')
 
+def convertAccelerationToSI(acceleration, unit):
+    # Define conversion factors
+    conversion_factors = {
+        'meters-per-second-squared': 1,
+        'kilometers-per-hour-squared': 2.77778e-7,  # 1 km/h² is approximately 2.77778e-7 m/s²
+    }
+
+    # Check if the provided unit is valid
+    if unit not in conversion_factors:
+        print('Invalid unit provided.')
+        return None
+
+    # Perform the conversion
+    converted_acceleration = float(acceleration) * conversion_factors[unit]
+
+    return converted_acceleration
+
+def convertMassToSI(mass, unit):
+    # Define conversion factors
+    conversion_factors = {
+        'kilograms': 1,
+        'grams': 0.001,  # 1 gram is 0.001 kilograms
+        'milligrams': 1e-6,  # 1 milligram is 1e-6 kilograms
+    }
+
+    if unit not in conversion_factors:
+        print('Invalid unit provided.')
+        return None
+
+    try:
+        converted_mass = float(mass) * conversion_factors[unit]
+        return converted_mass
+    except ValueError:
+        print('Invalid value for mass.')
+        return None
+
 
 def calcVelocity(distance,time,dddistance,ddtime):
     siu_distance = float(convertDistanceToSI(distance,dddistance))
@@ -94,7 +130,6 @@ def calcAcceleration(final_velocity,initial_velocity,time,ddvelocity,ddtime):
     siu_final_velocity = float(convertVelocityToSI(final_velocity, ddvelocity))
     siu_time = float(convertTimeToSI(time, ddtime))
     acceleration = round((siu_final_velocity - siu_initial_velocity) / siu_time,4)
-    # print(acceleration)
     return acceleration
 
 def calcFrequency(time,ddtime):
@@ -103,9 +138,13 @@ def calcFrequency(time,ddtime):
     return freq
 
 # Example usage:
-inp_time = "10"  # Replace with your actual input
-ddtime = "seconds"  # Replace with your actual input
+# inp_time = "10"  # Replace with your actual input
+# ddtime = "seconds"  # Replace with your actual input
+# calcFrequency(inp_time, ddtime)
 
-calcFrequency(inp_time, ddtime)
 
-
+def calcForce(acceleration,mass,ddacceleration,ddmass):
+    siu_mass = float(convertMassToSI(mass,ddmass))
+    siu_acceleration = float(convertAccelerationToSI(acceleration,ddacceleration))
+    force = round((siu_acceleration * siu_mass),4)
+    

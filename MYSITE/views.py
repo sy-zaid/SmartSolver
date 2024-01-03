@@ -4,7 +4,7 @@ from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
 from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict,prepareResultRR
-from .utils.physics import calcVelocity,calcAcceleration,calcFrequency
+from .utils.physics import calcVelocity,calcAcceleration,calcFrequency,calcForce
 
 
 def index(request):
@@ -175,6 +175,12 @@ def physicalCalculation(request):
     inp_time_acc = (request.POST.get('input-time-acc', None))
     # FREQUENCY INPUTS
     inp_time_freq = request.POST.get('input-time-freq', None)
+    # PRESSURE INPUTS
+    inp_force = request.POST.get('input-force', None)
+    inp_area = request.POST.get('input-area', None)
+    # FORCE INPUTS
+    inp_mass = request.POST.get('input-mass', None)
+    inp_acceleration_force = request.POST.get('input-acceleration', None)
     
 
     # FOR VELOCITY
@@ -202,6 +208,22 @@ def physicalCalculation(request):
         frequency = calcFrequency(inp_time_freq,ddtime_freq)
         siu_freq = 'Hertz (Hz)'
         results = {'frequency':frequency,'siu_freq':siu_freq}
+        return render(request,'physical-calculation.html',results)
+    
+    # FOR PRESSURE
+    if inp_force and inp_area:
+        pressure = round((float(inp_force) / float(inp_area)),4)
+        siu_pressure = 'Newton (N)'
+        results = {'pressure':pressure,'siu_pressure':siu_pressure}
+        return render(request,'physical-calculation.html',results)
+    
+    # FOR FORCE
+    if inp_acceleration_force and inp_mass:
+        ddmass = request.POST.get('dropdown-units-mass', 'kilograms')
+        ddacceleration_force = request.POST.get('dropdown-units-acceleration', 'meters-per-second-squared')
+        force = calcForce(inp_acceleration_force,inp_mass,ddacceleration_force,ddmass)
+        siu_force = 'Newton'
+        results = {'force':force,'siu_force':siu_force}
         return render(request,'physical-calculation.html',results)
     
     return render(request, "physical-calculation.html")
