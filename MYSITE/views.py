@@ -4,7 +4,7 @@ from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
 from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict,prepareResultRR
-from .utils.physics import calcVelocity,calcAcceleration
+from .utils.physics import calcVelocity,calcAcceleration,calcFrequency
 
 
 def index(request):
@@ -174,8 +174,8 @@ def physicalCalculation(request):
     inp_final_velocity = (request.POST.get('input-final-velocity', None))
     inp_time_acc = (request.POST.get('input-time-acc', None))
     # FREQUENCY INPUTS
-    inp_time_freq = request.POST.get('input-time', None)
-    ddtime_freq = request.POST.get('dropdown-units-time', 'seconds')
+    inp_time_freq = request.POST.get('input-time-freq', None)
+    
 
     # FOR VELOCITY
     if inp_distance and inp_time:
@@ -196,7 +196,13 @@ def physicalCalculation(request):
         results = {'acceleration':acceleration,'siu_acceleration':siu_acceleration}
         return render(request,'physical-calculation.html',results)
 
-
+    # FOR FREQUENCY
+    if inp_time_freq:
+        ddtime_freq = request.POST.get('dropdown-units-time', 'seconds')
+        frequency = calcFrequency(inp_time_freq,ddtime_freq)
+        siu_freq = 'Hertz (Hz)'
+        results = {'frequency':frequency,'siu_freq':siu_freq}
+        return render(request,'physical-calculation.html',results)
     
     return render(request, "physical-calculation.html")
 

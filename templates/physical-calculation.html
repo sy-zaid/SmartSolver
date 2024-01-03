@@ -173,7 +173,7 @@
     <div id="div-output-section">
       <div id="output-rows">
         <label for="output"
-          >Acceleration = {{acceleration}}{{siu_acceleration}}</label
+          >Acceleration = {{acceleration}} {{siu_acceleration}}</label
         >
       </div>
     </div>
@@ -189,13 +189,14 @@
           class="input-box"
           type="text"
           pattern="[0-9,]*"
-          id="input-time"
-          name="input-time"
+          id="input-time-freq"
+          name="input-time-freq"
           placeholder="Enter your input for Time (e.g. 1,2,3...)"
           required
         /><select name="dropdown-units-time" id="dropdown-units-time">
           <!-- Dropdown options -->
           <option value="seconds">seconds (s)</option>
+          <option value="minutes">minutes (h)</option>
           <option value="hours">hours (h)</option>
         </select>
       </div>
@@ -216,8 +217,7 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Frequency = </label>
-        <p id="res-mean">{{mean}}</p>
+        <label for="output">Frequency = {{frequency}} {{siu_freq}}</label>
       </div>
     </div>
   </div>

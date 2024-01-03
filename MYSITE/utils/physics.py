@@ -97,4 +97,15 @@ def calcAcceleration(final_velocity,initial_velocity,time,ddvelocity,ddtime):
     # print(acceleration)
     return acceleration
 
+def calcFrequency(time,ddtime):
+    siu_time = float(convertTimeToSI(time,ddtime))
+    freq = round(1/siu_time,4)
+    return freq
+
+# Example usage:
+inp_time = "10"  # Replace with your actual input
+ddtime = "seconds"  # Replace with your actual input
+
+calcFrequency(inp_time, ddtime)
+
 
