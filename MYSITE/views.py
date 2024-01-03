@@ -264,11 +264,11 @@ def physicalValueConverter(request):
         results = {'conv_temperature':conv_temperature,'dd_temperature_to':dd_temperature_to}
         return render(request,'physical-value-converter.html',results)
     
-    elif inp_time:
-        dd_time_from = request.POST.get("dropdown-units-time-from",'grams')
-        dd_time_to = request.POST.get("dropdown-units-time-to",'grams')
-        conv_time = convTime(inp_time,dd_time_from,dd_time_to)
-        results = {'conv_time':conv_time,'dd_time_to':dd_time_to}
+    elif inp_power:
+        dd_power_from = request.POST.get("dropdown-units-power-from",None)
+        dd_power_to = request.POST.get("dropdown-units-power-to",None)
+        conv_power = convPower(inp_power,dd_power_from,dd_power_to)
+        results = {'conv_power':conv_power,'dd_power_to':dd_power_to}
         return render(request,'physical-value-converter.html',results)
 
 

@@ -203,7 +203,7 @@ def convTemperatureToSI(temperature, unit):
     elif unit == 'kelvin':
         converted_temperature = float(temperature)
 
-    return round(converted_temperature,4)
+    return converted_temperature
 
 def convSIToTemperature(temperature, target_unit):
     if target_unit == 'celsius':
@@ -215,8 +215,7 @@ def convSIToTemperature(temperature, target_unit):
     else:
         raise ValueError("Invalid desired temperature unit. Supported units are Celsius, Fahrenheit, and Kelvin.")
 
-    return round(converted_temperature,4)
-
+    return converted_temperature
 
 
 def convPowerToSI(power, unit):
@@ -244,6 +243,8 @@ def convSIToPower(si_power, target_unit):
     if target_unit not in inverse_power_conversion_factors:
         print('Invalid target power unit provided.')
         return None
+    converted_power = float(si_power) * inverse_power_conversion_factors[target_unit]
+    return converted_power
 
 
 # -----------------------------------------------------------------#
@@ -287,24 +288,24 @@ def calcForce(acceleration,mass,ddacceleration,ddmass):
 def convMass(input_mass,dd_mass_from,dd_mass_to):
     temp = convertMassToSI(input_mass,dd_mass_from)
     res = convertSIToMass(temp,dd_mass_to)
-    return res
+    return round(res,4)
 
 def convLength(input_length,dd_length_from,dd_length_to):
     temp = convLengthToSI(input_length,dd_length_from)
     res = convSIToLength(temp,dd_length_to)
-    return res
+    return round(res,4)
 
 def convTime(input_time,dd_time_from,dd_time_to):
     temp = convTimeToSI(input_time,dd_time_from)
     res = convSIToTime(temp,dd_time_to)
-    return res
+    return round(res,4)
 
 def convTemperature(input_temperature,dd_temperature_from,dd_temperature_to):
     temp = convTemperatureToSI(input_temperature,dd_temperature_from)
     res = convSIToTemperature(temp,dd_temperature_to)
-    return res
+    return round(res,4)
 
 def convPower(input_power,dd_power_from,dd_power_to):
     temp = convPowerToSI(input_power,dd_power_from)
     res = convSIToPower(temp,dd_power_to)
-    return res
+    return round(res,4)
