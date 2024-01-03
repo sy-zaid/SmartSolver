@@ -286,7 +286,6 @@
         <input
           class="input-box"
           type="text"
-          pattern="[0-9,]*"
           id="input-mass"
           name="input-mass"
           placeholder="Enter your input for mass (e.g. 1,2,3...)"
@@ -294,9 +293,9 @@
         />
         <select name="dropdown-units-mass" id="dropdown-units-mass">
           <!-- Dropdown options -->
-          <option value="gram">grams (g)</option>
-          <option value="kilogram">kilograms (kg)</option>
-          <option value="miligram">miligrams (mg)</option>
+          <option value="grams">grams (g)</option>
+          <option value="kilograms">kilograms (kg)</option>
+          <option value="miligrams">miligrams (mg)</option>
         </select>
         <br /><br />
         <input
@@ -313,7 +312,7 @@
           id="dropdown-units-acceleration"
         >
           <!-- Dropdown options -->
-          <option value="meter-per-secondsq">
+          <option value="meters-per-second-squared">
             meters per second squared (m/s²)
           </option>
           <option value="meter-per-second">meters per second (m/s)</option>
@@ -336,7 +335,8 @@
     <div id="div-output-section">
       <div id="output-rows">
         <!-- <label for="output">Force</label> -->
-        <p id="res-mean">Force = {{force}} {{siu_force}}<p>
+        <p id="res-mean">Force = {{force}} {{siu_force}}</p>
+        <p></p>
       </div>
     </div>
   </div>

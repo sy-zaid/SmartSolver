@@ -111,12 +111,10 @@ def convertMassToSI(mass, unit):
         print('Invalid unit provided.')
         return None
 
-    try:
-        converted_mass = float(mass) * conversion_factors[unit]
-        return converted_mass
-    except ValueError:
-        print('Invalid value for mass.')
-        return None
+    
+    converted_mass = float(mass) * conversion_factors[unit]
+    return converted_mass
+    
 
 
 def calcVelocity(distance,time,dddistance,ddtime):
@@ -144,7 +142,10 @@ def calcFrequency(time,ddtime):
 
 
 def calcForce(acceleration,mass,ddacceleration,ddmass):
+    # print(ddmass)
     siu_mass = float(convertMassToSI(mass,ddmass))
     siu_acceleration = float(convertAccelerationToSI(acceleration,ddacceleration))
     force = round((siu_acceleration * siu_mass),4)
-    
+    return force
+
+
