@@ -1,6 +1,6 @@
 from .FCFS import FCFS
 from .RR import RR
-from .SJF import sjf
+from .SJF import SJF
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
@@ -173,7 +173,7 @@ def prepareResultRR(arrival_times,burst_times,quantum_time):
     return results
 
 
-def prepareResultSJF(arrival_times,burst_times,quantum_time):
+def prepareResultSJF(arrival_times,burst_times):
     """
     var result_dict = {'gantt-chart': gantt_chart_info, 'execution-state': execution_state,
                     'solved_processes_info': solved_processes_info, 'process_list': pplist,
@@ -183,7 +183,7 @@ def prepareResultSJF(arrival_times,burst_times,quantum_time):
     """
 
     results = {}
-    complete_result_dict = RR(arrival_times,burst_times,quantum_time)
+    complete_result_dict = SJF(arrival_times,burst_times)
         # print(complete_result_dict)
 
     # Execution State

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
-from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict,prepareResultRR
+from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict,prepareResultRR,prepareResultSJF
 from .utils.physics import calcVelocity,calcAcceleration,calcFrequency,calcForce,convMass,convLength,convTime,convTemperature,convPower
 
 
@@ -317,7 +317,8 @@ def osAlgorithms(request):
     
     # ------------------------- IF THE ALGO IS SJF ------------------------- #
     elif algorithm_name == "SJF":
-        pass
+        results = prepareResultSJF(arrival_times,burst_times)
+        return render(request,"os-algorithms.html",results)
     
     elif algorithm_name == "SJF-nonpr":
         pass
