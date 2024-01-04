@@ -6,8 +6,7 @@
 body {
   margin: 0;
   font-family: "DM-Sans-Bold";
-  background: url("../Images/section-maths-bg-2.png") no-repeat center center
-    fixed;
+  background: url("../Images/bg-maths.png") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -33,6 +32,7 @@ body {
   width: 20vw;
   height: 50vh;
 }
+
 #PA-whole-div-2 {
   position: relative;
   width: 80vw;
@@ -43,6 +43,7 @@ body {
   text-align: center;
   align-items: center;
 }
+
 #PA-whole-div-3 {
   /* position: relative; */
   width: 80vw;
@@ -71,4 +72,15 @@ body {
   padding: 10px 100px;
   font-weight: 500;
   border-top: 2px solid #0b67f1;
+}
+
+
+/* --------------------------------------------------------------------------- */
+/* ------------------------- STYLING FOR ALGEBRA ------------------------- */
+/* --------------------------------------------------------------------------- */
+
+#powerbuttons {
+  position: relative;
+  left: 55%;
+  transform: translateX(-50%);
 }

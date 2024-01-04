@@ -36,3 +36,47 @@ function showOnInput() {
     document.getElementById("PA-whole-div-3").classList.add("hidden");
   }
 }
+
+
+// ------------------------- ALGEBRA JS ------------------------- //
+// var theTotal = 0;
+// $('#1').click(function(){
+// $('#result').val(1);
+// });
+function clearInput(event) {
+  event.preventDefault();
+  var inputField = document.activeElement;
+  if (inputField.tagName == "INPUT") {
+    inputField.value = "";
+  }
+
+}
+function operator(op) {
+  op = String(op)
+  var op_btn = document.getElementById("operator_poly");
+  $("#operator_poly").val('op').change();
+}
+
+var res = 0
+function focussed(x)
+//Function to select one textarea and update the button values in that area only.
+{
+  if (x == '1') {
+    res = document.getElementById("polynomial1")
+  }
+  else if (x == '2') {
+    res = document.getElementById("polynomial2")
+  }
+
+  return res
+
+}
+function insertTextInInputValue(buttonValueIs) {
+  var inputElementIs = res;
+  inputElementIs.value = inputElementIs.value + buttonValueIs;
+  res = 0;
+  inputElementIs = 0;
+  $('#res').val(inputElementIs.value);
+}
+
+
