@@ -42,15 +42,7 @@ function showOnInput() {
 // var theTotal = 0;
 // $('#1').click(function(){
 // $('#result').val(1);
-// });
-function clearInput(event) {
-  event.preventDefault();
-  var inputField = document.activeElement;
-  if (inputField.tagName == "INPUT") {
-    inputField.value = "";
-  }
 
-}
 function operator(op) {
   op = String(op)
   var op_btn = document.getElementById("operator_poly");

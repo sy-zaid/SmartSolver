@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block body %}
 <script src="../static/Scripts/mathematics.js"></script>
+<link href="/static/stylesheets/mathematics.css" rel="stylesheet" />
+
 <div class="container scrollspy-example-2" data-bs-spy="scroll" data-bs-target="#navbar-example3"
     data-bs-smooth-scroll="true" tabindex="0">
     <br>
@@ -68,15 +70,11 @@
             </div>
 
             <div id="div-buttons">
-                <button id="clearButton" onclick="clearInput('input-mmm')">
-                  <img
-                    src="../static/Images/delete-icon.png"
-                    alt=""
-                    style="height: 30px; width: 30px"
-                  />
+                <button id="clearButton" onclick="clearInput(event)">
+                    <img src="../static/Images/delete-icon.png" alt="" style="height: 30px; width: 30px" />
                 </button>
-                <button id="solveButton" onclick="showOnInput()">Solve</button>
-              </div>    
+                <button id="solveButton">Solve</button>
+            </div>
             <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 my-3" align="right">
                 <button type="submit" class="btn btn-dark mx-5" style="width:6rem">Calculate</button>
             </div>
@@ -93,7 +91,7 @@
 
         <div class="row" align="center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 my-3" align="center">
-                <p class="fs-4">Your answer is {{result_count}}</p>
+                <p class="fs-4">Your answer {{result_count}}</p>
             </div>
             <div>
                 <br>
@@ -101,6 +99,17 @@
         </div>
     </div>
 </div>
+<script>
+    // });
+    function clearInput(event) {
+        event.preventDefault();
+        var inputField = document.activeElement;
+        if (inputField.tagName == "INPUT") {
+            inputField.value = "";
+        }
+
+    }
+</script>
 {% endblock body %}
 
 </body>

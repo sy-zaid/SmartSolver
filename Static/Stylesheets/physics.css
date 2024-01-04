@@ -6,8 +6,7 @@
 body {
   margin: 0;
   font-family: "DM-Sans-Bold";
-  background: url("../Images/section-maths-bg-2.png") no-repeat center center
-    fixed;
+  background: url("../Images/bg-physics.png") no-repeat center center fixed;
   background-size: cover;
 }
 

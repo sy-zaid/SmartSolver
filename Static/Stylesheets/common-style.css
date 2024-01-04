@@ -11,16 +11,14 @@
 
 ::-webkit-scrollbar-thumb {
   background-color: #0b67f1;
-  background-image: -webkit-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.2) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.2) 75%,
-    transparent 75%,
-    transparent
-  );
+  background-image: -webkit-linear-gradient(45deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%,
+      transparent);
 }
 
 body {
@@ -39,14 +37,14 @@ body {
   padding-left: 25px;
   z-index: 100;
   /* border-bottom: 2px solid #0b67f1; */
-  border-width: 2px; /* Set the border width */
+  border-width: 2px;
+  /* Set the border width */
   border-bottom-style: solid;
-  border-image: linear-gradient(
-    to right,
-    #94b9f1,
-    #ff0000,
-    #0b67f1
-  ); /* Gradient colors */
+  border-image: linear-gradient(to right,
+      #94b9f1,
+      #ff0000,
+      #0b67f1);
+  /* Gradient colors */
   border-image-slice: 1;
 }
 
@@ -78,6 +76,7 @@ body {
   font-weight: bold;
   background-color: red;
 }
+
 #logo {
   width: 150px;
   height: 150px;
@@ -128,7 +127,7 @@ body {
 #side-menu {
   /* background-color: red; */
   width: 20vw;
-  height: 45vh;
+  height: auto;
   padding: 40px 0px 0px 40px;
   border-radius: 20px;
   border: 2px solid #0b67f1;
@@ -136,6 +135,8 @@ body {
   font-family: DM-Sans-Bold;
   font-weight: 600;
   font-size: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 #side-menu-list {
@@ -148,6 +149,7 @@ body {
   text-decoration: underline;
   font-size: 18px;
   font-weight: 500;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 /* ------------------------- FORMS - STYLING ------------------------- */
@@ -177,6 +179,7 @@ body {
   align-items: center;
   text-align: center;
 }
+
 .input-box {
   width: 40rem;
   height: 3.5rem;
@@ -184,6 +187,7 @@ body {
   border: 1px solid #0b67f1;
   padding-left: 15px;
 }
+
 .input-box-2 {
   width: 25rem;
   height: 2.75rem;
