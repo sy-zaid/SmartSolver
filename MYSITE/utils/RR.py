@@ -18,8 +18,7 @@ def RR(arrival_time: List[int], burst_time: List[int], time_quantum: int) -> Dic
     solved_processes_info = []
     gantt_chart_info = []
     execution_state = []
-    pplist = []  # New list to store process-name, arrival time, and burst time
-    processed_processes = set()  # Keep track of processed processes
+    pplist = []  # List to store process-name, arrival time, and burst time
     ready_queue = []
     current_time = processes_info[0]['arrival_time']
     unfinished_processes = processes_info.copy()
