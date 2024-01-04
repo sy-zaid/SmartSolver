@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../static/Stylesheets/physics.css" />
 <script src="../static/Scripts/physics.js" defer></script>
 
-<title>Physics Calculations</title>
+<title>Physical Units Conversion</title>
 
 <div id="PC-heading">
   <h1 id="heading-1-black">Physical Units Conversion</h1>
@@ -51,19 +51,9 @@
     <form method="post" action="physical-value-converter">
       {% csrf_token %}
       <div id="div-input-section">
-        <input
-          class="input-box"
-          type="text"
-          pattern="[0-9,]*"
-          id="input-length"
-          name="input-length"
-          placeholder="Enter your input for Length"
-          required
-        />
-        <select
-          name="dropdown-units-length-from"
-          id="dropdown-units-length-from"
-        >
+        <input class="input-box" type="text" pattern="[0-9,]*" id="input-length" name="input-length"
+          placeholder="Enter your input for Length" required />
+        <select name="dropdown-units-length-from" id="dropdown-units-length-from" class="dropdownunit">
           <option value="meters">Meters (m)</option>
           <option value="kilometers">Kilometers (km)</option>
           <option value="centimeters">Centimeters (cm)</option>
@@ -72,6 +62,7 @@
           <option value="feet">Feet (ft)</option>
         </select>
         <br /><br />
+        <label for=""><b>Convert To<b></label>
         <select name="dropdown-units-length-to" id="dropdown-units-length-to">
           <option value="meters">Meters (m)</option>
           <option value="kilometers">Kilometers (km)</option>
@@ -84,11 +75,7 @@
       <!-- Buttons -->
       <div id="div-buttons">
         <button id="clearButton" onclick="clearInput('input-length')">
-          <img
-            src="../static/Images/delete-icon.png"
-            alt=""
-            style="height: 32px; width: 32px"
-          />
+          <img src="../static/Images/delete-icon.png" alt="" style="height: 32px; width: 32px" />
         </button>
         <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
@@ -97,7 +84,7 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Result = {{conv_length}} {{dd_length_to}}</label>
+        <label for="output">Length = {{conv_length}} {{dd_length_to}}</label>
       </div>
     </div>
   </div>
@@ -108,17 +95,9 @@
     <form method="post" action="physical-value-converter">
       {% csrf_token %}
       <div id="div-input-section">
-        <input
-          class="input-box"
-          type="text"
-          pattern="[0-9,]*"
-          defa
-          id="input-mass"
-          name="input-mass"
-          placeholder="Enter your input for Mass"
-          required
-        />
-        <select name="dropdown-units-mass-from" id="dropdown-units-mass-from">
+        <input class="input-box" type="text" pattern="[0-9,]*" defa id="input-mass" name="input-mass"
+          placeholder="Enter your input for Mass" required />
+        <select name="dropdown-units-mass-from" id="dropdown-units-mass-from"  class="dropdownunit">
           <option value="kilograms">Kilograms (kg)</option>
           <option value="grams">Grams (g)</option>
           <option value="milligrams">Milligrams (mg)</option>
@@ -126,6 +105,7 @@
           <option value="ounces">Ounces (oz)</option>
         </select>
         <br /><br />
+        <label for=""><b>Convert To<b></label>
         <select name="dropdown-units-mass-to" id="dropdown-units-mass-to">
           <option value="kilograms">Kilograms (kg)</option>
           <option value="grams">Grams (g)</option>
@@ -137,11 +117,7 @@
       <!-- Buttons -->
       <div id="div-buttons">
         <button id="clearButton" onclick="clearInput('input-lgcmf')">
-          <img
-            src="../static/Images/delete-icon.png"
-            alt=""
-            style="height: 32px; width: 32px"
-          />
+          <img src="../static/Images/delete-icon.png" alt="" style="height: 32px; width: 32px" />
         </button>
         <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
@@ -150,7 +126,7 @@
     <!-- Output section -->
     <div id="div-output-section">
       <div id="output-rows">
-        <label for="output">Result = {{conv_mass}} {{dd_mass_to}}</label>
+        <label for="output">Mass = {{conv_mass}} {{dd_mass_to}}</label>
       </div>
     </div>
   </div>
@@ -161,16 +137,9 @@
     <form method="post" action="physical-value-converter">
       {% csrf_token %}
       <div id="div-input-section">
-        <input
-          class="input-box"
-          type="text"
-          pattern="[0-9,]*"
-          id="input-time"
-          name="input-time"
-          placeholder="Enter your input for Time"
-          required
-        />
-        <select name="dropdown-units-time-from" id="dropdown-units-time-from">
+        <input class="input-box" type="text" pattern="[0-9,]*" id="input-time" name="input-time"
+          placeholder="Enter your input for Time" required />
+        <select name="dropdown-units-time-from" id="dropdown-units-time-from"  class="dropdownunit">
           <option value="seconds">Seconds (s)</option>
           <option value="minutes">Minutes (min)</option>
           <option value="hours">Hours (hr)</option>
@@ -178,6 +147,7 @@
           <!-- Add more time units as needed -->
         </select>
         <br /><br />
+        <label for=""><b>Convert To<b></label>
         <select name="dropdown-units-time-to" id="dropdown-units-time-to">
           <option value="seconds">Seconds (s)</option>
           <option value="minutes">Minutes (min)</option>
@@ -190,11 +160,7 @@
       <!-- Buttons -->
       <div id="div-buttons">
         <button id="clearButton" onclick="clearInput('input-mmm')">
-          <img
-            src="../static/Images/delete-icon.png"
-            alt=""
-            style="height: 32px; width: 32px"
-          />
+          <img src="../static/Images/delete-icon.png" alt="" style="height: 32px; width: 32px" />
         </button>
         <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
@@ -214,29 +180,17 @@
     <form method="post" action="physical-value-converter">
       {% csrf_token %}
       <div id="div-input-section">
-        <input
-          class="input-box"
-          type="text"
-          pattern="[0-9,]*"
-          id="input-temperature"
-          name="input-temperature"
-          placeholder="Enter your input for Temperature"
-          required
-        />
-        <select
-          name="dropdown-units-temperature-from"
-          id="dropdown-units-temperature-from"
-        >
+        <input class="input-box" type="text" pattern="[0-9,]*" id="input-temperature" name="input-temperature"
+          placeholder="Enter your input for Temperature" required />
+        <select name="dropdown-units-temperature-from" id="dropdown-units-temperature-from"  class="dropdownunit">
           <option value="celsius">Celsius (°C)</option>
           <option value="fahrenheit">Fahrenheit (°F)</option>
           <option value="kelvin">Kelvin (K)</option>
           <!-- Add more temperature units as needed -->
         </select>
         <br /><br />
-        <select
-          name="dropdown-units-temperature-to"
-          id="dropdown-units-temperature-to"
-        >
+        <label for=""><b>Convert To<b></label>
+        <select name="dropdown-units-temperature-to" id="dropdown-units-temperature-to">
           <option value="celsius">Celsius (°C)</option>
           <option value="fahrenheit">Fahrenheit (°F)</option>
           <option value="kelvin">Kelvin (K)</option>
@@ -246,11 +200,7 @@
       <!-- Buttons -->
       <div id="div-buttons">
         <button id="clearButton" onclick="clearInput('input-mmm')">
-          <img
-            src="../static/Images/delete-icon.png"
-            alt=""
-            style="height: 32px; width: 32px"
-          />
+          <img src="../static/Images/delete-icon.png" alt="" style="height: 32px; width: 32px" />
         </button>
         <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
@@ -271,16 +221,9 @@
     <form method="post" action="physical-value-converter">
       {% csrf_token %}
       <div id="div-input-section">
-        <input
-          class="input-box"
-          type="text"
-          pattern="[0-9,]*"
-          id="input-power"
-          name="input-power"
-          placeholder="Enter your input for Power"
-          required
-        />
-        <select name="dropdown-units-power-from" id="dropdown-units-power-from">
+        <input class="input-box" type="text" pattern="[0-9,]*" id="input-power" name="input-power"
+          placeholder="Enter your input for Power" required />
+        <select name="dropdown-units-power-from" id="dropdown-units-power-from"  class="dropdownunit">
           <option value="watts">Watts (W)</option>
           <option value="kilowatts">Kilowatts (kW)</option>
           <option value="megawatts">Megawatts (MW)</option>
@@ -288,6 +231,7 @@
           <!-- Add more power units as needed -->
         </select>
         <br /><br />
+        <label for=""><b><b>Convert To<b><b></label>
         <select name="dropdown-units-power-to" id="dropdown-units-power-to">
           <option value="watts">Watts (W)</option>
           <option value="kilowatts">Kilowatts (kW)</option>
@@ -299,11 +243,7 @@
       <!-- Buttons -->
       <div id="div-buttons">
         <button id="clearButton" onclick="clearInput('input-mmm')">
-          <img
-            src="../static/Images/delete-icon.png"
-            alt=""
-            style="height: 32px; width: 32px"
-          />
+          <img src="../static/Images/delete-icon.png" alt="" style="height: 32px; width: 32px" />
         </button>
         <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
