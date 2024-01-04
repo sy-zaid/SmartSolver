@@ -69,6 +69,7 @@ def prepareResultFCFS(arrival_times,burst_times):
         x=[start_times, end_times],
         y=process_names,
         orientation='h',
+        marker=dict(color='#0b67f1'),
     ))
 
     # Updated layout of the chart
@@ -152,6 +153,7 @@ def prepareResultRR(arrival_times,burst_times,quantum_time):
         x=[start_times, end_times],
         y=process_names,
         orientation='h',
+        marker=dict(color='#0b67f1'),
     ))
 
     # Updated layout of the chart
@@ -222,6 +224,7 @@ def prepareResultSJF(arrival_times,burst_times):
         x=[start_times, end_times],
         y=process_names,
         orientation='h',
+        marker=dict(color='#0b67f1'),
     ))
 
     # Updated layout of the chart

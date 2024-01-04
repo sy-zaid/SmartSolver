@@ -13,13 +13,8 @@
       {% csrf_token %}
       <div id="input-row">
         <label id="heading-3-black">Algorithm Name</label><br />
-        <select
-          id="algos-dropdown"
-          data-bs-toggle="dropdown"
-          name="algos-dropdown"
-          class="dropdown"
-          onchange="toggleBox()"
-        >
+        <select id="algos-dropdown" data-bs-toggle="dropdown" name="algos-dropdown" class="dropdown"
+          onchange="toggleBox()">
           <!-- Dropdown options -->
           <option value="FCFS">First Come, First Serve (FCFS)</option>
 
@@ -37,14 +32,8 @@
         </select>
       </div>
       <div id="input-row">
-        <label id="heading-3-black" for="arrival-time">Arrival Time:</label
-        ><br />
-        <input
-          class="input-box-2"
-          id="arrival-time"
-          name="arrival-time"
-          required
-        />
+        <label id="heading-3-black" for="arrival-time">Arrival Time:</label><br />
+        <input class="input-box-2" id="arrival-time" name="arrival-time" required />
       </div>
 
       <div id="input-row">
@@ -52,24 +41,14 @@
         <input class="input-box-2" id="burst-time" name="burst-time" required />
       </div>
       <div id="input-row-4th" class="hidden">
-        <label id="heading-3-black" name="label-dynamic-ib" for="burst-time"
-          >Changeable Heading</label
-        ><br />
-        <input
-          class="input-box-2"
-          id="dynamic-input-box"
-          name="dynamic-input-box"
-        />
+        <label id="heading-3-black" name="label-dynamic-ib" for="burst-time">Changeable Heading</label><br />
+        <input class="input-box-2" id="dynamic-input-box" name="dynamic-input-box" />
       </div>
 
       <!-- DIV FOR BUTTONS -->
       <div id="div-buttons">
         <button id="clearButton" onclick="clearInput('input-mmm')">
-          <img
-            src="../static/Images/delete-icon.png"
-            alt=""
-            style="height: 30px; width: 30px"
-          />
+          <img src="../static/Images/delete-icon.png" alt="" style="height: 30px; width: 30px" />
         </button>
         <button id="solveButton" onclick="showOnInput()">Solve</button>
       </div>
@@ -113,17 +92,14 @@
     </div>
 
     <div id="divcalculations">
-      <b id="labels2">Average Turnaround Time: {{ avg_turnaroundtime }}</b
-      ><br />
+      <b id="labels2">Average Turnaround Time: {{ avg_turnaroundtime }}</b><br />
       <b id="labels2">Average Waiting Time: {{ avg_waitingtime }}</b>
       <br />
-      <label id="labels2" for="output"
-        ><b>Execution State:</b> {{execution_state}}</label
-      >
+      <label id="labels2" for="output"><b>Execution State:</b> {{execution_state}}</label>
       <br />
     </div>
-    <div> 
-        <br>
+    <div>
+      <br>
     </div>
   </div>
 
