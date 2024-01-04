@@ -52,7 +52,7 @@
       {% csrf_token %}
       <input class="input-box" type="text" pattern="[0-9,]*" defa id="input-distance" name="input-distance"
         placeholder="Enter your input for Distance" required />
-      <select name="dropdown-units-distance" id="dropdown-units-distance">
+      <select class="dropdownunit" name="dropdown-units-distance" id="dropdown-units-distance">
         <!-- Dropdown options -->
         <option value="meters">meters (m)</option>
         <option value="kilometers">kilometers (km)</option>
@@ -61,7 +61,7 @@
       <br /><br />
       <input class="input-box" type="text" pattern="[0-9,]*" defa id="input-time" name="input-time"
         placeholder="Enter your input for Time" required />
-      <select name="dropdown-units-time" id="dropdown-units-time">
+      <select class="dropdownunit" name="dropdown-units-time" id="dropdown-units-time">
         <!-- Dropdown options -->
         <option value="seconds">seconds (s)</option>
         <option value="hours">hours (h)</option>
@@ -94,7 +94,7 @@
           name="input-final-velocity" placeholder="Enter your input for Initial Velocity" required />
         <input class="input-box" type="text" pattern="[0-9,]*" defa id="input-initial-velocity"
           name="input-initial-velocity" placeholder="Enter your input for Final Velocity" required />
-        <select name="dropdown-units-final-vel" id="dropdown-units-final-vel">
+        <select class="dropdownunit" name="dropdown-units-final-vel" id="dropdown-units-final-vel">
           <option value="meter-per-second">Meters per second (m/s)</option>
           <option value="kilometer-per-hour">Kilometers per hour (km/h)</option>
           <option value="feet-per-second">Feet per second (ft/s)</option>
@@ -102,7 +102,7 @@
         <br /><br />
         <input class="input-box" type="text" pattern="[0-9,]*" defa id="input-time-acc" name="input-time-acc"
           placeholder="Enter your input for Time" required />
-        <select name="dropdown-units-time" id="dropdown-units-time">
+        <select class="dropdownunit" class="dropdownunit"name="dropdown-units-time" id="dropdown-units-time">
           <!-- Dropdown options -->
           <option value="seconds">seconds (s)</option>
           <option value="hours">hours (h)</option>
@@ -133,7 +133,7 @@
       {% csrf_token %}
       <div id="div-input-section">
         <input class="input-box" type="text" pattern="[0-9,]*" id="input-time-freq" name="input-time-freq"
-          placeholder="Enter your input for Time (e.g. 1,2,3...)" required /><select name="dropdown-units-time"
+          placeholder="Enter your input for Time (e.g. 1,2,3...)" required /><select class="dropdownunit" name="dropdown-units-time"
           id="dropdown-units-time">
           <!-- Dropdown options -->
           <option value="seconds">seconds (s)</option>
@@ -167,13 +167,13 @@
       <div id="div-input-section">
         <input class="input-box" type="text" pattern="[0-9,]*" id="input-force" name="input-force"
           placeholder="Enter your input for Force (e.g. 1,2,3...)" required />
-        <select name="dropdown-units-force" id="dropdown-units-force">
+        <select class="dropdownunit" name="dropdown-units-force" id="dropdown-units-force">
           <!-- Dropdown options -->
           <option value="newton">newton (N)</option>
         </select>
         <br /><br />
         <input class="input-box" type="text" pattern="[0-9,]*" id="input-area" name="input-area"
-          placeholder="Enter your input for Area" required /><select name="dropdown-units-force"
+          placeholder="Enter your input for Area" required /><select class="dropdownunit" name="dropdown-units-force"
           id="dropdown-units-force">
           <!-- Dropdown options -->
           <option value="square-meter">square meter (m²)</option>
@@ -205,7 +205,7 @@
       <div id="div-input-section">
         <input class="input-box" type="text" id="input-mass" name="input-mass"
           placeholder="Enter your input for mass (e.g. 1,2,3...)" required />
-        <select name="dropdown-units-mass" id="dropdown-units-mass">
+        <select class="dropdownunit" name="dropdown-units-mass" id="dropdown-units-mass">
           <!-- Dropdown options -->
           <option value="grams">grams (g)</option>
           <option value="kilograms">kilograms (kg)</option>
@@ -214,7 +214,7 @@
         <br /><br />
         <input class="input-box" type="text" pattern="[0-9,]*" id="input-acceleration" name="input-acceleration"
           placeholder="Enter your input for Acceleration (e.g. 1,2,3...)" required />
-        <select name="dropdown-units-acceleration" id="dropdown-units-acceleration">
+        <select class="dropdownunit" name="dropdown-units-acceleration" id="dropdown-units-acceleration">
           <!-- Dropdown options -->
           <option value="meters-per-second-squared">
             meters per second squared (m/s²)
