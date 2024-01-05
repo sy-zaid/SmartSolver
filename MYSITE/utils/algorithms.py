@@ -1,6 +1,7 @@
 from .FCFS import FCFS
 from .RR import RR
 from .SJF import SJF
+from .PRIORITY import PRIORITY
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
@@ -245,17 +246,17 @@ def prepareResultSJF(arrival_times,burst_times):
     
     return results
 
-def prepareResultPR(arrival_times,burst_times):
+def prepareResultPR(arrival_times,burst_times,priorities):
     """
     var result_dict = {'gantt-chart': gantt_chart_info, 'execution-state': execution_state,
-                    'solved_processes_info': solved_processes_info, 'process_list': pplist,
-                    'completion-times':completion_times,'turnaround-times':turnaroundtimes,
-                    'waiting-times':waitingtimes,'avg_turnaround-time':avg_turnaroundtime,
-                   'avg_waiting-time':avg_waitingtime}
+                   'solved_processes_info': solved_processes_info, 'process_list': pplist,
+                   'completion-times': completion_times, 'turnaround-times': turnaround_times,
+                   'waiting-times': waiting_times, 'avg_turnaround-time': avg_turnaround_time,
+                   'avg_waiting-time': avg_waiting_time}
     """
 
     results = {}
-    complete_result_dict = SJF(arrival_times,burst_times)
+    complete_result_dict = PRIORITY(arrival_times,burst_times,priorities)
         # print(complete_result_dict)
 
     # Execution State
@@ -314,5 +315,7 @@ def prepareResultPR(arrival_times,burst_times):
                'process_list': process_list}
     
     return results
+
+
 
 

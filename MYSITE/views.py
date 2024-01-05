@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .utils.Polynomial import polynomial, polynomialnode, make_polynomial
 from .utils.functions import counttheletters
 from .utils.mathematics import calculate_mean,calculate_median,calculate_mode,calculate_gcf,calculate_lcm
-from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict,prepareResultRR,prepareResultSJF
+from .utils.algorithms import prepareResultFCFS,mapInputToIntList,convertListtoDict,prepareResultRR,prepareResultSJF,prepareResultPR
 from .utils.physics import calcVelocity,calcAcceleration,calcFrequency,calcForce,convMass,convLength,convTime,convTemperature,convPower
 
 
@@ -333,6 +333,8 @@ def osAlgorithms(request):
         
     elif algorithm_name == "Priority":
         priorities = list(map(int,priorities.split(',')))
+        results = prepareResultPR(arrival_times,burst_times,priorities)
+        return render(request,"os-algorithms.html",results)
     
     else:
         return render(request,'os-algorithms.html')
