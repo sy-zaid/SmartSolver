@@ -134,7 +134,7 @@ def prepareResultRR(arrival_times,burst_times,quantum_time):
     # Gantt Chart
     gantt_chart_list = complete_result_dict['gantt-chart']
     gantt_chart_dict = convertListtoDict(gantt_chart_list)
-    print(gantt_chart_dict)
+    # print(gantt_chart_dict)
 
     # Separate lists for start and end times
     start_times = [process["start_time"] for process in gantt_chart_dict]
@@ -205,7 +205,7 @@ def prepareResultSJF(arrival_times,burst_times):
     # Gantt Chart
     gantt_chart_list = complete_result_dict['gantt-chart']
     gantt_chart_dict = convertListtoDict(gantt_chart_list)
-    print(gantt_chart_dict)
+    # print(gantt_chart_dict)
 
     # Separate lists for start and end times
     start_times = [process["start_time"] for process in gantt_chart_dict]
@@ -275,7 +275,7 @@ def prepareResultPR(arrival_times,burst_times,priorities):
     # Gantt Chart
     gantt_chart_list = complete_result_dict['gantt-chart']
     gantt_chart_dict = convertListtoDict(gantt_chart_list)
-    print(gantt_chart_dict)
+    # print(gantt_chart_dict)
 
     # Separate lists for start and end times
     start_times = [process["start_time"] for process in gantt_chart_dict]

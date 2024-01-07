@@ -63,7 +63,7 @@ def PRIORITY(arrival_time: List[int], burst_time: List[int], priorities: List[in
                 prev_current_time = current_time
                 current_time += amount
                 # Record Gantt Chart information
-                gantt_chart_info.append([prev_current_time, process_to_execute['process'], current_time])
+                gantt_chart_info.append([prev_current_time, process_to_execute['process'], current_time,'a'])
                 got_interruption = True
                 break
 
@@ -88,7 +88,7 @@ def PRIORITY(arrival_time: List[int], burst_time: List[int], priorities: List[in
                         ready_queue.append(p)
 
                 # Record Gantt Chart information
-                gantt_chart_info.append([prev_current_time, process_to_execute['process'], current_time])
+                gantt_chart_info.append([prev_current_time, process_to_execute['process'], current_time,'b'])
             else:
                 remaining_t = remaining_time[process_to_execute["process"]]
                 remaining_time[process_to_execute["process"]] -= remaining_t
@@ -100,7 +100,7 @@ def PRIORITY(arrival_time: List[int], burst_time: List[int], priorities: List[in
                         ready_queue.append(p)
 
                 # Record Gantt Chart information
-                gantt_chart_info.append([prev_current_time, process_to_execute['process'], current_time])
+                gantt_chart_info.append([prev_current_time, process_to_execute['process'], current_time,'c'])
 
         # Requeueing (move head/first item to tail/last)
         ready_queue.append(ready_queue.pop(0))
@@ -144,13 +144,17 @@ def PRIORITY(arrival_time: List[int], burst_time: List[int], priorities: List[in
                    'avg_waiting-time':avg_waitingtime}
     return result_dict
 
-from typing import List
+# from typing import List
 
 # Example usage:
-# arrival_time = [0, 2, 4]
-# burst_time = [5, 3, 1]
-# priorities = [3, 2, 1]
+# arrival_time = [6,5,4,1]
+# burst_time = [2,3, 2, 1]
+# priorities = [1,2,3,2]
 
-# result = PRIORITY(arrival_time, burst_time, priorities)
-# print("Solved Processes Info:", result)
+arrival_time = [1,4,5,6]
+burst_time = [1,2,3,2]
+priorities = [2,3,2,1]
+
+result = PRIORITY(arrival_time, burst_time, priorities)
+print("Solved Processes Info:", result)
 # print("Gantt Chart Info:", result[1])
