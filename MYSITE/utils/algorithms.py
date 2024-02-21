@@ -313,9 +313,8 @@ def prepareResultPR(arrival_times,burst_times,priorities):
                'turnaroundtimes':turnaroundtimes,'waitingtimes':waitingtimes,
                'avg_turnaroundtime':avg_turnaroundtime,'avg_waitingtime':avg_waitingtime,
                'process_list': process_list}
-    
+     
     return results
-
 
 
 
