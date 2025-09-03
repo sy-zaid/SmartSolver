@@ -43,7 +43,18 @@
 #div-heading-programming,
 #div-heading-algorithms {
   width: auto;
+  font-weight: 600;
 }
+
+#div-heading-mathematics > h2,
+#div-heading-physics > h2,
+#div-heading-programming > h2,
+#div-heading-algorithms > h2 {
+  width: auto;
+  font-weight: 600;
+  font-size: 34px;
+}
+
 #div-section-mathematics {
   position: relative;
   width: 70vw;
@@ -67,39 +78,21 @@
   justify-content: space-between;
 }
 
-#section-1 {
-  width: 20vw;
-  height: 20vh;
-  margin: 0px 20px;
-  border-radius: 20px;
-  text-align: center;
-  padding: 3rem 1rem 0rem 1rem;
-  align-content: center;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  text-decoration: none;
-}
-#section-2 {
-  width: 20vw;
-  height: 20vh;
-  margin: 0px 20px;
-  border-radius: 20px;
-  text-align: center;
-  padding: 3rem 1rem 0rem 1rem;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  text-decoration: none;
-}
+#section-1,
+#section-2,
 #section-3 {
   width: 20vw;
   height: 20vh;
   margin: 0px 20px;
+  /* background-color: #0b67f1; */
   border-radius: 20px;
   text-align: center;
-  padding: 3rem 1rem 0rem 1rem;
+  padding: 0rem 1rem 0rem 1rem;
+  align-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   text-decoration: none;
+  transition: 0.34s all ease;
 }
 
 #div-subjects-mathematics > #section-1,
@@ -108,6 +101,7 @@
   color: black;
   border: 2px solid #0b67f1;
 }
+
 /* PHYSICS */
 #div-section-physics {
   position: relative;
@@ -154,6 +148,14 @@
   border: 2px solid white;
 }
 
+#div-subjects-programming > #section-1:hover,
+#div-subjects-programming > #section-2:hover,
+#div-subjects-programming > #section-3:hover {
+  color: #011627;
+  background-color: white;
+  scale: 1.075;
+}
+
 /* ALGORITHMS */
 #div-section-algorithms {
   position: relative;
@@ -175,4 +177,12 @@
 #div-subjects-algorithms > #section-3 {
   color: black;
   border: 2px solid #b00293;
+}
+
+#section-1:hover,
+#section-2:hover,
+#section-3:hover {
+  background-color: white;
+  scale: 1.075;
+  /* color: #011627; */
 }
